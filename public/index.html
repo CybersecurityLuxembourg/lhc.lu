@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		<meta name="theme-color" content="#ffffff"/>
+		<meta data-react-helmet="true" name="title" property="og:title" content="Luxembourg House of Cybersecurity" />
+		<meta data-react-helmet="true" name="description" property="og:description" content=""/>
+		<meta data-react-helmet="true" name="url" property="og:url" content="https://lhc.lu/"/>
+		<meta data-react-helmet="true" name="image" property="og:image" content="/img/open-graph-logo.png"/>
+
+		<link id="favicon" rel="shortcut icon"/>
+		<link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+
+		<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/css/fontawesome.css"/>
+
+		<script>
+			if (!(window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.hostname === "")) {
+				if (typeof window.__REACT_DEVTOOLS_GLOBAL_HOOK__ === 'object') {
+					__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () {};
+				}
+			}
+		</script>
+
+		<!-- Matomo -->
+        <script>
+            var _paq = window._paq = window._paq || [];
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+
+            (function() {
+                window.addEventListener('popstate', function() {
+                    _paq.push(['setCustomUrl', window.location.pathname]);
+                    _paq.push(['trackPageView']);
+                });
+            })();
+
+            (function() {
+                var u="//matomo.secin.lu/";
+                _paq.push(['setTrackerUrl', u+'matomo.php']);
+                _paq.push(['setSiteId', window.location.hostname.includes("test.") ? '3' : '4']);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+            })();
+        </script>
+        <!-- End Matomo Code -->
+
+		<script src="js/main.js"></script>
+
+		<title>Luxembourg House of Cybersecurity</title>
+	</head>
+	<body>
+		<noscript>
+			You need to enable JavaScript to run this app.
+		</noscript>
+		<div id="root"></div>
+	</body>
+	<footer>
+	</footer>
+</html>
