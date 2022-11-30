@@ -24,7 +24,6 @@ class InsideApp extends React.Component {
 		};
 	}
 
-	// eslint-disable-next-line react/no-deprecated
 	componentWillMount() {
 		this.setState({
 			unlisten: this.props.history.listen((location) => {
