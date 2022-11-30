@@ -1,4 +1,4 @@
-name: cyberlux-web build and release package
+name: lhc.lu build and release package
 
 on:
   push:
