@@ -1,9 +1,9 @@
 import React from "react";
 import "./Menu.css";
 import Navbar from "react-bootstrap/Navbar";
+import { NavDropdown } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
-import SearchField from "../form/SearchField.jsx";
 
 export default class Menu extends React.Component {
 	constructor(props) {
@@ -33,15 +33,137 @@ export default class Menu extends React.Component {
 		return <Nav className="mr-sm-2 ml-auto">
 			<Nav.Link>
 				<Link to="/">
-					<div className="Menu-title">Home</div>
-					<div className="Menu-description">text</div>
+					<div className="Menu-title">About LHC</div>
 				</Link>
 			</Nav.Link>
 
+			<NavDropdown
+				title={
+					<div className="Menu-item">
+						<div className="Menu-title">News & events</div>
+						<i className="fas fa-sort-down"/>
+					</div>
+				}
+				id="basic-nav-dropdown">
+				<div className="row">
+					<div className="col-sm-6">
+						News
+
+						<NavDropdown.Item>
+							<Link to="/news">
+								<div className="Menu-title">Latest News</div>
+							</Link>
+						</NavDropdown.Item>
+						<NavDropdown.Item>
+							<Link to="/ltac">
+								<div className="Menu-title">Lëtz Talk About Cyber</div>
+							</Link>
+						</NavDropdown.Item>
+					</div>
+					<div className="col-sm-6">
+						Events
+
+						<NavDropdown.Item>
+							<Link to="/events">
+								<div className="Menu-title">Upcoming Events</div>
+							</Link>
+						</NavDropdown.Item>
+						<NavDropdown.Item>
+							<Link to="/breakfast">
+								<div className="Menu-title">Cybersecurity Breakfast</div>
+							</Link>
+						</NavDropdown.Item>
+					</div>
+				</div>
+			</NavDropdown>
+
+			<NavDropdown
+				title={
+					<div className="Menu-item">
+						<div className="Menu-title">Service & Facilities</div>
+						<i className="fas fa-sort-down"/>
+					</div>
+				}
+				id="basic-nav-dropdown">
+				<div className="row">
+					<div className="col-sm-4">
+						Services
+
+						<NavDropdown.Item>
+							<Link to="/test-lab">
+								<div className="Menu-title">Test Lab</div>
+							</Link>
+						</NavDropdown.Item>
+						<NavDropdown.Item>
+							<Link to="/ltac">
+								<div className="Menu-title">ROOM#42</div>
+							</Link>
+						</NavDropdown.Item>
+
+						One-stop counter
+
+						<a
+							className="dropdown-item"
+							href="https://www.bee-secure.lu/"
+							target="_blank"
+							rel="noreferrer">
+							<div className="Menu-title">BEE SECURE</div>
+						</a>
+						<a
+							className="dropdown-item"
+							href="https://www.dlh.lu/"
+							target="_blank"
+							rel="noreferrer">
+							<div className="Menu-title">Digital Learning Hub</div>
+						</a>
+
+						<NavDropdown.Item>
+							<Link to="/ltac">
+								<div className="Menu-title">Startups</div>
+							</Link>
+						</NavDropdown.Item>
+					</div>
+					<div className="col-sm-4">
+						Facilities
+
+						<NavDropdown.Item>
+							<Link to="/meetings">
+								<div className="Menu-title">Meetings, Training & Events</div>
+							</Link>
+						</NavDropdown.Item>
+					</div>
+					<div className="col-sm-4">
+						Hosted by LHC
+
+						<a
+							className="dropdown-item"
+							href="https://www.circl.lu/"
+							target="_blank"
+							rel="noreferrer">
+							<div className="Menu-title">CIRCL</div>
+						</a>
+						<a
+							className="dropdown-item"
+							href="https://www.nc3.lu/"
+							target="_blank"
+							rel="noreferrer">
+							<div className="Menu-title">NC3</div>
+						</a>
+					</div>
+				</div>
+			</NavDropdown>
+
+			<a
+				className="dropdown-item"
+				href="https://www.cybersecurity.lu/ecosystem"
+				target="_blank"
+				rel="noreferrer">
+				<div className="Menu-title">CYBERSECURITY Luxembourg Ecosystem</div>
+			</a>
+
 			<Nav.Link>
-				<Link to="/news">
-					<div className="Menu-title">News</div>
-					<div className="Menu-description">text</div>
+				<Link to="/contact">
+					<div className="Menu-title">Contact</div>
 				</Link>
 			</Nav.Link>
 		</Nav>;
@@ -66,11 +188,14 @@ export default class Menu extends React.Component {
 					</Navbar.Collapse>
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="Menu-top-right-about mr-sm-2 ml-auto">
-							<SearchField/>
 							<Nav.Link>
-								<Link to="/about">
-									<div className="Menu-title">About</div>
-									<div className="Menu-description">text</div>
+								<Link to="/report">
+									<div className="Menu-title">Report an incident</div>
+								</Link>
+							</Nav.Link>
+							<Nav.Link>
+								<Link to="/help">
+									<div className="Menu-title">Need help?</div>
 								</Link>
 							</Nav.Link>
 						</Nav>
