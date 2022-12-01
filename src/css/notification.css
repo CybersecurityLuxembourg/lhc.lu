@@ -1,0 +1,15 @@
+.notification-info {
+  background-color: var(--primary-color) !important;
+}
+
+.notification-success {
+  background-color: #51a351 !important;
+}
+
+.notification-warning {
+  background-color: #f89406 !important;
+}
+
+.notification-error {
+  background-color: var(--secondary-color) !important;
+}

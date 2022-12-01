@@ -97,10 +97,12 @@
 }
 
 .nav-item .dropdown-toggle {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .nav-item .dropdown-menu {
+    max-width: 100%;
+    width: 500px;
     border: solid 1px black;
 }
 
@@ -122,7 +124,7 @@
 }
 
 .Menu-title {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .Menu-description {
@@ -146,7 +148,7 @@
 }
 
 .Menu .dropdown-item {
-    padding: 8px 25px;
+    padding: 8px 20px;
 }
 
 .Menu .dropdown i.fa-sort-down {
@@ -158,53 +160,14 @@
     transform: translateX(-50%);
 }
 
-.Menu .Analytic {
-    padding: 0px !important;
-}
-
 .Menu .dropdown-toggle::after {
     display: none;
-}
-
-@media (min-width: 0px) {
-    .Menu .Analytic {
-        margin: 4px 0px;
-    }
-
-    .Menu .Analytic-value {
-        color: white !important;
-        font-size: 18px;
-    }
-
-    .Menu .Analytic-desc {
-        color: white !important;
-        font-size: 15px;
-    }
-}
-
-@media (min-width: 768px) {
-    .Menu .Analytic {
-        margin: 10px 5px;
-    }
-
-    .Menu .Analytic-value {
-        font-size: 40px;
-    }
-
-    .Menu .Analytic-desc {
-        font-size: 18px;
-    }
 }
 
 @media (min-width: 0px) {
     .Menu-top-right-about {
         margin-top: 10px;
         padding: 20px 0px;
-    }
-
-    .Menu-top-right-about .SearchField {
-        margin-top: 10px;
-        margin-bottom: 10px;
     }
 
     .Menu-title, .Menu-description {
@@ -220,23 +183,9 @@
         right: 5px;
     }
 
-    .Menu-top-right-about .SearchField {
-        margin-top: 10px;
-        margin-right: 20px;
-    }
-
     .Menu-title, .Menu-description {
         text-align: left;
     }
-}
-
-.Menu-link-grey {
-    background-image: radial-gradient(#8fddff 50%, white 50%);
-    background-size: 3px 3px;
-}
-
-.Menu-link-red {
-    background-color: #ffa8b0;
 }
 
 /* FLYING MENU */

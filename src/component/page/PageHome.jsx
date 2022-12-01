@@ -3,6 +3,8 @@ import "./PageHome.css";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
 import PageHomeBanner from "./pagehome/PageHomeBanner.jsx";
+import PageHomeAboutLHC from "./pagehome/PageHomeAboutLHC.jsx";
+import PageHomeCatch from "./pagehome/PageHomeCatch.jsx";
 
 export default class PageHome extends React.Component {
 	constructor(props) {
@@ -21,6 +23,8 @@ export default class PageHome extends React.Component {
 		return (
 			<div id={"PageHome"}>
 				<PageHomeBanner/>
+				<PageHomeCatch/>
+				<PageHomeAboutLHC/>
 
 				<div className="">
 					<div className="page max-sized-page">

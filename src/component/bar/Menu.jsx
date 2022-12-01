@@ -154,7 +154,7 @@ export default class Menu extends React.Component {
 			</NavDropdown>
 
 			<a
-				className="dropdown-item"
+				className="nav-link"
 				href="https://www.cybersecurity.lu/ecosystem"
 				target="_blank"
 				rel="noreferrer">
