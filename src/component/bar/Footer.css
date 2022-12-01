@@ -31,7 +31,7 @@
     color: white;
     font-size: 18px;
     text-transform: uppercase;
-    font-family: "Fjalla One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--title-font);
     margin-bottom: 10px;
 }
 
@@ -45,7 +45,7 @@
   font-size: 20px;
   padding: 5px 8px;
   text-align: center;
-  color: #009fe3;
+  color: var(--primary-color);
   margin-bottom: 5px;
 }
 
@@ -57,7 +57,7 @@
 
 
 .Footer-network a i:hover {
-  color: #e40613 !important;
+  color: var(--secondary-color) !important;
 }
 
 .Footer-documentation-and-terms a {

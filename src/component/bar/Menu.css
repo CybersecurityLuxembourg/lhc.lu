@@ -6,7 +6,7 @@
 }
 
 .navbar {
-    font-family: "Fjalla One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--title-font);
     font-weight: normal;
     display: block;
     z-index: 10;
@@ -310,5 +310,5 @@
 }
 
 .Menu-help .Menu-title {
-    color: #e40613;
+    color: var(--secondary-color);
 }

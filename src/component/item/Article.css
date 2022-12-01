@@ -25,9 +25,9 @@
 
 .Article .card-date {
     position: absolute;
-    background: #009fe3;
+    background: var(--primary-color);
     text-align: center;
-    font-family: "Fjalla One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--title-font);
     padding: 10px;
     color: #fff;
     bottom: 0;
@@ -37,9 +37,9 @@
 
 .Article .card-type {
     position: absolute;
-    background: #e40613;
+    background: var(--secondary-color);
     text-align: center;
-    font-family: "Fjalla One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--title-font);
     padding: 10px;
     color: #fff;
     top: 0;

@@ -1,0 +1,39 @@
+.Popup-full-size-content {
+	height: 95%;
+	width: 80% !important;
+	max-width: 1200px;
+	padding: 10px;
+	animation: fadeIn ease .5s;
+	-webkit-animation: fadeIn ease .5s;
+	-moz-animation: fadeIn ease .5s;
+	-o-animation: fadeIn ease .5s;
+	-ms-animation: fadeIn ease .5s;
+}
+
+.Popup-small-size-content {
+	width: 60% !important;
+	max-height: 90% !important;
+	max-width: 1200px;
+	padding: 10px;
+	animation: fadeIn ease .5s;
+	-webkit-animation: fadeIn ease .5s;
+	-moz-animation: fadeIn ease .5s;
+	-o-animation: fadeIn ease .5s;
+	-ms-animation: fadeIn ease .5s;
+}
+
+.Popup-small-size-content img {
+	max-width: 100%;
+}
+
+.popup-content {
+	padding: 0px 20px 30px 20px !important;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: #EEE !important;
+	border: 1px solid #cccaca;
+}
+
+.popup-overlay {
+	background-color: rgba(0, 0, 0, 0.4);
+}

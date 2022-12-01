@@ -1,0 +1,31 @@
+input, textarea, select {
+  position: relative;
+}
+
+input, textarea, select {
+  display: block;
+  margin: 0;
+  padding: 5px 12px;
+  color: inherit;
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--inputFontSize);
+  font-weight: inherit;
+  line-height: var(--inputLineHeight);
+  border: lightgrey 2px solid;
+  border-radius: 0.4rem;
+  transition: box-shadow var(--transitionDuration);
+  height: 40px;
+}
+
+input::placeholder, textarea::placeholder, select::placeholder {
+  	color: #B0BEC5;
+}
+
+input:focus, textarea:focus, select:focus {
+	border: 1px solid var(--primary-color);
+}
+
+textarea {
+	height: 100px;
+}

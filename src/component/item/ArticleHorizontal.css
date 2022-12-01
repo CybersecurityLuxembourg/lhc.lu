@@ -53,9 +53,9 @@
 
 .ArticleHorizontal .card-date {
     position: absolute;
-    background: #009fe3;
+    background: var(--primary-color);
     text-align: center;
-    font-family: "Fjalla One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--title-font);
     padding: 10px;
     color: #fff;
     bottom: 0px;

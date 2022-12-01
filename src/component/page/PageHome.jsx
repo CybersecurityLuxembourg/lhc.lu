@@ -2,6 +2,7 @@ import React from "react";
 import "./PageHome.css";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
+import PageHomeBanner from "./pagehome/PageHomeBanner.jsx";
 
 export default class PageHome extends React.Component {
 	constructor(props) {
@@ -18,17 +19,47 @@ export default class PageHome extends React.Component {
 	// eslint-disable-next-line class-methods-use-this
 	render() {
 		return (
-			<div id={"PageHome"} className="page max-sized-page">
-				<div className="row row-spaced">
-					<div className="col-md-12">
-						<Breadcrumb>
-							<Breadcrumb.Item><Link to="/">LUXEMBOURG HOUSE OF CYBERSECURITY</Link></Breadcrumb.Item>
-							<Breadcrumb.Item><Link to="/">HOME</Link></Breadcrumb.Item>
-						</Breadcrumb>
-					</div>
+			<div id={"PageHome"}>
+				<PageHomeBanner/>
 
-					<div className="col-md-12">
-						Home
+				<div className="">
+					<div className="page max-sized-page">
+						<div className="row row-spaced">
+							<div className="col-md-12">
+								A unique place at the service<br/>
+								of your cybersecurity needs
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div className="PageHome-section">
+					<div className="page max-sized-page">
+						<div className="row row-spaced">
+							<div className="col-md-12">
+								<h1>About LHC</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div className="PageHome-section">
+					<div className="page max-sized-page">
+						<div className="row row-spaced">
+							<div className="col-md-12">
+								Home
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div className="PageHome-section">
+					<div className="page max-sized-page">
+						<div className="row row-spaced">
+							<div className="col-md-12">
+								Home
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
