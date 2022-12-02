@@ -7,6 +7,7 @@ import { dictToURI } from "../../../utils/url.jsx";
 import Loading from "../../box/Loading.jsx";
 import NoImage from "../../box/NoImage.jsx";
 import Message from "../../box/Message.jsx";
+import SmallArticle from "../../item/SmallArticle.jsx";
 
 export default class PageHomeEvents extends React.Component {
 	constructor(props) {
@@ -110,22 +111,9 @@ export default class PageHomeEvents extends React.Component {
 							{this.state.news.map((c, i) => <div
 								key={c.id}
 								className={"col-md-12"}>
-								{c.link !== null
-									&& c.link !== undefined
-									&& c.link.length > 0
-									? <a
-										href={c.link}
-										target={"_blank"}
-										rel="noreferrer"
-										className="Article-link">
-										{this.getBoxContent(c, i)}
-									</a>
-									: <Link
-										to={"/news/" + c.handle}
-										className="Article-link">
-										{this.getBoxContent(c, i)}
-									</Link>
-								}
+								<SmallArticle
+									info={c}
+								/>
 							</div>)}
 						</div>
 					</div>

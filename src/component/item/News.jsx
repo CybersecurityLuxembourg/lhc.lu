@@ -70,12 +70,7 @@ export default class News extends Component {
 					</div>
 				</div>
 			</div>
-		);<div dangerouslySetInnerHTML={
-					{
-						__html:
-						b.content.replace("&lt;", "<").replace("&gt;", ">"),
-					}
-				} />
+		);
 	}
 
 	render() {

@@ -1,0 +1,22 @@
+
+.SmallArticle {
+    margin: 5px 0px !important;
+    padding: 5px 10px;
+    overflow: hidden;
+    line-height: 1 !important;
+    font-weight: bold;
+    width: 100%;
+}
+
+.SmallArticle:hover {
+    background-color: var(--hovered-primary-color) !important;
+}
+
+.SmallArticle-link {
+    color: inherit;
+}
+
+.SmallArticle-link:hover {
+    color: initial !important;
+    text-decoration: none;
+}

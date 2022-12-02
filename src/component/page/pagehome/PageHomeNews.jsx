@@ -7,6 +7,7 @@ import { dictToURI } from "../../../utils/url.jsx";
 import Loading from "../../box/Loading.jsx";
 import NoImage from "../../box/NoImage.jsx";
 import Message from "../../box/Message.jsx";
+import SmallArticle from "../../item/SmallArticle.jsx";
 
 export default class PageHomeNews extends React.Component {
 	constructor(props) {
@@ -70,18 +71,6 @@ export default class PageHomeNews extends React.Component {
 		}
 	}
 
-	getBoxContent(article, i) {
-		return <div className={"PageHomeLatestNews-article "
-			+ (this.state.selectedNews === i && "PageHomeLatestNews-article-selected")}>
-			<div className={"PageHomeLatestNews-date"}>
-				{article.publication_date.split("T")[0]}&nbsp;-&nbsp;
-			</div>
-			<div className={"PageHomeLatestNews-title"}>
-				{article.title}
-			</div>
-		</div>;
-	}
-
 	render() {
 		if (!this.state.news) {
 			return <div className={"col-md-12"}>
@@ -130,23 +119,20 @@ export default class PageHomeNews extends React.Component {
 							{this.state.news.map((c, i) => <div
 								key={c.id}
 								className={"col-md-12"}>
-								{c.link !== null
-									&& c.link !== undefined
-									&& c.link.length > 0
-									? <a
-										href={c.link}
-										target={"_blank"}
-										rel="noreferrer"
-										className="Article-link">
-										{this.getBoxContent(c, i)}
-									</a>
-									: <Link
-										to={"/news/" + c.handle}
-										className="Article-link">
-										{this.getBoxContent(c, i)}
-									</Link>
-								}
+								<SmallArticle
+									info={c}
+								/>
 							</div>)}
+						</div>
+
+						<div className={"row"}>
+							<div className={"col-md-8"}>
+								<Link
+									to={"/news"}
+									className="Article-link">
+									<b>See all</b>
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>
