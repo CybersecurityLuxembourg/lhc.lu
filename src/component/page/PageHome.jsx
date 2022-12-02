@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 import PageHomeBanner from "./pagehome/PageHomeBanner.jsx";
 import PageHomeAboutLHC from "./pagehome/PageHomeAboutLHC.jsx";
 import PageHomeCatch from "./pagehome/PageHomeCatch.jsx";
+import PageHomeServices from "./pagehome/PageHomeServices.jsx";
+import PageHomeNews from "./pagehome/PageHomeNews.jsx";
+import PageHomeEvents from "./pagehome/PageHomeEvents.jsx";
+
 
 export default class PageHome extends React.Component {
 	constructor(props) {
@@ -25,47 +29,9 @@ export default class PageHome extends React.Component {
 				<PageHomeBanner/>
 				<PageHomeCatch/>
 				<PageHomeAboutLHC/>
-
-				<div className="">
-					<div className="page max-sized-page">
-						<div className="row row-spaced">
-							<div className="col-md-12">
-								A unique place at the service<br/>
-								of your cybersecurity needs
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div className="PageHome-section">
-					<div className="page max-sized-page">
-						<div className="row row-spaced">
-							<div className="col-md-12">
-								<h1>About LHC</h1>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div className="PageHome-section">
-					<div className="page max-sized-page">
-						<div className="row row-spaced">
-							<div className="col-md-12">
-								Home
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div className="PageHome-section">
-					<div className="page max-sized-page">
-						<div className="row row-spaced">
-							<div className="col-md-12">
-								Home
-							</div>
-						</div>
-					</div>
-				</div>
+				<PageHomeServices/>
+				<PageHomeNews/>
+				<PageHomeEvents/>
 			</div>
 		);
 	}

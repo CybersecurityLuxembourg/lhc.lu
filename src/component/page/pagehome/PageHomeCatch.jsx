@@ -7,7 +7,7 @@ export default class PageHomeCatch extends React.Component {
 	}
 
 	render() {
-		return <div id="PageHomeCatch">
+		return <div id="PageHomeCatch" className="PageHome-section">
 			<div className="page max-sized-page">
 				<div className="row row-spaced">
 					<div className="col-md-12">

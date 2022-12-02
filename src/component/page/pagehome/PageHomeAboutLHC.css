@@ -1,5 +1,13 @@
 
 #PageHomeAboutLHC {
-    padding: 100px 0px;
     background-color: var(--light-primary-color);
+}
+
+#PageHomeAboutLHC .col-md-3:has(img) {
+    text-align: center;
+}
+
+#PageHomeAboutLHC img {
+    width: 80%;
+    margin-top: 40px;
 }

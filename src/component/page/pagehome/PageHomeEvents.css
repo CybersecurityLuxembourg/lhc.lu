@@ -1,16 +1,16 @@
 
-#PageHomeComingEvents .PageHomeComingEvents-date,
-#PageHomeComingEvents .PageHomeComingEvents-title {
+#PageHomeEvents .PageHomeEvents-date,
+#PageHomeEvents .PageHomeEvents-title {
 	display: inline;
 }
 
-#PageHomeComingEvents a {
+#PageHomeEvents a {
 	text-decoration: none;
 }
 
-#PageHomeComingEvents .PageHomeComingEvents-article {
+#PageHomeEvents .PageHomeEvents-article {
 	width: 100%;
-	color: black;
+	color: var(--primary-color);
 	padding: 1px 5px;
 	display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -20,24 +20,24 @@
     border: transparent 0.16em solid;
 }
 
-#PageHomeComingEvents .PageHomeComingEvents-article-selected {
-	background-color: rgb(0, 0, 0);
+#PageHomeEvents .PageHomeEvents-article-selected {
+	background-color: rgb(0, 159, 227);
     color: white;
 }
 
-#PageHomeComingEvents .PageHomeComingEvents-article:hover {
+#PageHomeEvents .PageHomeEvents-article:hover {
     border: black 0.16em solid;
 }
 
 @media (min-width: 0px) {
- 	#PageHomeComingEvents .PageHomeComingEvents-image {
+ 	#PageHomeEvents .PageHomeEvents-image {
         position:  relative;
         width: 100%;
         height: 214px;
         background: repeating-linear-gradient(
           135deg,
-          rgba(0, 0, 0, 0.1),
-          rgba(0, 0, 0, 0.1) 10px,
+          rgba(0, 159, 227, 0.1),
+          rgba(0, 159, 227, 0.1) 10px,
           rgba(0, 0, 0, 0) 10px,
           rgba(0, 0, 0, 0) 20px
         ) !important;
@@ -45,7 +45,7 @@
 }
 
 @media (min-width: 500px) {
-    #PageHomeComingEvents .PageHomeComingEvents-image {
+    #PageHomeEvents .PageHomeEvents-image {
     	height: 214px;
         object-fit: cover;
         display: flex;
@@ -55,8 +55,8 @@
     }
 }
 
-#PageHomeComingEvents .PageHomeComingEvents-image img,
-#PageHomeComingEvents .PageHomeComingEvents-image .NoImage {
+#PageHomeEvents .PageHomeEvents-image img,
+#PageHomeEvents .PageHomeEvents-image .NoImage {
 	position: absolute;
     object-fit: contain;
     width: 100%;
@@ -71,16 +71,16 @@
     100% { left: 0%; }
 }
 
-#PageHomeComingEvents .NoImage {
+#PageHomeEvents .NoImage {
     background: repeating-linear-gradient(
       135deg,
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.1) 10px,
+      rgba(0, 159, 227, 0.1),
+      rgba(0, 159, 227, 0.1) 10px,
       rgba(0, 0, 0, 0) 10px,
       rgba(0, 0, 0, 0) 20px
     ) !important;
 }
 
-#PageHomeComingEvents .NoImage-logo i {
-    color: rgba(0, 0, 0, 0.1) !important;
+#PageHomeEvents .NoImage-logo i {
+    color: rgba(0, 159, 227, 0.1) !important;
 }
