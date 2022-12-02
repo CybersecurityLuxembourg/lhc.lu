@@ -1,0 +1,8 @@
+
+.breadcrumb {
+	background: none;
+}
+
+.breadcrumb a {
+	color: var(--default-color);
+}

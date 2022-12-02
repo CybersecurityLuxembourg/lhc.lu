@@ -9,8 +9,8 @@ import Menu from "./bar/Menu.jsx";
 import Footer from "./bar/Footer.jsx";
 import PageHome from "./page/PageHome.jsx";
 import PageContact from "./page/PageContact.jsx";
+import PageHelp from "./page/PageHelp.jsx";
 import PageNews from "./page/PageNews.jsx";
-import PageSearch from "./page/PageSearch.jsx";
 import Page404 from "./page/Page404.jsx";
 
 class InsideApp extends React.Component {
@@ -103,8 +103,8 @@ class InsideApp extends React.Component {
 							/>}
 						/>
 						<Route
-							path="/search"
-							render={(props) => <PageSearch
+							path="/help"
+							render={(props) => <PageHelp
 								lhc={this.state.lhc}
 								analytics={this.state.analytics}
 								{...props}

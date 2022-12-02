@@ -1,0 +1,13 @@
+
+#PageContact .PageContact-content {
+    background-color: var(--light-primary-color);
+    margin-bottom: 150px;
+}
+
+#PageContact .PageContact-content .col-md-3:has(img) {
+    text-align: center;
+}
+
+#PageContact .PageContact-content img {
+    width: 100%;
+}

@@ -8,7 +8,8 @@ import Message from "../box/Message.jsx";
 import Banner from "../bar/Banner.jsx";
 import SearchField from "../form/SearchField.jsx";
 import { getRequest } from "../../utils/request.jsx";
-import Article from "../item/Article.jsx";
+import News from "../item/News.jsx";
+import DynamicTable from "../table/DynamicTable.jsx";
 import { dictToURI } from "../../utils/url.jsx";
 
 export default class PageNews extends React.Component {
@@ -24,39 +25,22 @@ export default class PageNews extends React.Component {
 		this.getNews();
 	}
 
-	componentDidUpdate(prevProps) {
-		if (prevProps.analytics === null && this.props.analytics !== null) {
-			this.getNews();
-		}
-	}
+	getNews(page) {
+		const params = {
+			type: "NEWS",
+			per_page: 5,
+			page: page || 1,
+		};
 
-	getNews(categoryValue, stateName) {
-		if (this.props.analytics !== null
-			&& this.props.analytics.taxonomy_values !== undefined) {
-			const values = this.props.analytics.taxonomy_values
-				.filter((v) => v.category === "ARTICLE CATEGORY")
-				.filter((v) => v.name === categoryValue);
-
-			const params = {
-				type: "NEWS",
-				include_tags: "true",
-				taxonomy_values: values.map((v) => v.id).join(","),
-				per_page: 2,
-				page: 1,
-			};
-
-			getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
-				this.setState({
-					[stateName]: data.items
-						.filter((a) => categoryValue !== "CALL TO ACTION"
-							|| (a.end_date && a.end_date > new Date().toISOString())),
-				});
-			}, (response) => {
-				nm.warning(response.statusText);
-			}, (error) => {
-				nm.error(error.message);
+		getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
+			this.setState({
+				news: data,
 			});
-		}
+		}, (response) => {
+			nm.warning(response.statusText);
+		}, (error) => {
+			nm.error(error.message);
+		});
 	}
 
 	changeState(field, value) {
@@ -72,22 +56,19 @@ export default class PageNews extends React.Component {
 
 				<div className={"page max-sized-page"}>
 
-					<div className="row">
+					<div className="row row-spaced">
 						<div className="col-md-12">
 							<Breadcrumb>
-								<Breadcrumb.Item><Link to="/">LUXEMBOURG HOUSE OF CYBERSECURITY</Link></Breadcrumb.Item>
-								<Breadcrumb.Item><Link to="/news">NEWS</Link></Breadcrumb.Item>
+								<Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
+								<Breadcrumb.Item><Link to="/">News & Events</Link></Breadcrumb.Item>
+								<Breadcrumb.Item><Link to="/news">News</Link></Breadcrumb.Item>
 							</Breadcrumb>
 						</div>
+					</div>
 
+					<div className="row">
 						<div className="col-md-12">
-							<a
-								className="PageNews-title-link"
-								href={"/search?member_articles_only=true"}>
-								<div className="PageNews-title">
-									<h3>MEMBER NEWS <span>more</span></h3>
-								</div>
-							</a>
+							<h2>Latest News</h2>
 						</div>
 
 						<div className="col-md-12">
@@ -97,7 +78,7 @@ export default class PageNews extends React.Component {
 								&& <div className="row row-spaced">
 									<div className="col-md-12">
 										<Message
-											text={"No article found"}
+											text={"No news found"}
 											height={200}
 										/>
 									</div>
@@ -114,10 +95,9 @@ export default class PageNews extends React.Component {
 									buildElement={(a) => <div
 										className="col-md-12"
 										key={a.id}>
-										<ArticleHorizontal
+										<News
 											info={a}
 											analytics={this.props.analytics}
-											entities={this.state.entities}
 										/>
 									</div>
 									}
