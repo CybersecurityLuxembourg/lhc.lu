@@ -5,6 +5,7 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
 import Loading from "../box/Loading.jsx";
 import Message from "../box/Message.jsx";
+import Banner from "../bar/Banner.jsx";
 import SearchField from "../form/SearchField.jsx";
 import { getRequest } from "../../utils/request.jsx";
 import Article from "../item/Article.jsx";
@@ -64,70 +65,77 @@ export default class PageNews extends React.Component {
 
 	render() {
 		return (
-			<div id={"PageNews"} className={"page max-sized-page"}>
-				<div className="row">
-					<div className="col-md-12">
-						<Breadcrumb>
-							<Breadcrumb.Item><Link to="/">LUXEMBOURG HOUSE OF CYBERSECURITY</Link></Breadcrumb.Item>
-							<Breadcrumb.Item><Link to="/news">NEWS</Link></Breadcrumb.Item>
-						</Breadcrumb>
-					</div>
+			<div id={"PageNews"}>
+				<Banner
+					image={"/img/banner.jpg"}
+				/>
 
-					<div className="col-md-12">
-						<a
-							className="PageNews-title-link"
-							href={"/search?member_articles_only=true"}>
-							<div className="PageNews-title">
-								<h3>MEMBER NEWS <span>more</span></h3>
-							</div>
-						</a>
-					</div>
+				<div className={"page max-sized-page"}>
 
-					<div className="col-md-12">
-						{this.state.news
-							&& this.state.news.pagination
-							&& this.state.news.pagination.total === 0
-							&& <div className="row row-spaced">
-								<div className="col-md-12">
-									<Message
-										text={"No article found"}
-										height={200}
-									/>
+					<div className="row">
+						<div className="col-md-12">
+							<Breadcrumb>
+								<Breadcrumb.Item><Link to="/">LUXEMBOURG HOUSE OF CYBERSECURITY</Link></Breadcrumb.Item>
+								<Breadcrumb.Item><Link to="/news">NEWS</Link></Breadcrumb.Item>
+							</Breadcrumb>
+						</div>
+
+						<div className="col-md-12">
+							<a
+								className="PageNews-title-link"
+								href={"/search?member_articles_only=true"}>
+								<div className="PageNews-title">
+									<h3>MEMBER NEWS <span>more</span></h3>
 								</div>
-							</div>
-						}
+							</a>
+						</div>
 
-						{this.state.news
-							&& this.state.news.pagination
-							&& this.state.news.pagination.total > 0
-							&& <DynamicTable
-								items={this.state.news.items}
-								pagination={this.state.news.pagination}
-								changePage={(page) => this.getArticles(page)}
-								buildElement={(a) => <div
-									className="col-md-12"
-									key={a.id}>
-									<ArticleHorizontal
-										info={a}
-										analytics={this.props.analytics}
-										entities={this.state.entities}
-									/>
+						<div className="col-md-12">
+							{this.state.news
+								&& this.state.news.pagination
+								&& this.state.news.pagination.total === 0
+								&& <div className="row row-spaced">
+									<div className="col-md-12">
+										<Message
+											text={"No article found"}
+											height={200}
+										/>
+									</div>
 								</div>
-								}
-							/>
-						}
+							}
 
-						{(!this.state.news
-							|| !this.state.news.pagination
-							|| !this.state.news.items)
-							&& <div className="row row-spaced">
-								<div className="col-md-12">
-									<Loading
-										height={200}
-									/>
+							{this.state.news
+								&& this.state.news.pagination
+								&& this.state.news.pagination.total > 0
+								&& <DynamicTable
+									items={this.state.news.items}
+									pagination={this.state.news.pagination}
+									changePage={(page) => this.getArticles(page)}
+									buildElement={(a) => <div
+										className="col-md-12"
+										key={a.id}>
+										<ArticleHorizontal
+											info={a}
+											analytics={this.props.analytics}
+											entities={this.state.entities}
+										/>
+									</div>
+									}
+								/>
+							}
+
+							{(!this.state.news
+								|| !this.state.news.pagination
+								|| !this.state.news.items)
+								&& <div className="row row-spaced">
+									<div className="col-md-12">
+										<Loading
+											height={200}
+										/>
+									</div>
 								</div>
-							</div>
-						}
+							}
+						</div>
 					</div>
 				</div>
 			</div>

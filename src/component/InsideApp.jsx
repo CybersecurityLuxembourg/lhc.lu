@@ -8,7 +8,7 @@ import { getRequest } from "../utils/request.jsx";
 import Menu from "./bar/Menu.jsx";
 import Footer from "./bar/Footer.jsx";
 import PageHome from "./page/PageHome.jsx";
-import PageAbout from "./page/PageAbout.jsx";
+import PageContact from "./page/PageContact.jsx";
 import PageNews from "./page/PageNews.jsx";
 import PageSearch from "./page/PageSearch.jsx";
 import Page404 from "./page/Page404.jsx";
@@ -95,8 +95,8 @@ class InsideApp extends React.Component {
 							/>}
 						/>
 						<Route
-							path="/about"
-							render={(props) => <PageAbout
+							path="/contact"
+							render={(props) => <PageContact
 								lhc={this.state.lhc}
 								analytics={this.state.analytics}
 								{...props}

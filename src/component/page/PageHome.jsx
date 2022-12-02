@@ -2,7 +2,7 @@ import React from "react";
 import "./PageHome.css";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
-import PageHomeBanner from "./pagehome/PageHomeBanner.jsx";
+import Banner from "../bar/Banner.jsx";
 import PageHomeAboutLHC from "./pagehome/PageHomeAboutLHC.jsx";
 import PageHomeCatch from "./pagehome/PageHomeCatch.jsx";
 import PageHomeServices from "./pagehome/PageHomeServices.jsx";
@@ -26,7 +26,9 @@ export default class PageHome extends React.Component {
 	render() {
 		return (
 			<div id={"PageHome"}>
-				<PageHomeBanner/>
+				<Banner
+ 					image={"/img/banner.jpg"}
+ 				/>
 				<PageHomeCatch/>
 				<PageHomeAboutLHC/>
 				<PageHomeServices

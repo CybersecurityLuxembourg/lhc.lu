@@ -215,9 +215,9 @@
 
 .Menu-flying-menu .logo {
     position: absolute;
-    top: 12px;
+    top: 6px;
     left: 30px;
-    height: 45px;
+    height: 30px;
 }
 
 @media (min-width: 0px) {

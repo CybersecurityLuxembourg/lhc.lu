@@ -1,0 +1,19 @@
+
+.Banner, .Banner .carousel-root, .Banner .carousel {
+    position: relative;
+    width: 100%;
+    height: 1000px;
+    max-height: 30vh;
+    min-height: 300px;
+}
+
+.Banner > div {
+    height: 100%;
+    position: relative;
+}
+
+.Banner img {
+    height: 100% !important;
+    width: 100%;
+    object-fit: cover !important;
+}
