@@ -1,70 +1,63 @@
 
-.Footer {
+#Footer {
   width: 100%;
   background-color: black;
   color: white;
   font-size: 12px;
   line-height: 1.2;
   z-index: 150;
-  padding: 50px 0px 30px 0px;
+  padding: 50px 0px 0px 0px;
 }
 
-.Footer .Footer-patronage {
-  color: white;
-  margin-bottom: 12px;
-  font-size: 14px;
+#Footer .Footer-logo {
+  width: 100%;
 }
 
-.Footer-content .row > div {
+#Footer .Footer-logo-cyberlux {
+  width: 100%;
+}
+
+#Footer .Footer-content .row > div {
   margin-bottom: 25px;
 }
 
-.Footer a {
+#Footer a {
   color: white;
 }
 
-.Footer a:hover {
-  color: red;
+#Footer a:hover {
+  color: var(--secondary-color);
 }
 
-.Footer .Footer-title {
+#Footer .Footer-title {
     color: white;
     font-size: 18px;
-    text-transform: uppercase;
     font-family: var(--title-font);
-    margin-bottom: 10px;
 }
 
-.Footer-content {
+#Footer .Footer-content {
   margin: 0px auto 0px auto;
   padding: 25px 40px 15px 40px;
   max-width: 1240px;
 }
 
-.Footer-network {
+#Footer .Footer-network {
   font-size: 20px;
   padding: 5px 8px;
-  text-align: center;
   color: var(--primary-color);
-  margin-bottom: 5px;
+  background-color: var(--hovered-primary-color);
+  width: fit-content;
 }
 
-@media (min-width: 768px) {
-  .Footer-network {
-    margin-bottom: 37px !important;
-  }
-}
-
-
-.Footer-network a i:hover {
+#Footer .Footer-network a i:hover {
   color: var(--secondary-color) !important;
 }
 
-.Footer-documentation-and-terms a {
+#Footer .Footer-documentation-and-terms a {
   margin: 5px 8px;
   display: block;
 }
 
-.Footer-alinea {
-  padding-left: 15px;
+#Footer .Footer-link {
+  padding: 5px 0px;
 }
