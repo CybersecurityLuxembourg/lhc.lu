@@ -44,7 +44,8 @@ export default class Menu extends React.Component {
 						<i className="fas fa-sort-down"/>
 					</div>
 				}
-				id="basic-nav-dropdown">
+				id="basic-nav-dropdown"
+				className="dropdown-news">
 				<div className="row">
 					<div className="col-sm-6">
 						News
@@ -84,7 +85,8 @@ export default class Menu extends React.Component {
 						<i className="fas fa-sort-down"/>
 					</div>
 				}
-				id="basic-nav-dropdown">
+				id="basic-nav-dropdown"
+				className="dropdown-service">
 				<div className="row">
 					<div className="col-sm-4">
 						Services
@@ -99,8 +101,6 @@ export default class Menu extends React.Component {
 								<div className="Menu-title">ROOM#42</div>
 							</Link>
 						</NavDropdown.Item>
-
-						One-stop counter
 
 						<a
 							className="dropdown-item"

@@ -108,6 +108,8 @@
 
 .nav-item .dropdown-item {
     background-color: transparent;
+    white-space: initial;
+    font-family: var(--default-font);
 }
 
 .nav-item .dropdown-menu .dropdown-item:hover {
@@ -258,6 +260,21 @@
     );
 }
 
-.Menu-help .Menu-title {
-    color: var(--secondary-color);
+@media (min-width: 768px) {
+    .Menu-help .Menu-title {
+        color: var(--secondary-color);
+    }
+
+    .Menu .dropdown-news .dropdown-menu {
+        min-width: 440px;
+    }
+
+    .Menu .dropdown-service .dropdown-menu {
+        min-width: 660px;
+    }
+}
+
+.Menu .dropdown-menu {
+    padding: 10px 20px;
+    border-radius: unset;
 }
