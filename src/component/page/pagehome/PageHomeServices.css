@@ -1,86 +1,11 @@
 
-#PageHomeServices .PageHomeServices-date,
-#PageHomeServices .PageHomeServices-title {
-	display: inline;
+#PageHomeServices .PageHomeServices-content {
+    min-height: 300px;
+    padding: 20px 30px;
+    background-color: var(--light-primary-color);
 }
 
-#PageHomeServices a {
-	text-decoration: none;
-}
-
-#PageHomeServices .PageHomeServices-article {
-	width: 100%;
-	color: black;
-	padding: 1px 5px;
-	display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    border: transparent 0.16em solid;
-}
-
-#PageHomeServices .PageHomeServices-article-selected {
-	background-color: rgb(0, 0, 0);
-    color: white;
-}
-
-#PageHomeServices .PageHomeServices-article:hover {
-    border: black 0.16em solid;
-}
-
-@media (min-width: 0px) {
- 	#PageHomeServices .PageHomeServices-image {
-        position:  relative;
-        width: 100%;
-        height: 214px;
-        background: repeating-linear-gradient(
-          135deg,
-          rgba(0, 0, 0, 0.1),
-          rgba(0, 0, 0, 0.1) 10px,
-          rgba(0, 0, 0, 0) 10px,
-          rgba(0, 0, 0, 0) 20px
-        ) !important;
-    }
-}
-
-@media (min-width: 500px) {
-    #PageHomeServices .PageHomeServices-image {
-    	height: 214px;
-        object-fit: cover;
-        display: flex;
-        margin: auto;
-        flex: 0 0 220px;
-        overflow: hidden;
-    }
-}
-
-#PageHomeServices .PageHomeServices-image img,
-#PageHomeServices .PageHomeServices-image .NoImage {
-	position: absolute;
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-    border-radius: unset !important;
-    -webkit-animation: slide 0.5s forwards;
-    animation: slide 0.5s forwards;
-}
-
-@keyframes slide {
-	0% { left: 30px; }
-    100% { left: 0%; }
-}
-
-#PageHomeServices .NoImage {
-    background: repeating-linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.1) 10px,
-      rgba(0, 0, 0, 0) 10px,
-      rgba(0, 0, 0, 0) 20px
-    ) !important;
-}
-
-#PageHomeServices .NoImage-logo i {
-    color: rgba(0, 0, 0, 0.1) !important;
+#PageHomeServices .PageHomeServices-menu {
+    padding: 5px 10px;
+    border-top: solid 1px black;
 }

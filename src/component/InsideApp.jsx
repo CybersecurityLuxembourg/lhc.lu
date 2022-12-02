@@ -18,6 +18,7 @@ class InsideApp extends React.Component {
 		super(props);
 
 		this.state = {
+			lhc: null,
 			analytics: null,
 			unlisten: null,
 		};
@@ -34,12 +35,31 @@ class InsideApp extends React.Component {
 		});
 	}
 
+	componentDidMount() {
+		this.getAnalytics();
+		this.getLHC();
+	}
+
 	componentWillUnmount() {
 		this.state.unlisten();
 	}
 
-	componentDidMount() {
-		this.getAnalytics();
+	getLHC() {
+		getRequest.call(this, "public/get_public_entities?name=(LHC)", (data) => {
+			if (data.length === 1) {
+				this.setState({
+					lhc: data[0],
+				});
+			} else if (data.length === 0) {
+				nm.error("LHC data not found. Please contact administrators."); 
+			} else {
+				nm.error("Multiple entity found for LHC. Please contact administrators."); 
+			}
+		}, (response) => {
+			nm.warning(response.statusText);
+		}, (error) => {
+			nm.error(error.message);
+		});
 	}
 
 	getAnalytics() {
@@ -69,6 +89,7 @@ class InsideApp extends React.Component {
 						<Route
 							path="/news"
 							render={(props) => <PageNews
+								lhc={this.state.lhc}
 								analytics={this.state.analytics}
 								{...props}
 							/>}
@@ -76,6 +97,7 @@ class InsideApp extends React.Component {
 						<Route
 							path="/about"
 							render={(props) => <PageAbout
+								lhc={this.state.lhc}
 								analytics={this.state.analytics}
 								{...props}
 							/>}
@@ -83,6 +105,7 @@ class InsideApp extends React.Component {
 						<Route
 							path="/search"
 							render={(props) => <PageSearch
+								lhc={this.state.lhc}
 								analytics={this.state.analytics}
 								{...props}
 							/>}
@@ -91,6 +114,7 @@ class InsideApp extends React.Component {
 							exact
 							path="/"
 							render={(props) => <PageHome
+								lhc={this.state.lhc}
 								analytics={this.state.analytics}
 								{...props}
 							/>}

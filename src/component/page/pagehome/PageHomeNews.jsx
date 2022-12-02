@@ -29,7 +29,9 @@ export default class PageHomeNews extends React.Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		this.getNews();
+		if (!prevProps.lhc && this.props.lhc) {
+			this.getNews();
+		}
 	}
 
 	componentWillUnmount() {
@@ -37,20 +39,23 @@ export default class PageHomeNews extends React.Component {
 	}
 
 	getNews() {
-		const params = {
-			type: "NEWS",
-			per_page: 3,
-		};
+		if (this.props.lhc) {
+			const params = {
+				entities: this.props.lhc.id,
+				type: "NEWS",
+				per_page: 3,
+			};
 
-		getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
-			this.setState({
-				news: data.items,
+			getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
+				this.setState({
+					news: data.items,
+				});
+			}, (response) => {
+				nm.warning(response.statusText);
+			}, (error) => {
+				nm.error(error.message);
 			});
-		}, (response) => {
-			nm.warning(response.statusText);
-		}, (error) => {
-			nm.error(error.message);
-		});
+		}
 	}
 
 	changeNews() {
@@ -89,7 +94,7 @@ export default class PageHomeNews extends React.Component {
 		if (this.state.news.length === 0) {
 			return <div className={"col-md-12"}>
 				<Message
-					text={"No news found"}
+					content={"No news found"}
 					height={300}
 				/>
 			</div>;

@@ -29,9 +29,15 @@ export default class PageHome extends React.Component {
 				<PageHomeBanner/>
 				<PageHomeCatch/>
 				<PageHomeAboutLHC/>
-				<PageHomeServices/>
-				<PageHomeNews/>
-				<PageHomeEvents/>
+				<PageHomeServices
+					lhc={this.props.lhc}
+				/>
+				<PageHomeNews
+					lhc={this.props.lhc}
+				/>
+				<PageHomeEvents
+					lhc={this.props.lhc}
+				/>
 			</div>
 		);
 	}

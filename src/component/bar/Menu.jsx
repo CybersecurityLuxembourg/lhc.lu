@@ -208,7 +208,7 @@ export default class Menu extends React.Component {
 							<Link to="/">
 								<img
 									className="logo"
-									src="/img/lhc-logo.jpg"
+									src="/img/lhc-logo-small.png"
 									alt="LHC Logo"
 								/>
 							</Link>

@@ -17,10 +17,10 @@ export default class Footer extends React.Component {
 			<div id="Footer">
 				<div className="Footer-content">
 					<div className="row">
-						<div className="col-md-3 Footer-contact">
+						<div className="col-md-2 Footer-contact">
 							<img
 								className={"Footer-logo"}
-								src="/img/lhc-logo-small.png"
+								src="/img/lhc-logo-white.png"
 								alt="LHC Logo"
 							/>
 							<br/>
@@ -60,7 +60,10 @@ export default class Footer extends React.Component {
 								</a>
 							</div>
 						</div>
-						<div className="col-md-3">
+
+						<div className="col-md-1"/>
+
+						<div className="col-md-2">
 							<div className="row">
 								<div className="col-md-12">
 									<div className="Footer-link">
@@ -103,6 +106,7 @@ export default class Footer extends React.Component {
 										</a>
 									</div>
 									<br/>
+									<br/>
 									<div className="Footer-link">
 										<a
 											href="https://www.luxinnovation.lu/"
@@ -126,6 +130,7 @@ export default class Footer extends React.Component {
 								</div>
 							</div>
 						</div>
+
 						<div className="col-md-2">
 							<div className="row">
 								<div className="col-md-12">
@@ -154,8 +159,9 @@ export default class Footer extends React.Component {
 								</div>
 							</div>
 						</div>
+
 						<div className="col-md-2">
-							<div className="row">
+							<div className="row row-spaced">
 								<div className="col-md-12">
 									<div className="Footer-title">Shareholders</div>
 									<br/>
@@ -213,11 +219,13 @@ export default class Footer extends React.Component {
 							</div>
 						</div>
 
+						<div className="col-md-1"/>
+
 						<div className="col-md-2">
 							<img
 								className={"Footer-logo-cyberlux"}
-								src="/img/lhc-logo-small.png"
-								alt="LHC Logo"
+								src="/img/cyberlux-logo-white.png"
+								alt="CYBERLUX Logo"
 							/>
 						</div>
 					</div>

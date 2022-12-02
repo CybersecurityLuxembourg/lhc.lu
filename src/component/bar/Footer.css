@@ -6,7 +6,7 @@
   font-size: 12px;
   line-height: 1.2;
   z-index: 150;
-  padding: 50px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
 }
 
 #Footer .Footer-logo {
@@ -15,6 +15,9 @@
 
 #Footer .Footer-logo-cyberlux {
   width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 #Footer .Footer-content .row > div {
