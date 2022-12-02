@@ -109,7 +109,7 @@ export default class PageHomeNews extends React.Component {
 				</div>
 
 				<div className="row row-spaced">
-					<div className={"col-md-4"}>
+					<div className={"col-md-3"}>
 						<div className={"PageHomeNews-image"}>
 							{this.state.news[this.state.selectedNews].image
 								? <img
@@ -120,6 +120,8 @@ export default class PageHomeNews extends React.Component {
 							}
 						</div>
 					</div>
+
+					<div className={"col-md-1"}/>
 
 					<div className={"col-md-8"}>
 						<h2>Latest news</h2>

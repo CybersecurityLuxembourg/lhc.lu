@@ -2,3 +2,60 @@
 #PageHomeNews {
     background-color: var(--light-primary-color);
 }
+
+
+@media (min-width: 0px) {
+    #PageHomeNews .PageHomeNews-image {
+        position:  relative;
+        width: 100%;
+        height: 214px;
+        background: repeating-linear-gradient(
+          135deg,
+          rgba(0, 159, 227, 0.1),
+          rgba(0, 159, 227, 0.1) 10px,
+          rgba(0, 0, 0, 0) 10px,
+          rgba(0, 0, 0, 0) 20px
+        ) !important;
+    }
+}
+
+@media (min-width: 500px) {
+    #PageHomeNews .PageHomeNews-image {
+        height: 214px;
+        object-fit: cover;
+        display: flex;
+        margin: auto;
+        flex: 0 0 220px;
+        overflow: hidden;
+    }
+}
+
+#PageHomeNews .PageHomeNews-image img,
+#PageHomeNews .PageHomeNews-image .NoImage {
+    position: absolute;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    border-radius: unset !important;
+    -webkit-animation: slide 0.5s forwards;
+    animation: slide 0.5s forwards;
+}
+
+@keyframes slide {
+    0% { left: 30px; }
+    100% { left: 0%; }
+}
+
+#PageHomeNews .NoImage {
+    background: repeating-linear-gradient(
+      135deg,
+      rgba(0, 159, 227, 0.1),
+      rgba(0, 159, 227, 0.1) 10px,
+      rgba(0, 0, 0, 0) 10px,
+      rgba(0, 0, 0, 0) 20px
+    ) !important;
+}
+
+#PageHomeNews .NoImage-logo i {
+    color: rgba(0, 159, 227, 0.1) !important;
+}

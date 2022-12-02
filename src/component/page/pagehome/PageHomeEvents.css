@@ -1,34 +1,4 @@
 
-#PageHomeEvents .PageHomeEvents-date,
-#PageHomeEvents .PageHomeEvents-title {
-	display: inline;
-}
-
-#PageHomeEvents a {
-	text-decoration: none;
-}
-
-#PageHomeEvents .PageHomeEvents-article {
-	width: 100%;
-	color: var(--primary-color);
-	padding: 1px 5px;
-	display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    border: transparent 0.16em solid;
-}
-
-#PageHomeEvents .PageHomeEvents-article-selected {
-	background-color: rgb(0, 159, 227);
-    color: white;
-}
-
-#PageHomeEvents .PageHomeEvents-article:hover {
-    border: black 0.16em solid;
-}
-
 @media (min-width: 0px) {
  	#PageHomeEvents .PageHomeEvents-image {
         position:  relative;

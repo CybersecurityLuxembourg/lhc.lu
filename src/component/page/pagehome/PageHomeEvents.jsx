@@ -103,18 +103,6 @@ export default class PageHomeEvents extends React.Component {
 		return <div id="PageHomeEvents" className="PageHome-section">
 			<div className="page max-sized-page">
 				<div className="row row-spaced">
-					<div className={"col-md-4"}>
-						<div className={"PageHomeEvents-image"}>
-							{this.state.news[this.state.selectedNews].image
-								? <img
-									src={getApiURL() + "public/get_public_image/"
-										+ this.state.news[this.state.selectedNews].image}
-									alt="Article image"/>
-								: <NoImage/>
-							}
-						</div>
-					</div>
-
 					<div className={"col-md-8"}>
 						<h2>Upcoming events</h2>
 
@@ -139,6 +127,20 @@ export default class PageHomeEvents extends React.Component {
 									</Link>
 								}
 							</div>)}
+						</div>
+					</div>
+
+					<div className={"col-md-1"}/>
+
+					<div className={"col-md-3"}>
+						<div className={"PageHomeEvents-image"}>
+							{this.state.news[this.state.selectedNews].image
+								? <img
+									src={getApiURL() + "public/get_public_image/"
+										+ this.state.news[this.state.selectedNews].image}
+									alt="Article image"/>
+								: <NoImage/>
+							}
 						</div>
 					</div>
 				</div>
