@@ -67,13 +67,19 @@ export default class Footer extends React.Component {
 							<div className="row">
 								<div className="col-md-12">
 									<div className="Footer-link">
-										<a
-											href="https://hcpn.gouvernement.lu/en.html"
-											rel="noreferrer"
-											target="_blank"
-											title="HCPN">
+										<Link to="/about">
 											About us
-										</a>
+										</Link>
+									</div>
+									<div className="Footer-link">
+										<Link to="/news">
+											News
+										</Link>
+									</div>
+									<div className="Footer-link">
+										<Link to="/events">
+											Events
+										</Link>
 									</div>
 									<div className="Footer-link">
 										<a
@@ -86,46 +92,21 @@ export default class Footer extends React.Component {
 										</a>
 									</div>
 									<div className="Footer-link">
-										<a
-											href="https://www.luxinnovation.lu/"
-											rel="noreferrer"
-											target="_blank"
-											title="LUXINNOVATION GIE"
-											className="text-capitalize">
-											News & events
-										</a>
-									</div>
-									<div className="Footer-link">
-										<a
-											href="https://www.luxinnovation.lu/"
-											rel="noreferrer"
-											target="_blank"
-											title="LUXINNOVATION GIE"
-											className="text-capitalize">
-											Contact us
-										</a>
+										<Link to="/contact">
+											Contact
+										</Link>
 									</div>
 									<br/>
 									<br/>
 									<div className="Footer-link">
-										<a
-											href="https://www.luxinnovation.lu/"
-											rel="noreferrer"
-											target="_blank"
-											title="LUXINNOVATION GIE"
-											className="text-capitalize">
+										<Link to="/report">
 											Report an incident
-										</a>
+										</Link>
 									</div>
 									<div className="Footer-link">
-										<a
-											href="https://www.luxinnovation.lu/"
-											rel="noreferrer"
-											target="_blank"
-											title="LUXINNOVATION GIE"
-											className="text-capitalize">
+										<Link to="/help">
 											Need help?
-										</a>
+										</Link>
 									</div>
 								</div>
 							</div>
@@ -138,20 +119,18 @@ export default class Footer extends React.Component {
 									<br/>
 									<div className="Footer-link">
 										<a
-											href="https://www.luxinnovation.lu/"
+											href="https://www.circl.lu/"
 											rel="noreferrer"
 											target="_blank"
-											title="LUXINNOVATION GIE"
 											className="text-capitalize">
 											CIRCL
 										</a>
 									</div>
 									<div className="Footer-link">
 										<a
-											href="https://www.luxinnovation.lu/"
+											href="https://www.nc3.lu/"
 											rel="noreferrer"
 											target="_blank"
-											title="LUXINNOVATION GIE"
 											className="text-capitalize">
 											NC3
 										</a>
@@ -167,50 +146,45 @@ export default class Footer extends React.Component {
 									<br/>
 									<div className="Footer-link">
 										<a
-											href="https://www.luxinnovation.lu/"
+											href="https://www.syvicol.lu/"
 											rel="noreferrer"
 											target="_blank"
-											title="LUXINNOVATION GIE"
 											className="text-capitalize">
 											SYVICOL
 										</a>
 									</div>
 									<div className="Footer-link">
 										<a
-											href="https://www.luxinnovation.lu/"
+											href="https://mfamigr.gouvernement.lu/fr.html"
 											rel="noreferrer"
 											target="_blank"
-											title="LUXINNOVATION GIE"
 											className="text-capitalize">
 											MFAMIGR
 										</a>
 									</div>
 									<div className="Footer-link">
 										<a
-											href="https://www.luxinnovation.lu/"
+											href="https://menej.gouvernement.lu/"
 											rel="noreferrer"
 											target="_blank"
-											title="LUXINNOVATION GIE"
 											className="text-capitalize">
 											MENEJ
 										</a>
 									</div>
 									<div className="Footer-link">
 										<a
-											href="https://www.luxinnovation.lu/"
+											href="https://meco.gouvernement.lu/"
 											rel="noreferrer"
 											target="_blank"
-											title="LUXINNOVATION GIE"
 											className="text-capitalize">
 											MECO
 										</a>
 									</div>
 									<div className="Footer-link">
 										<a
-											href="https://www.luxinnovation.lu/"
+											href="https://www.sigi.lu/"
 											rel="noreferrer"
 											target="_blank"
-											title="LUXINNOVATION GIE"
 											className="text-capitalize">
 											SIGI
 										</a>
