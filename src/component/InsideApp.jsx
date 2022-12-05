@@ -11,6 +11,7 @@ import PageHome from "./page/PageHome.jsx";
 import PageContact from "./page/PageContact.jsx";
 import PageHelp from "./page/PageHelp.jsx";
 import PageNews from "./page/PageNews.jsx";
+import PageEvents from "./page/PageEvents.jsx";
 import PageArticle from "./page/PageArticle.jsx";
 import PageLTAC from "./page/PageLTAC.jsx";
 import PageBreakfast from "./page/PageBreakfast.jsx";
@@ -91,10 +92,19 @@ class InsideApp extends React.Component {
 						<Route path="/news/:handle" render={(props) => <PageArticle {...props} />}/>
 						<Route path="/event/:handle" render={(props) => <PageArticle {...props} />}/>
 						<Route path="/service/:handle" render={(props) => <PageArticle {...props} />}/>
+						<Route path="/tool/:handle" render={(props) => <PageArticle {...props} />}/>
 
 						<Route
 							path="/news"
 							render={(props) => <PageNews
+								lhc={this.state.lhc}
+								analytics={this.state.analytics}
+								{...props}
+							/>}
+						/>
+						<Route
+							path="/events"
+							render={(props) => <PageEvents
 								lhc={this.state.lhc}
 								analytics={this.state.analytics}
 								{...props}

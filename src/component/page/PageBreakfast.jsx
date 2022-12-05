@@ -18,29 +18,77 @@ export default class PageNews extends React.Component {
 
 		this.state = {
 			news: null,
+			tools: null,
 		};
 	}
 
 	componentDidMount() {
 		this.getNews();
+		this.getTools();
 	}
 
-	getNews(page) {
-		const params = {
-			type: "NEWS",
-			per_page: 5,
-			page: page || 1,
-		};
+	componentDidUpdate(prevProps) {
+		if (!prevProps.analytics && this.props.analytics) {
+			this.getNews();
+			this.getTools();
+		}
+	}
 
-		getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
-			this.setState({
-				news: data,
-			});
-		}, (response) => {
-			nm.warning(response.statusText);
-		}, (error) => {
-			nm.error(error.message);
-		});
+
+	getNews(page) {
+		if (this.props.analytics
+			&& this.props.analytics.taxonomy_values) {
+			const values = this.props.analytics.taxonomy_values
+				.filter((v) => v.category === "ARTICLE CATEGORY")
+				.filter((v) => v.name === "CYBERSECURITY BREAKFAST");
+
+			if (values.length > 0) {
+				const params = {
+					type: "NEWS",
+					taxonomy_values: values.map((v) => v.id).join(","),
+					per_page: 5,
+					page: page || 1,
+				};
+
+				getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
+					this.setState({
+						news: data,
+					});
+				}, (response) => {
+					nm.warning(response.statusText);
+				}, (error) => {
+					nm.error(error.message);
+				});
+			}
+		}
+	}
+
+	getTools(page) {
+		if (this.props.analytics
+			&& this.props.analytics.taxonomy_values) {
+			const values = this.props.analytics.taxonomy_values
+				.filter((v) => v.category === "ARTICLE CATEGORY")
+				.filter((v) => v.name === "CYBERSECURITY BREAKFAST");
+
+			if (values.length > 0) {
+				const params = {
+					type: "TOOL",
+					taxonomy_values: values.map((v) => v.id).join(","),
+					per_page: 5,
+					page: page || 1,
+				};
+
+				getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
+					this.setState({
+						news: data,
+					});
+				}, (response) => {
+					nm.warning(response.statusText);
+				}, (error) => {
+					nm.error(error.message);
+				});
+			}
+		}
 	}
 
 	changeState(field, value) {
@@ -61,14 +109,14 @@ export default class PageNews extends React.Component {
 							<Breadcrumb>
 								<Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
 								<Breadcrumb.Item><Link to="/">News & Events</Link></Breadcrumb.Item>
-								<Breadcrumb.Item><Link to="/news">News</Link></Breadcrumb.Item>
+								<Breadcrumb.Item><Link to="/breakfast">Cybersecurity Breakfast</Link></Breadcrumb.Item>
 							</Breadcrumb>
 						</div>
 					</div>
 
 					<div className="row">
 						<div className="col-md-12">
-							<h2>Latest News</h2>
+							<h2>Cybersecurity Breakfast</h2>
 						</div>
 
 						<div className="col-md-12">

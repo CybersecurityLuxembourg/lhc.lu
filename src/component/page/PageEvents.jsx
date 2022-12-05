@@ -1,5 +1,5 @@
 import React from "react";
-import "./PageLTAC.css";
+import "./PageEvents.css";
 import { NotificationManager as nm } from "react-notifications";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
@@ -12,51 +12,35 @@ import News from "../item/News.jsx";
 import DynamicTable from "../table/DynamicTable.jsx";
 import { dictToURI } from "../../utils/url.jsx";
 
-export default class PageLTAC extends React.Component {
+export default class PageEvents extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			news: null,
+			events: null,
 		};
 	}
 
 	componentDidMount() {
-		this.getNews();
+		this.getEvents();
 	}
 
-	componentDidUpdate(prevProps) {
-		if (!prevProps.analytics && this.props.analytics) {
-			this.getNews();
-		}
-	}
+	getEvents(page) {
+		const params = {
+			type: "EVENT",
+			per_page: 5,
+			page: page || 1,
+		};
 
-	getNews(page) {
-		if (this.props.analytics
-			&& this.props.analytics.taxonomy_values) {
-			const values = this.props.analytics.taxonomy_values
-				.filter((v) => v.category === "ARTICLE CATEGORY")
-				.filter((v) => v.name === "LËTZ TALK ABOUT CYBER");
-
-			if (values.length > 0) {
-				const params = {
-					type: "NEWS",
-					taxonomy_values: values.map((v) => v.id).join(","),
-					per_page: 5,
-					page: page || 1,
-				};
-
-				getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
-					this.setState({
-						news: data,
-					});
-				}, (response) => {
-					nm.warning(response.statusText);
-				}, (error) => {
-					nm.error(error.message);
-				});
-			}
-		}
+		getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
+			this.setState({
+				events: data,
+			});
+		}, (response) => {
+			nm.warning(response.statusText);
+		}, (error) => {
+			nm.error(error.message);
+		});
 	}
 
 	changeState(field, value) {
@@ -65,7 +49,7 @@ export default class PageLTAC extends React.Component {
 
 	render() {
 		return (
-			<div id={"PageLTAC"}>
+			<div id={"PageEvents"}>
 				<Banner
 					image={"/img/banner-news.jpg"}
 				/>
@@ -77,36 +61,36 @@ export default class PageLTAC extends React.Component {
 							<Breadcrumb>
 								<Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
 								<Breadcrumb.Item><Link to="/">News & Events</Link></Breadcrumb.Item>
-								<Breadcrumb.Item><Link to="/ltac">Lëtz Talk About Cyber</Link></Breadcrumb.Item>
+								<Breadcrumb.Item><Link to="/events">Events</Link></Breadcrumb.Item>
 							</Breadcrumb>
 						</div>
 					</div>
 
 					<div className="row">
 						<div className="col-md-12">
-							<h2>Lëtz Talk About Cyber</h2>
+							<h2>Events</h2>
 						</div>
 
 						<div className="col-md-12">
-							{this.state.news
-								&& this.state.news.pagination
-								&& this.state.news.pagination.total === 0
+							{this.state.events
+								&& this.state.events.pagination
+								&& this.state.events.pagination.total === 0
 								&& <div className="row row-spaced">
 									<div className="col-md-12">
 										<Message
-											text={"No LTAC found"}
+											text={"No event found"}
 											height={200}
 										/>
 									</div>
 								</div>
 							}
 
-							{this.state.news
-								&& this.state.news.pagination
-								&& this.state.news.pagination.total > 0
+							{this.state.events
+								&& this.state.events.pagination
+								&& this.state.events.pagination.total > 0
 								&& <DynamicTable
-									items={this.state.news.items}
-									pagination={this.state.news.pagination}
+									items={this.state.events.items}
+									pagination={this.state.events.pagination}
 									changePage={(page) => this.getArticles(page)}
 									buildElement={(a) => <div
 										className="col-md-12"
@@ -120,9 +104,9 @@ export default class PageLTAC extends React.Component {
 								/>
 							}
 
-							{(!this.state.news
-								|| !this.state.news.pagination
-								|| !this.state.news.items)
+							{(!this.state.events
+								|| !this.state.events.pagination
+								|| !this.state.events.items)
 								&& <div className="row row-spaced">
 									<div className="col-md-12">
 										<Loading
