@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { NotificationManager as nm } from "react-notifications";
 import { getRequest } from "../../../utils/request.jsx";
 import { dictToURI } from "../../../utils/url.jsx";
+import { getApiURL } from "../../../utils/env.jsx";
+import { dateToString } from "../../../utils/date.jsx";
 import Loading from "../../box/Loading.jsx";
 import NoImage from "../../box/NoImage.jsx";
 import Message from "../../box/Message.jsx";
@@ -14,24 +16,24 @@ export default class PageHomeEvents extends React.Component {
 		super(props);
 
 		this.state = {
-			news: null,
-			selectedNews: 0,
+			events: null,
+			selectedEvent: 0,
 		};
 	}
 
 	componentDidMount() {
-		this.getNews();
+		this.getEvents();
 
 		this.setState({
 			timer: setInterval(() => {
-				this.changeNews();
+				this.changeEvent();
 			}, 5000),
 		});
 	}
 
 	componentDidUpdate(prevProps) {
 		if (!prevProps.lhc && this.props.lhc) {
-			this.getNews();
+			this.getEvents();
 		}
 	}
 
@@ -39,17 +41,20 @@ export default class PageHomeEvents extends React.Component {
 		clearInterval(this.state.newsTimer);
 	}
 
-	getNews() {
+	getEvents() {
 		if (this.props.lhc) {
 			const params = {
 				entities: this.props.lhc.id,
-				type: "NEWS",
+				type: "EVENT",
 				per_page: 3,
+				min_end_date: dateToString(new Date()),
+				order_by: "start_date",
+				order: "asc",
 			};
 
 			getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
 				this.setState({
-					news: data.items,
+					events: data.items,
 				});
 			}, (response) => {
 				nm.warning(response.statusText);
@@ -59,21 +64,21 @@ export default class PageHomeEvents extends React.Component {
 		}
 	}
 
-	changeNews() {
-		if (this.state.news) {
-			if (this.state.selectedNews === null) {
-				this.setState({ selectedNews: 0 });
-			} else if (this.state.news.length <= this.state.selectedNews + 1) {
-				this.setState({ selectedNews: 0 });
+	changeEvent() {
+		if (this.state.events) {
+			if (this.state.selectedEvent === null) {
+				this.setState({ selectedEvent: 0 });
+			} else if (this.state.events.length <= this.state.selectedEvent + 1) {
+				this.setState({ selectedEvent: 0 });
 			} else {
-				this.setState({ selectedNews: this.state.selectedNews + 1 });
+				this.setState({ selectedEvent: this.state.selectedEvent + 1 });
 			}
 		}
 	}
 
 	getBoxContent(article, i) {
 		return <div className={"PageHomeLatestNews-article "
-			+ (this.state.selectedNews === i && "PageHomeLatestNews-article-selected")}>
+			+ (this.state.selectedEvent === i && "PageHomeLatestNews-article-selected")}>
 			<div className={"PageHomeLatestNews-date"}>
 				{article.publication_date.split("T")[0]}&nbsp;-&nbsp;
 			</div>
@@ -84,7 +89,7 @@ export default class PageHomeEvents extends React.Component {
 	}
 
 	render() {
-		if (!this.state.news) {
+		if (!this.state.events) {
 			return <div className={"col-md-12"}>
 				<Loading
 					height={300}
@@ -92,10 +97,10 @@ export default class PageHomeEvents extends React.Component {
 			</div>;
 		}
 
-		if (this.state.news.length === 0) {
+		if (this.state.events.length === 0) {
 			return <div className={"col-md-12"}>
 				<Message
-					text={"No news found"}
+					text={"No event found"}
 					height={300}
 				/>
 			</div>;
@@ -108,7 +113,7 @@ export default class PageHomeEvents extends React.Component {
 						<h2>Upcoming events</h2>
 
 						<div className={"row"}>
-							{this.state.news.map((c, i) => <div
+							{this.state.events.map((c, i) => <div
 								key={c.id}
 								className={"col-md-12"}>
 								<SmallArticle
@@ -122,10 +127,10 @@ export default class PageHomeEvents extends React.Component {
 
 					<div className={"col-md-3"}>
 						<div className={"PageHomeEvents-image"}>
-							{this.state.news[this.state.selectedNews].image
+							{this.state.events[this.state.selectedEvent].image
 								? <img
 									src={getApiURL() + "public/get_public_image/"
-										+ this.state.news[this.state.selectedNews].image}
+										+ this.state.events[this.state.selectedEvent].image}
 									alt="Article image"/>
 								: <NoImage/>
 							}

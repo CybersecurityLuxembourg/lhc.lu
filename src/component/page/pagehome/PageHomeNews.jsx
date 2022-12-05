@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { NotificationManager as nm } from "react-notifications";
 import { getRequest } from "../../../utils/request.jsx";
 import { dictToURI } from "../../../utils/url.jsx";
+import { getApiURL } from "../../../utils/env.jsx";
 import Loading from "../../box/Loading.jsx";
 import NoImage from "../../box/NoImage.jsx";
 import Message from "../../box/Message.jsx";

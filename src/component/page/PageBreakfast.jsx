@@ -126,7 +126,7 @@ export default class PageNews extends React.Component {
 								&& <div className="row row-spaced">
 									<div className="col-md-12">
 										<Message
-											text={"No news found"}
+											text={"No CSB found"}
 											height={200}
 										/>
 									</div>
