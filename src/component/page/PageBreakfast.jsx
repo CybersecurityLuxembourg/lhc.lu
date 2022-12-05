@@ -51,7 +51,7 @@ export default class PageNews extends React.Component {
 		return (
 			<div id={"PageNews"}>
 				<Banner
-					image={"/img/banner-news.jpg"}
+					image={"/img/banner.jpg"}
 				/>
 
 				<div className={"page max-sized-page"}>

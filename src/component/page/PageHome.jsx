@@ -27,7 +27,7 @@ export default class PageHome extends React.Component {
 		return (
 			<div id={"PageHome"}>
 				<Banner
- 					image={"/img/banner.jpg"}
+ 					image={"/img/banner-home.png"}
  				/>
 				<PageHomeCatch/>
 				<PageHomeAboutLHC/>

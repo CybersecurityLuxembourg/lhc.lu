@@ -11,6 +11,9 @@ import PageHome from "./page/PageHome.jsx";
 import PageContact from "./page/PageContact.jsx";
 import PageHelp from "./page/PageHelp.jsx";
 import PageNews from "./page/PageNews.jsx";
+import PageArticle from "./page/PageArticle.jsx";
+import PageLTAC from "./page/PageLTAC.jsx";
+import PageBreakfast from "./page/PageBreakfast.jsx";
 import Page404 from "./page/Page404.jsx";
 
 class InsideApp extends React.Component {
@@ -78,17 +81,36 @@ class InsideApp extends React.Component {
 		return (
 			<div id="InsideApp">
 				<Route path="/:path?" render={(props) => <Menu
+					lhc={this.state.lhc}
 					analytics={this.state.analytics}
 					{...props}
 				/>}/>
 
 				<div id="InsideApp-content">
 					<Switch>
-						{/* <Route path="/news/:handle" render={(props) => <PageNewsArticle {...props} />}/> */}
+						<Route path="/news/:handle" render={(props) => <PageArticle {...props} />}/>
+						<Route path="/event/:handle" render={(props) => <PageArticle {...props} />}/>
+						<Route path="/service/:handle" render={(props) => <PageArticle {...props} />}/>
 
 						<Route
 							path="/news"
 							render={(props) => <PageNews
+								lhc={this.state.lhc}
+								analytics={this.state.analytics}
+								{...props}
+							/>}
+						/>
+						<Route
+							path="/ltac"
+							render={(props) => <PageLTAC
+								lhc={this.state.lhc}
+								analytics={this.state.analytics}
+								{...props}
+							/>}
+						/>
+						<Route
+							path="/breakfast"
+							render={(props) => <PageBreakfast
 								lhc={this.state.lhc}
 								analytics={this.state.analytics}
 								{...props}

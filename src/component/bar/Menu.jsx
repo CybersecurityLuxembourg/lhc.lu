@@ -4,6 +4,9 @@ import Navbar from "react-bootstrap/Navbar";
 import { NavDropdown } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
+import Message from "../box/Message.jsx";
+import { getRequest } from "../../utils/request.jsx";
+import { dictToURI } from "../../utils/url.jsx";
 
 export default class Menu extends React.Component {
 	constructor(props) {
@@ -26,6 +29,33 @@ export default class Menu extends React.Component {
 				}
 			}
 		});
+
+		this.getServices();
+	}
+
+	componentDidUpdate(prevProps) {
+		if (!prevProps.lhc && this.props.lhc) {
+			this.getServices();
+		}
+	}
+
+	getServices() {
+		if (this.props.lhc) {
+			const params = {
+				entities: this.props.lhc.id,
+				type: "SERVICE",
+			};
+
+			getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
+				this.setState({
+					services: data,
+				});
+			}, (response) => {
+				nm.warning(response.statusText);
+			}, (error) => {
+				nm.error(error.message);
+			});
+		}
 	}
 
 	// eslint-disable-next-line class-methods-use-this
@@ -91,37 +121,34 @@ export default class Menu extends React.Component {
 					<div className="col-sm-4">
 						Services
 
-						<NavDropdown.Item>
-							<Link to="/test-lab">
-								<div className="Menu-title">Test Lab</div>
-							</Link>
-						</NavDropdown.Item>
-						<NavDropdown.Item>
-							<Link to="/ltac">
-								<div className="Menu-title">ROOM#42</div>
-							</Link>
-						</NavDropdown.Item>
+						{this.state.services
+							&& this.state.services.items.map((s) => (
+								<div>
+									{s.link && s.link.length > 0
+										? <a
+											className="dropdown-item"
+											href={s.link}
+											target="_blank"
+											rel="noreferrer">
+											<div className="Menu-title">{s.title}</div>
+										</a>
+										: <NavDropdown.Item>
+											<Link to={"/service/" + s.handle}>
+												<div className="Menu-title">{s.title}</div>
+											</Link>
+										</NavDropdown.Item>
+									}
+								</div>
+							))
+						}
 
-						<a
-							className="dropdown-item"
-							href="https://www.bee-secure.lu/"
-							target="_blank"
-							rel="noreferrer">
-							<div className="Menu-title">BEE SECURE</div>
-						</a>
-						<a
-							className="dropdown-item"
-							href="https://www.dlh.lu/"
-							target="_blank"
-							rel="noreferrer">
-							<div className="Menu-title">Digital Learning Hub</div>
-						</a>
+						{!this.state.services
+							&& <Message
+								text={"No service found"}
+								height={100}
+							/>
 
-						<NavDropdown.Item>
-							<Link to="/ltac">
-								<div className="Menu-title">Startups</div>
-							</Link>
-						</NavDropdown.Item>
+						}
 					</div>
 					<div className="col-sm-4">
 						Facilities

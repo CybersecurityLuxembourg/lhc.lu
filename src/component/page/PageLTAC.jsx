@@ -1,5 +1,5 @@
 import React from "react";
-import "./PageNews.css";
+import "./PageLTAC.css";
 import { NotificationManager as nm } from "react-notifications";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ import News from "../item/News.jsx";
 import DynamicTable from "../table/DynamicTable.jsx";
 import { dictToURI } from "../../utils/url.jsx";
 
-export default class PageNews extends React.Component {
+export default class PageLTAC extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -49,7 +49,7 @@ export default class PageNews extends React.Component {
 
 	render() {
 		return (
-			<div id={"PageNews"}>
+			<div id={"PageLTAC"}>
 				<Banner
 					image={"/img/banner-news.jpg"}
 				/>
@@ -61,7 +61,7 @@ export default class PageNews extends React.Component {
 							<Breadcrumb>
 								<Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
 								<Breadcrumb.Item><Link to="/">News & Events</Link></Breadcrumb.Item>
-								<Breadcrumb.Item><Link to="/news">News</Link></Breadcrumb.Item>
+								<Breadcrumb.Item><Link to="/ltac">Lëtz Talk About Cyber</Link></Breadcrumb.Item>
 							</Breadcrumb>
 						</div>
 					</div>
