@@ -25,22 +25,31 @@ export default class PageNews extends React.Component {
 		this.getNews();
 	}
 
-	getNews(page) {
-		const params = {
-			type: "NEWS",
-			per_page: 5,
-			page: page || 1,
-		};
+	componentDidUpdate(prevProps) {
+		if (!prevProps.lhc && this.props.lhc) {
+			this.getNews();
+		}
+	}
 
-		getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
-			this.setState({
-				news: data,
+	getNews(page) {
+		if (this.props.lhc) {
+			const params = {
+				entities: this.props.lhc.id,
+				type: "NEWS",
+				per_page: 5,
+				page: page || 1,
+			};
+
+			getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
+				this.setState({
+					news: data,
+				});
+			}, (response) => {
+				nm.warning(response.statusText);
+			}, (error) => {
+				nm.error(error.message);
 			});
-		}, (response) => {
-			nm.warning(response.statusText);
-		}, (error) => {
-			nm.error(error.message);
-		});
+		}
 	}
 
 	changeState(field, value) {
