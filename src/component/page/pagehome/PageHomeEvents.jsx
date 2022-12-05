@@ -105,7 +105,7 @@ export default class PageHomeEvents extends React.Component {
 					&& <div className="row row-spaced">
 						<div className={"col-md-12"}>
 							<Message
-								content={"No event found"}
+								text={"No event found"}
 								height={300}
 							/>
 						</div>

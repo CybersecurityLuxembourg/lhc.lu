@@ -95,7 +95,7 @@ export default class PageHomeNews extends React.Component {
 					&& <div className="row row-spaced">
 						<div className={"col-md-12"}>
 							<Message
-								content={"No news found"}
+								text={"No news found"}
 								height={300}
 							/>
 						</div>
