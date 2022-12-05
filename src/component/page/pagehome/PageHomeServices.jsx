@@ -1,6 +1,7 @@
 import React from "react";
 import "./PageHomeServices.css";
 import { Link } from "react-router-dom";
+import dompurify from "dompurify";
 import { NotificationManager as nm } from "react-notifications";
 import { getRequest } from "../../../utils/request.jsx";
 import Loading from "../../box/Loading.jsx";
@@ -107,7 +108,7 @@ export default class PageHomeServices extends React.Component {
 						))}
 					</div>
 
-					<div className="col-md-8 PageHomeServices-content">
+					<div className="col-md-8">
 						<div className="PageHomeServices-content">
 							{!this.state.services
 								&& <Loading
@@ -124,13 +125,31 @@ export default class PageHomeServices extends React.Component {
 
 							{this.state.services && this.state.services.items.length > 0
 								&& this.state.selectedService < this.state.services.items.length
-								&& this.state.services.items.map((s) => (
-								<a href={"/service/" + s.handle}>
-									<div>
-										{this.state.services.items[this.state.selectedService].abstract}
+								&& <a
+									href={"/service/" + this.state.services.items[this.state.selectedService].handle}
+									className={"PageHomeServices-service-link"}>
+									<div className="PageHomeServices-service-desc">
+										<div className="PageHomeServices-service-desc-abstract-wrap">
+											<div
+												className="PageHomeServices-service-desc-abstract"
+												dangerouslySetInnerHTML={{
+												__html: dompurify.sanitize(
+													this.state.services.items[this.state.selectedService].abstract
+												),
+											}}/>
+										</div>
+										<div className="PageHomeServices-service-desc-image">
+											{this.state.services.items[this.state.selectedService].image
+												? <img
+													src={getApiURL() + "public/get_public_image/"
+														+ this.state.services.items[this.state.selectedService].image}
+													alt="Service image"/>
+												: <NoImage/>
+											}
+										</div>
 									</div>
 								</a>
-							))}
+							}
 						</div>
 					</div>
 				</div>

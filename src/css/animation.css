@@ -1,0 +1,5 @@
+
+@keyframes slide {
+	0% { left: 30px; }
+    100% { left: 0%; }
+}

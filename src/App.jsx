@@ -5,6 +5,7 @@ import "./css/breadcrumb.css";
 import "./css/field.css";
 import "./css/notification.css";
 import "./css/popup.css";
+import "./css/animation.css";
 import { NotificationContainer } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import { BrowserRouter } from "react-router-dom";

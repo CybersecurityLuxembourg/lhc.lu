@@ -36,11 +36,6 @@
     animation: slide 0.5s forwards;
 }
 
-@keyframes slide {
-	0% { left: 30px; }
-    100% { left: 0%; }
-}
-
 #PageHomeEvents .NoImage {
     background: repeating-linear-gradient(
       135deg,
