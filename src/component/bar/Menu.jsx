@@ -69,53 +69,13 @@ export default class Menu extends React.Component {
 
 			<NavDropdown
 				title={
-					<div className="Menu-item">
-						<div className="Menu-title">News & events</div>
-						<i className="fas fa-sort-down"/>
-					</div>
-				}
-				id="basic-nav-dropdown"
-				className="dropdown-news">
-				<div className="row">
-					<div className="col-sm-6">
-						News
-
-						<NavDropdown.Item>
-							<Link to="/news">
-								<div className="Menu-title">Latest News</div>
-							</Link>
-						</NavDropdown.Item>
-						<NavDropdown.Item>
-							<Link to="/ltac">
-								<div className="Menu-title">Lëtz Talk About Cyber</div>
-							</Link>
-						</NavDropdown.Item>
-					</div>
-					<div className="col-sm-6">
-						Events
-
-						<NavDropdown.Item>
-							<Link to="/events">
-								<div className="Menu-title">Upcoming Events</div>
-							</Link>
-						</NavDropdown.Item>
-						<NavDropdown.Item>
-							<Link to="/breakfast">
-								<div className="Menu-title">Cybersecurity Breakfast</div>
-							</Link>
-						</NavDropdown.Item>
-					</div>
-				</div>
-			</NavDropdown>
-
-			<NavDropdown
-				title={
-					<div className="Menu-item">
+					<Link to="/#PageHomeServices">
 						<div className="Menu-title">Service & Facilities</div>
 						<i className="fas fa-sort-down"/>
-					</div>
+					</Link>
 				}
 				id="basic-nav-dropdown"
+				renderMenuOnMount={true}
 				className="dropdown-service">
 				<div className="row">
 					<div className="col-sm-4">
@@ -187,6 +147,48 @@ export default class Menu extends React.Component {
 				rel="noreferrer">
 				<div className="Menu-title">CYBERSECURITY Luxembourg Ecosystem</div>
 			</a>
+
+			<NavDropdown
+				title={
+					<Link to="/#PageHomeNews">
+						<div className="Menu-title">News & events</div>
+						<i className="fas fa-sort-down"/>
+					</Link>
+				}
+				id="basic-nav-dropdown"
+				renderMenuOnMount={true}
+				className="dropdown-news">
+				<div className="row">
+					<div className="col-sm-6">
+						News
+
+						<NavDropdown.Item>
+							<Link to="/news">
+								<div className="Menu-title">Latest News</div>
+							</Link>
+						</NavDropdown.Item>
+						<NavDropdown.Item>
+							<Link to="/ltac">
+								<div className="Menu-title">Lëtz Talk About Cyber</div>
+							</Link>
+						</NavDropdown.Item>
+					</div>
+					<div className="col-sm-6">
+						Events
+
+						<NavDropdown.Item>
+							<Link to="/events">
+								<div className="Menu-title">Upcoming Events</div>
+							</Link>
+						</NavDropdown.Item>
+						<NavDropdown.Item>
+							<Link to="/breakfast">
+								<div className="Menu-title">Cybersecurity Breakfast</div>
+							</Link>
+						</NavDropdown.Item>
+					</div>
+				</div>
+			</NavDropdown>
 
 			<Nav.Link>
 				<Link to="/contact">

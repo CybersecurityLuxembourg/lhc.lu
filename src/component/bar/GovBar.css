@@ -1,0 +1,18 @@
+
+#GovBar {
+    background: #fff;
+    border-bottom: 1px solid #cccaca;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    position: relative;
+    overflow: hidden;
+    height: 46px;
+    width: 100%;
+    z-index: 200;
+}
+
+.govbar-logo {
+    border: 0;
+    float: right;
+    padding: 3px 8px;
+}

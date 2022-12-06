@@ -118,12 +118,14 @@ export default class PageArticle extends React.Component {
 						<div className={"col-md-8"}>
 							<article>
 								<div className="PageArticle-content-cover">
-									{this.state.article.image !== null
-										? <img src={getApiURL() + "public/get_public_image/" + this.state.article.image}/>
-										: ""}
-									<div className='PageArticle-publication-date'>
-										{dateToString(this.state.article.publication_date, "DD MMM YYYY")}
-									</div>
+									{this.state.article.image
+										&& <img src={getApiURL() + "public/get_public_image/" + this.state.article.image}/>}
+
+									{this.state.article.type === "NEWS"
+										&& <div className='PageArticle-publication-date'>
+											{dateToString(this.state.article.publication_date, "DD MMM YYYY")}
+										</div>
+									}
 								</div>
 
 								<h1 className="showFulltext">

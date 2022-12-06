@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import { NotificationManager as nm } from "react-notifications";
 import { getRequest } from "../utils/request.jsx";
+import GovBar from "./bar/GovBar.jsx";
 import Menu from "./bar/Menu.jsx";
 import Footer from "./bar/Footer.jsx";
 import PageHome from "./page/PageHome.jsx";
@@ -81,6 +82,8 @@ class InsideApp extends React.Component {
 	render() {
 		return (
 			<div id="InsideApp">
+				<GovBar/>
+
 				<Route path="/:path?" render={(props) => <Menu
 					lhc={this.state.lhc}
 					analytics={this.state.analytics}

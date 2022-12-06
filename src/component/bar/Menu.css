@@ -5,8 +5,12 @@
     }
 }
 
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 .navbar {
-    font-family: var(--title-font);
+    font-family: var(--default-font);
     font-weight: normal;
     display: block;
     z-index: 10;
@@ -157,7 +161,7 @@
     position: absolute;
     display: inline-block;
     font-size: 12px;
-    bottom: -6px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
 }

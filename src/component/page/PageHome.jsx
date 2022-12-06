@@ -18,6 +18,23 @@ export default class PageHome extends React.Component {
 		};
 	}
 
+	componentDidMount() {
+		addEventListener('hashchange', (event) => {
+			this.scrollToElement();
+		});
+
+		this.scrollToElement()
+	}
+
+	scrollToElement() {
+		console.log(location.hash);
+		const div = document.getElementById(location.hash && location.hash.replaceAll("#", ""));
+
+		if (div) {
+			div.scrollIntoView({behavior: "smooth"});
+		}
+	}
+
 	changeState(field, value) {
 		this.setState({ [field]: value });
 	}
