@@ -70,7 +70,7 @@ export default class Menu extends React.Component {
 			<NavDropdown
 				title={
 					<Link to="/#PageHomeServices">
-						<div className="Menu-title">Service & Facilities</div>
+						<div className="Menu-title">Services & Facilities</div>
 						<i className="fas fa-sort-down"/>
 					</Link>
 				}

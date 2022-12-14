@@ -39,7 +39,6 @@ export default class PageHome extends React.Component {
 		this.setState({ [field]: value });
 	}
 
-	// eslint-disable-next-line class-methods-use-this
 	render() {
 		return (
 			<div id={"PageHome"}>
