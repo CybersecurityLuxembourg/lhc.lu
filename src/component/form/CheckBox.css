@@ -8,7 +8,6 @@
     line-height: 1.5;
     color: #495057;
     border: lightgrey 2px solid;
-    border-radius: 0.4rem;
     cursor: pointer;
     text-align: center;
     -webkit-transition: background-color 1000ms linear;
@@ -28,7 +27,7 @@
 }
 
 .CheckBox-off {
-    background-color: #fed7da;
+    background-color: #EEE;
 }
 
 .CheckBox-on-no-background {
