@@ -187,7 +187,7 @@ export default class PageHomeServices extends React.Component {
 
 				<div className="row row-spaced">
 					<div className="col-md-4">
-						<h3>Services</h3>
+						<h3>Hosted by LHC</h3>
 
 						<a href={"https://www.circl.lu/"} target="_blank">
 							<div className="PageHomeServices-menu">

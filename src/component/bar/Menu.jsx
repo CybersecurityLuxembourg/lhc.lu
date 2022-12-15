@@ -206,7 +206,7 @@ export default class Menu extends React.Component {
 						<Link to="/">
 							<img
 								className={"Menu-logo"}
-								src="/img/lhc-logo.png"
+								src="/img/lhc-logo-full.png"
 								alt="LHC Logo"
 							/>
 						</Link>
@@ -217,16 +217,20 @@ export default class Menu extends React.Component {
 					</Navbar.Collapse>
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="Menu-top-right-about mr-sm-2 ml-auto">
-							<Nav.Link>
-								<Link to="/report">
-									<div className="Menu-title">Report an incident</div>
-								</Link>
-							</Nav.Link>
-							<Nav.Link>
-								<Link to="/help">
-									<div className="Menu-title">Need help?</div>
-								</Link>
-							</Nav.Link>
+							<a
+								className="nav-link"
+								href="https://circl.lu/report/"
+								target="_blank"
+								rel="noreferrer">
+								<div className="Menu-title">Report an incident</div>
+							</a>
+							<a
+								className="nav-link"
+								href="https://www.cybersecurity.lu/search"
+								target="_blank"
+								rel="noreferrer">
+								<div className="Menu-title">Search for more</div>
+							</a>
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>

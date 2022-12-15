@@ -11,8 +11,8 @@ export default class PageHomeCatch extends React.Component {
 			<div className="page max-sized-page">
 				<div className="row row-spaced">
 					<div className="col-md-12">
-						A unique place at the service<br/>
-						of your cybersecurity needs
+						LHC is the backbone of leading-edge<br/>
+						cyber resilience in Luxembourg.
 					</div>
 				</div>
 			</div>
