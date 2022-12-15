@@ -19,7 +19,7 @@ export default class PageHome extends React.Component {
 	}
 
 	componentDidMount() {
-		addEventListener('hashchange', (event) => {
+		window.addEventListener("hashchange", () => {
 			this.scrollToElement();
 		});
 
@@ -27,11 +27,10 @@ export default class PageHome extends React.Component {
 	}
 
 	scrollToElement() {
-		console.log(location.hash);
 		const div = document.getElementById(location.hash && location.hash.replaceAll("#", ""));
 
 		if (div) {
-			div.scrollIntoView({behavior: "smooth"});
+			div.scrollIntoView({ behavior: "smooth" });
 		}
 	}
 

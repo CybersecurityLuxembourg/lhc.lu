@@ -58,21 +58,26 @@ export default class Menu extends React.Component {
 		}
 	}
 
-	// eslint-disable-next-line class-methods-use-this
+	setHash(hash) {
+		window.location.hash = hash;
+	}
+
 	getNavBar() {
 		return <Nav className="mr-sm-2 ml-auto">
-			<Nav.Link>
-				<Link to="/#PageHomeAboutLHC">
+			<a className="nav-link" onClick={() => this.setHash("PageHomeAboutLHC")}>
+				<Link to="/">
 					<div className="Menu-title">About LHC</div>
 				</Link>
-			</Nav.Link>
+			</a>
 
 			<NavDropdown
 				title={
-					<Link to="/#PageHomeServices">
-						<div className="Menu-title">Services & Facilities</div>
-						<i className="fas fa-sort-down"/>
-					</Link>
+					<div onClick={() => this.setHash("PageHomeServices")}>
+						<Link to="/">
+							<div className="Menu-title">Services & Facilities</div>
+							<i className="fas fa-sort-down"/>
+						</Link>
+					</div>
 				}
 				id="basic-nav-dropdown"
 				renderMenuOnMount={true}
@@ -150,10 +155,12 @@ export default class Menu extends React.Component {
 
 			<NavDropdown
 				title={
-					<Link to="/#PageHomeNews">
-						<div className="Menu-title">News & events</div>
-						<i className="fas fa-sort-down"/>
-					</Link>
+					<div onClick={() => this.setHash("PageHomeNews")}>
+						<Link to="/">
+							<div className="Menu-title">News & events</div>
+							<i className="fas fa-sort-down"/>
+						</Link>
+					</div>
 				}
 				id="basic-nav-dropdown"
 				renderMenuOnMount={true}
