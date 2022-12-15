@@ -7,6 +7,7 @@ import Loading from "../box/Loading.jsx";
 import Message from "../box/Message.jsx";
 import Banner from "../bar/Banner.jsx";
 import SearchField from "../form/SearchField.jsx";
+import CheckBox from "../form/CheckBox.jsx";
 import { getRequest } from "../../utils/request.jsx";
 import News from "../item/News.jsx";
 import DynamicTable from "../table/DynamicTable.jsx";
@@ -18,6 +19,7 @@ export default class PageNews extends React.Component {
 
 		this.state = {
 			news: null,
+			newsFilter: null,
 		};
 	}
 
@@ -25,8 +27,12 @@ export default class PageNews extends React.Component {
 		this.getNews();
 	}
 
-	componentDidUpdate(prevProps) {
+	componentDidUpdate(prevProps, prevState) {
 		if (!prevProps.lhc && this.props.lhc) {
+			this.getNews();
+		}
+
+		if (prevState.newsFilter !== this.state.newsFilter) {
 			this.getNews();
 		}
 	}
@@ -34,9 +40,11 @@ export default class PageNews extends React.Component {
 	getNews(page) {
 		if (this.props.lhc) {
 			const params = {
-				entities: this.props.lhc.id,
+				entities: this.state.newsFilter === "lhc" ? this.props.lhc.id : undefined,
+				taxonomy_values: this.getLtacTaxonomyValue() && this.state.newsFilter === "ltac"
+					? this.getLtacTaxonomyValue().id : undefined,
 				type: "NEWS",
-				per_page: 5,
+				per_page: 10,
 				page: page || 1,
 			};
 
@@ -50,6 +58,17 @@ export default class PageNews extends React.Component {
 				nm.error(error.message);
 			});
 		}
+	}
+
+	getLtacTaxonomyValue() {
+		if (this.props.analytics) {
+			return this.props.analytics.taxonomy_values
+				.filter((v) => v.category === "ARTICLE CATEGORY")
+				.filter((v) => v.name === "LËTZ TALK ABOUT CYBER")
+				.pop();
+		}
+
+		return null;
 	}
 
 	changeState(field, value) {
@@ -76,8 +95,28 @@ export default class PageNews extends React.Component {
 					</div>
 
 					<div className="row">
-						<div className="col-md-12">
+						<div className="col-md-12 row-spaced">
 							<h2>Latest News</h2>
+						</div>
+
+						<div className="col-md-12 row-spaced">
+							<CheckBox
+								label={"All"}
+								value={!this.state.newsFilter}
+								onClick={() => this.changeState("newsFilter", null)}
+							/>
+							<CheckBox
+								label={"LHC News"}
+								value={this.state.newsFilter === "lhc"}
+								onClick={() => this.changeState("newsFilter", "lhc")}
+							/>
+							{this.getLtacTaxonomyValue()
+								&& <CheckBox
+									label={"Lëtz Talk About Cyber - ITV Series"}
+									value={this.state.newsFilter === "ltac"}
+									onClick={() => this.changeState("newsFilter", "ltac")}
+								/>
+							}
 						</div>
 
 						<div className="col-md-12">
