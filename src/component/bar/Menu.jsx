@@ -87,7 +87,9 @@ export default class Menu extends React.Component {
 						Services
 
 						{this.state.services
-							&& this.state.services.items.map((s) => (
+							&& this.state.services.items
+								.filter((s) => this.props.facilityServices.indexOf(s.title) < 0)
+								.map((s) => (
 								<div>
 									{s.link && s.link.length > 0
 										? <a
@@ -97,10 +99,8 @@ export default class Menu extends React.Component {
 											rel="noreferrer">
 											<div className="Menu-title">{s.title}</div>
 										</a>
-										: <NavDropdown.Item>
-											<Link to={"/service/" + s.handle}>
-												<div className="Menu-title">{s.title}</div>
-											</Link>
+										: <NavDropdown.Item as={Link} to={"/service/" + s.handle}>
+											<div className="Menu-title">{s.title}</div>
 										</NavDropdown.Item>
 									}
 								</div>
@@ -118,11 +118,26 @@ export default class Menu extends React.Component {
 					<div className="col-sm-4">
 						Facilities
 
-						<NavDropdown.Item>
-							<Link to="/meetings">
-								<div className="Menu-title">Meetings, Training & Events</div>
-							</Link>
-						</NavDropdown.Item>
+						{this.state.services
+							&& this.state.services.items
+								.filter((s) => this.props.facilityServices.indexOf(s.title) >= 0)
+								.map((s) => (
+								<div>
+									{s.link && s.link.length > 0
+										? <a
+											className="dropdown-item"
+											href={s.link}
+											target="_blank"
+											rel="noreferrer">
+											<div className="Menu-title">{s.title}</div>
+										</a>
+										: <NavDropdown.Item as={Link} to={"/service/" + s.handle}>
+											<div className="Menu-title">{s.title}</div>
+										</NavDropdown.Item>
+									}
+								</div>
+							))
+						}
 					</div>
 					<div className="col-sm-4">
 						Hosted by LHC
@@ -169,29 +184,21 @@ export default class Menu extends React.Component {
 					<div className="col-sm-6">
 						News
 
-						<NavDropdown.Item>
-							<Link to="/news">
-								<div className="Menu-title">Latest News</div>
-							</Link>
+						<NavDropdown.Item as={Link} to="/news">
+							<div className="Menu-title">Latest News</div>
 						</NavDropdown.Item>
-						<NavDropdown.Item>
-							<Link to="/ltac">
-								<div className="Menu-title">Lëtz Talk About Cyber</div>
-							</Link>
+						<NavDropdown.Item as={Link} to="/news?filter=ltac">
+							<div className="Menu-title">Lëtz Talk About Cyber</div>
 						</NavDropdown.Item>
 					</div>
 					<div className="col-sm-6">
 						Events
 
-						<NavDropdown.Item>
-							<Link to="/events">
-								<div className="Menu-title">Upcoming Events</div>
-							</Link>
+						<NavDropdown.Item as={Link} to="/events">
+							<div className="Menu-title">Upcoming Events</div>
 						</NavDropdown.Item>
-						<NavDropdown.Item>
-							<Link to="/breakfast">
-								<div className="Menu-title">Cybersecurity Breakfast</div>
-							</Link>
+						<NavDropdown.Item as={Link} to="/events?filter=cybersecurity breakfast">
+							<div className="Menu-title">Cybersecurity Breakfast</div>
 						</NavDropdown.Item>
 					</div>
 				</div>

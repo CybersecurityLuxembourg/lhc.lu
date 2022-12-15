@@ -25,6 +25,10 @@ class InsideApp extends React.Component {
 		this.state = {
 			lhc: null,
 			analytics: null,
+			facilityServices: [
+				"Meetings, Training & Events",
+				"Startups"
+			],
 			unlisten: null,
 		};
 	}
@@ -87,6 +91,7 @@ class InsideApp extends React.Component {
 				<Route path="/:path?" render={(props) => <Menu
 					lhc={this.state.lhc}
 					analytics={this.state.analytics}
+					facilityServices={this.state.facilityServices}
 					{...props}
 				/>}/>
 
@@ -151,6 +156,7 @@ class InsideApp extends React.Component {
 							render={(props) => <PageHome
 								lhc={this.state.lhc}
 								analytics={this.state.analytics}
+								facilityServices={this.state.facilityServices}
 								{...props}
 							/>}
 						/>

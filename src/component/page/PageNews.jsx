@@ -11,7 +11,7 @@ import CheckBox from "../form/CheckBox.jsx";
 import { getRequest } from "../../utils/request.jsx";
 import News from "../item/News.jsx";
 import DynamicTable from "../table/DynamicTable.jsx";
-import { dictToURI } from "../../utils/url.jsx";
+import { dictToURI, getUrlParameter } from "../../utils/url.jsx";
 
 export default class PageNews extends React.Component {
 	constructor(props) {
@@ -19,7 +19,9 @@ export default class PageNews extends React.Component {
 
 		this.state = {
 			news: null,
-			newsFilter: null,
+			newsFilter: getUrlParameter("filter") && ["ltac", "lhc"].indexOf(getUrlParameter("filter")) >= 0
+				? getUrlParameter("filter")
+				: null,
 		};
 	}
 

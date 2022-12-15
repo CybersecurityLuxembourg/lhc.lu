@@ -17,28 +17,19 @@ export default class PageHomeServices extends React.Component {
 
 		this.state = {
 			services: null,
-			selectedService: 0,
+			selectedGlobalService: 0,
+			selectedFacilityService: 0,
 		};
 	}
 
 	componentDidMount() {
 		this.getServices();
-
-		this.setState({
-			timer: setInterval(() => {
-				this.changeService();
-			}, 5000),
-		});
 	}
 
 	componentDidUpdate(prevProps) {
 		if (!prevProps.lhc && this.props.lhc) {
 			this.getServices();
 		}
-	}
-
-	componentWillUnmount() {
-		clearInterval(this.state.timer);
 	}
 
 	getServices() {
@@ -60,16 +51,14 @@ export default class PageHomeServices extends React.Component {
 		}
 	}
 
-	changeService() {
-		if (this.state.services) {
-			if (this.state.selectedService === null) {
-				this.setState({ selectedService: 0 });
-			} else if (this.state.services.items.length <= this.state.selectedService + 1) {
-				this.setState({ selectedService: 0 });
-			} else {
-				this.setState({ selectedService: this.state.selectedService + 1 });
-			}
-		}
+	getGlobalServices() {
+		return this.state.services.items
+			.filter((s) => this.props.facilityServices.indexOf(s.title) < 0);
+	}
+
+	getFacilityServices() {
+		return this.state.services.items
+			.filter((s) => this.props.facilityServices.indexOf(s.title) >= 0);
 	}
 
 	render() {
@@ -91,18 +80,21 @@ export default class PageHomeServices extends React.Component {
 							/>
 						}
 
-						{this.state.services && this.state.services.items.length === 0
+						{this.state.services
+							&& this.getGlobalServices().length === 0
 							&& <Message
 								text={"No service found"}
 								height={200}
 							/>
 						}
 
-						{this.state.services && this.state.services.items.length > 0
-							&& this.state.services.items.map((s) => (
-							<a href={"/service/" + s.handle}>
-								<div className="PageHomeServices-menu">
-									{s.title}
+						{this.state.services && this.getGlobalServices().length > 0
+							&& this.getGlobalServices().map((s, i) => (
+							<a href="#">
+								<div onClick={() => this.setState({ selectedGlobalService: i })}>
+									<div className="PageHomeServices-menu">
+										{s.title}
+									</div>
 								</div>
 							</a>
 						))}
@@ -116,17 +108,18 @@ export default class PageHomeServices extends React.Component {
 								/>
 							}
 
-							{this.state.services && this.state.services.items.length === 0
+							{this.state.services && this.getGlobalServices().length === 0
 								&& <Message
 									text={"No service found"}
 									height={200}
 								/>
 							}
 
-							{this.state.services && this.state.services.items.length > 0
-								&& this.state.selectedService < this.state.services.items.length
+							{this.state.services
+								&& this.getGlobalServices().length > 0
+								&& this.state.selectedGlobalService < this.getGlobalServices().length
 								&& <a
-									href={"/service/" + this.state.services.items[this.state.selectedService].handle}
+									href={"/service/" + this.getGlobalServices()[this.state.selectedGlobalService].handle}
 									className={"PageHomeServices-service-link"}>
 									<div className="PageHomeServices-service-desc">
 										<div className="PageHomeServices-service-desc-abstract-wrap">
@@ -134,15 +127,18 @@ export default class PageHomeServices extends React.Component {
 												className="PageHomeServices-service-desc-abstract"
 												dangerouslySetInnerHTML={{
 												__html: dompurify.sanitize(
-													this.state.services.items[this.state.selectedService].abstract
+													this.getGlobalServices()[this.state.selectedGlobalService].abstract
 												),
 											}}/>
+											<button>
+												More information
+											</button>
 										</div>
 										<div className="PageHomeServices-service-desc-image">
-											{this.state.services.items[this.state.selectedService].image
+											{this.getGlobalServices()[this.state.selectedGlobalService].image
 												? <img
 													src={getApiURL() + "public/get_public_image/"
-														+ this.state.services.items[this.state.selectedService].image}
+														+ this.getGlobalServices()[this.state.selectedGlobalService].image}
 													alt="Service image"/>
 												: <NoImage/>
 											}
@@ -157,31 +153,80 @@ export default class PageHomeServices extends React.Component {
 				<div className="row row-spaced">
 					<div className="col-md-8">
 						<div className="PageHomeServices-content">
-							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit morbi augue
-							per ad integer, lobortis lacinia cursus justo fringilla viverra faucibus
-							porttitor dapibus id venenatis. Gravida consequat placerat dictum
-							suspendisse maecenas nascetur ad euismod class, semper condimentum
-							rhoncus varius elementum nisi sapien montes nunc, dui faucibus
-							fringilla vivamus vestibulum lacinia rutrum mattis.</p>
+							{!this.state.services
+								&& <Loading
+									height={200}
+								/>
+							}
 
-							<p>Scelerisque commodo proin aliquam dapibus vestibulum ornare
-							himenaeos sem, id natoque taciti primis leo dictumst habitant, porta
-							eget torquent accumsan semper mauris ad. Porttitor fames luctus
-							venenatis primis varius elementum rutrum, auctor sodales nec cursus
-							ornare facilisi consequat, aenean cras risus placerat donec
-							pulvinar. In gravida mollis primis dignissim, cum massa pretium
-							a aliquet, auctor turpis fermentum.</p>
+							{this.state.services && this.getFacilityServices().length === 0
+								&& <Message
+									text={"No service found"}
+									height={200}
+								/>
+							}
+
+							{this.state.services
+								&& this.getFacilityServices().length > 0
+								&& this.state.selectedFacilityService < this.getFacilityServices().length
+								&& <a
+									href={"/service/" + this.getFacilityServices()[this.state.selectedFacilityService].handle}
+									className={"PageHomeServices-service-link"}>
+									<div className="PageHomeServices-service-desc">
+										<div className="PageHomeServices-service-desc-abstract-wrap">
+											<div
+												className="PageHomeServices-service-desc-abstract"
+												dangerouslySetInnerHTML={{
+												__html: dompurify.sanitize(
+													this.getFacilityServices()[this.state.selectedFacilityService].abstract
+												),
+											}}/>
+											<button>
+												More information
+											</button>
+										</div>
+										<div className="PageHomeServices-service-desc-image">
+											{this.getFacilityServices()[this.state.selectedFacilityService].image
+												? <img
+													src={getApiURL() + "public/get_public_image/"
+														+ this.state.services.items[this.state.selectedFacilityService].image}
+													alt="Service image"/>
+												: <NoImage/>
+											}
+										</div>
+									</div>
+								</a>
+							}
 						</div>
 					</div>
 
 					<div className="col-md-4">
 						<h3>Facilities</h3>
 
-						<a href={"/meetings"}>
-							<div className="PageHomeServices-menu">
-								Our rooms for meetings, training & conferences
-							</div>
-						</a>
+						{!this.state.services
+							&& <Loading
+								height={200}
+							/>
+						}
+
+						{this.state.services
+							&& this.getFacilityServices().length === 0
+							&& <Message
+								text={"No service found"}
+								height={200}
+							/>
+						}
+
+						{this.state.services && this.getFacilityServices().length > 0
+							&& this.getFacilityServices().map((s) => (
+							<a href="#">
+								<div onClick={() => this.setState({ selectedFacilityService: i })}>
+									<div className="PageHomeServices-menu">
+										{s.title}
+									</div>
+								</div>
+							</a>
+						))}
 					</div>
 				</div>
 

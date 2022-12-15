@@ -16,7 +16,6 @@
 
 #PageHomeServices .PageHomeServices-service-desc-abstract-wrap {
     display: flex;
-    align-items: center;
     background-color: rgba(0, 0, 0, .7);
     position: relative;
     color: white;
@@ -30,9 +29,16 @@
 #PageHomeServices .PageHomeServices-service-desc-abstract {
     position: relative;
     width: 100%;
+    height: calc(100% - 55px);
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: initial;
     overflow: hidden;
+}
+
+#PageHomeServices .PageHomeServices-service-desc-abstract-wrap button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
 #PageHomeServices .PageHomeServices-service-desc-image {
