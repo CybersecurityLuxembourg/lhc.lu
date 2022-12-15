@@ -99,14 +99,20 @@ export default class Footer extends React.Component {
 									<br/>
 									<br/>
 									<div className="Footer-link">
-										<Link to="/report">
+										<a
+											href="https://circl.lu/report/"
+											target="_blank"
+											rel="noreferrer">
 											Report an incident
-										</Link>
+										</a>
 									</div>
 									<div className="Footer-link">
-										<Link to="/help">
-											Need help?
-										</Link>
+										<a
+											href="https://www.cybersecurity.lu/search"
+											target="_blank"
+											rel="noreferrer">
+											Search for more
+										</a>
 									</div>
 								</div>
 							</div>
