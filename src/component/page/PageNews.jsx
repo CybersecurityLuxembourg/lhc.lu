@@ -19,7 +19,7 @@ export default class PageNews extends React.Component {
 
 		this.state = {
 			news: null,
-			newsFilter: getUrlParameter("filter") && ["ltac", "lhc"].indexOf(getUrlParameter("filter")) >= 0
+			newsFilter: getUrlParameter("filter") && ["ltac"].indexOf(getUrlParameter("filter")) >= 0
 				? getUrlParameter("filter")
 				: null,
 		};
@@ -42,7 +42,7 @@ export default class PageNews extends React.Component {
 	getNews(page) {
 		if (this.props.lhc) {
 			const params = {
-				entities: this.state.newsFilter === "lhc" ? this.props.lhc.id : undefined,
+				entities: this.props.lhc.id,
 				taxonomy_values: this.getLtacTaxonomyValue() && this.state.newsFilter === "ltac"
 					? this.getLtacTaxonomyValue().id : undefined,
 				type: "NEWS",
@@ -106,11 +106,6 @@ export default class PageNews extends React.Component {
 								label={"All"}
 								value={!this.state.newsFilter}
 								onClick={() => this.changeState("newsFilter", null)}
-							/>
-							<CheckBox
-								label={"LHC News"}
-								value={this.state.newsFilter === "lhc"}
-								onClick={() => this.changeState("newsFilter", "lhc")}
 							/>
 							{this.getLtacTaxonomyValue()
 								&& <CheckBox
