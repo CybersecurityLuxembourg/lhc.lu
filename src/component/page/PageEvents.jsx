@@ -19,7 +19,8 @@ export default class PageEvents extends React.Component {
 
 		this.state = {
 			events: null,
-			eventFilter: getUrlParameter("filter"),
+			eventFilter: getUrlParameter("filter")
+				? getUrlParameter("filter").replace("%20", " ").toUpperCase() : null,
 		};
 	}
 
