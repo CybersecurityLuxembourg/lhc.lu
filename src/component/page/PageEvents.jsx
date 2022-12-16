@@ -7,10 +7,11 @@ import Loading from "../box/Loading.jsx";
 import Message from "../box/Message.jsx";
 import Banner from "../bar/Banner.jsx";
 import SearchField from "../form/SearchField.jsx";
+import CheckBox from "../form/CheckBox.jsx";
 import { getRequest } from "../../utils/request.jsx";
 import News from "../item/News.jsx";
 import DynamicTable from "../table/DynamicTable.jsx";
-import { dictToURI } from "../../utils/url.jsx";
+import { dictToURI, getUrlParameter } from "../../utils/url.jsx";
 
 export default class PageEvents extends React.Component {
 	constructor(props) {
@@ -18,6 +19,7 @@ export default class PageEvents extends React.Component {
 
 		this.state = {
 			events: null,
+			eventFilter: getUrlParameter("filter"),
 		};
 	}
 
@@ -25,22 +27,48 @@ export default class PageEvents extends React.Component {
 		this.getEvents();
 	}
 
-	getEvents(page) {
-		const params = {
-			type: "EVENT",
-			per_page: 5,
-			page: page || 1,
-		};
+	componentDidUpdate(prevProps, prevState) {
+		if (!prevProps.lhc && this.props.lhc) {
+			this.getEvents();
+		}
 
-		getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
-			this.setState({
-				events: data,
+		if (prevState.eventFilter !== this.state.eventFilter) {
+			this.getEvents();
+		}
+	}
+
+	getEvents(page) {
+		if (this.props.lhc) {
+			const params = {
+				type: "EVENT",
+				per_page: 10,
+				page: page || 1,
+				entities: this.props.lhc.id,
+				taxonomy_values: this.getTaxonomyValues().filter((v) => v.name === this.state.eventFilter).pop()
+						? this.getTaxonomyValues().filter((v) => v.name === this.state.eventFilter).pop().id
+						: undefined,
+			};
+
+			getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
+				this.setState({
+					events: data,
+				});
+			}, (response) => {
+				nm.warning(response.statusText);
+			}, (error) => {
+				nm.error(error.message);
 			});
-		}, (response) => {
-			nm.warning(response.statusText);
-		}, (error) => {
-			nm.error(error.message);
-		});
+		}
+	}
+
+	getTaxonomyValues() {
+		if (this.props.analytics) {
+			return this.props.analytics.taxonomy_values
+				.filter((v) => v.category === "EVENT CATEGORY")
+				.filter((v) => v.name !== "CSWL 2022");
+		}
+
+		return [];
 	}
 
 	changeState(field, value) {
@@ -67,8 +95,24 @@ export default class PageEvents extends React.Component {
 					</div>
 
 					<div className="row">
-						<div className="col-md-12">
+						<div className="col-md-12 row-spaced">
 							<h2>Events</h2>
+						</div>
+
+
+						<div className="col-md-12 row-spaced">
+							<CheckBox
+								label={"All"}
+								value={this.getTaxonomyValues().map((v) => v.name).indexOf(this.state.eventFilter) < 0}
+								onClick={() => this.changeState("eventFilter", null)}
+							/>
+							{this.getTaxonomyValues().map((v) => (
+								<CheckBox
+									label={v.name}
+									value={this.state.eventFilter === v.name}
+									onClick={() => this.changeState("eventFilter", v.name)}
+								/>
+							))}
 						</div>
 
 						<div className="col-md-12">
