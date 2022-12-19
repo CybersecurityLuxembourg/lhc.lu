@@ -122,7 +122,7 @@ export default class PageHomeNews extends React.Component {
 							<h2>Latest news</h2>
 
 							<div className={"row"}>
-								{this.state.news.map((c, i) => <div
+								{this.state.news.map((c) => <div
 									key={c.id}
 									className={"col-md-12"}>
 									<SmallArticle

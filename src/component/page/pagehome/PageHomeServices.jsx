@@ -93,6 +93,9 @@ export default class PageHomeServices extends React.Component {
 							<a href="#">
 								<div onClick={() => this.setState({ selectedGlobalService: i })}>
 									<div className="PageHomeServices-menu">
+										{this.state.selectedGlobalService === i
+											&& <div className={"arrow right"}/>
+										}
 										{s.title}
 									</div>
 								</div>
@@ -218,10 +221,13 @@ export default class PageHomeServices extends React.Component {
 						}
 
 						{this.state.services && this.getFacilityServices().length > 0
-							&& this.getFacilityServices().map((s) => (
+							&& this.getFacilityServices().map((s, i) => (
 							<a href="#">
 								<div onClick={() => this.setState({ selectedFacilityService: i })}>
 									<div className="PageHomeServices-menu">
+										{this.state.selectedFacilityService === i
+											&& <div className={"arrow right"}/>
+										}
 										{s.title}
 									</div>
 								</div>
