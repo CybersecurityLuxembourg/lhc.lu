@@ -65,7 +65,7 @@ export default class PageContact extends React.Component {
 						<div className="row row-spaced">
 							<div className="col-md-3">
 								<img
-									src={"/img/circl.jpg"}
+									src={"/img/circl-logo.png"}
 									alt="LHC office"
 								/>
 							</div>
@@ -85,7 +85,7 @@ export default class PageContact extends React.Component {
 						<div className="row row-spaced">
 							<div className="col-md-3">
 								<img
-									src={"/img/nc3.jpg"}
+									src={"/img/nc3-logo.png"}
 									alt="LHC office"
 								/>
 							</div>
