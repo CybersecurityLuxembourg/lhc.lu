@@ -9,7 +9,7 @@ import Banner from "../bar/Banner.jsx";
 import SearchField from "../form/SearchField.jsx";
 import CheckBox from "../form/CheckBox.jsx";
 import { getRequest } from "../../utils/request.jsx";
-import News from "../item/News.jsx";
+import Article from "../item/Article.jsx";
 import DynamicTable from "../table/DynamicTable.jsx";
 import { dictToURI, getUrlParameter } from "../../utils/url.jsx";
 
@@ -154,7 +154,7 @@ export default class PageNews extends React.Component {
 									buildElement={(a) => <div
 										className="col-md-12"
 										key={a.id}>
-										<News
+										<Article
 											info={a}
 											analytics={this.props.analytics}
 										/>

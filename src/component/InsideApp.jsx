@@ -1,7 +1,7 @@
 import React from "react";
 import "./InsideApp.css";
 import {
-	Route, Switch, withRouter,
+	Route, Switch, withRouter, Redirect
 } from "react-router-dom";
 import { NotificationManager as nm } from "react-notifications";
 import { getRequest } from "../utils/request.jsx";
@@ -119,22 +119,6 @@ class InsideApp extends React.Component {
 							/>}
 						/>
 						<Route
-							path="/ltac"
-							render={(props) => <PageLTAC
-								lhc={this.state.lhc}
-								analytics={this.state.analytics}
-								{...props}
-							/>}
-						/>
-						<Route
-							path="/breakfast"
-							render={(props) => <PageBreakfast
-								lhc={this.state.lhc}
-								analytics={this.state.analytics}
-								{...props}
-							/>}
-						/>
-						<Route
 							path="/contact"
 							render={(props) => <PageContact
 								lhc={this.state.lhc}
@@ -160,6 +144,16 @@ class InsideApp extends React.Component {
 								{...props}
 							/>}
 						/>
+
+						{/* REDIRECTIONS */}
+
+						<Route exact path="/event">
+							<Redirect to="/events" />
+						</Route>
+
+						<Route exact path="/service">
+							<Redirect to="/#PageHomeServices" />
+						</Route>
 
 						{/* 404 */}
 
