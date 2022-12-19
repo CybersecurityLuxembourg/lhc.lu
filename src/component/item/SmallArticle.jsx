@@ -14,6 +14,9 @@ export default class SmallArticle extends Component {
 	getBoxContent() {
 		return (
 			<div className="SmallArticle">
+				{this.props.selected
+					&& <div className={"arrow right"}/>
+				}
 				{this.props.info.title}
 			</div>
 		);

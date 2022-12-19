@@ -122,11 +122,12 @@ export default class PageHomeNews extends React.Component {
 							<h2>Latest news</h2>
 
 							<div className={"row"}>
-								{this.state.news.map((c) => <div
+								{this.state.news.map((c, i) => <div
 									key={c.id}
 									className={"col-md-12"}>
 									<SmallArticle
 										info={c}
+										selected={this.state.selectedNews === i}
 									/>
 								</div>)}
 							</div>

@@ -123,8 +123,19 @@ export default class PageHomeEvents extends React.Component {
 									className={"col-md-12"}>
 									<SmallArticle
 										info={c}
+										selected={this.state.selectedEvent === i}
 									/>
 								</div>)}
+							</div>
+
+							<div className={"row"}>
+								<div className={"col-md-8"}>
+									<Link
+										to={"/events"}
+										className="Article-link">
+										<b>See all</b>
+									</Link>
+								</div>
 							</div>
 						</div>
 
