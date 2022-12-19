@@ -80,7 +80,7 @@ export default class PageEvents extends React.Component {
 		return (
 			<div id={"PageEvents"}>
 				<Banner
-					image={"/img/banner-news.jpg"}
+					image={"/img/banner-events.jpg"}
 				/>
 
 				<div className={"page max-sized-page"}>

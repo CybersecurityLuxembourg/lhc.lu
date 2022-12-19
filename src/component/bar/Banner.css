@@ -2,8 +2,6 @@
 .Banner, .Banner .carousel-root, .Banner .carousel {
     position: relative;
     width: 100%;
-    height: 1000px;
-    max-height: 30vh;
     min-height: 300px;
 }
 
