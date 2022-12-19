@@ -15,7 +15,7 @@ export default class PageHomeAboutLHC extends React.Component {
 						<h1>About LHC</h1>
 					</div>
 
-					<div className="col-md-3">
+					<div className="col-md-5 row-spaced">
 						<img
 							src={"/img/lhc-about-logo.png"}
 							alt="LHC about logo"
@@ -24,7 +24,7 @@ export default class PageHomeAboutLHC extends React.Component {
 
 					<div className="col-md-1"/>
 
-					<div className="col-md-8">
+					<div className="col-md-6">
 						<h2>Make Luxembourg a pioneer in the open cybersecurity data economy</h2>
 
 						<p>Luxembourg House of Cybersecurity is the backbone of leading-edge cyber

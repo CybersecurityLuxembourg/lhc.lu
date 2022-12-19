@@ -114,7 +114,7 @@ export default class PageHomeEvents extends React.Component {
 
 				{this.state.events && this.state.events.length > 0
 					&& <div className="row row-spaced">
-						<div className={"col-md-8"}>
+						<div className={"col-md-6 row-spaced"}>
 							<h2>Upcoming events</h2>
 
 							<div className={"row"}>
@@ -141,7 +141,7 @@ export default class PageHomeEvents extends React.Component {
 
 						<div className={"col-md-1"}/>
 
-						<div className={"col-md-3"}>
+						<div className={"col-md-5"}>
 							<div className={"PageHomeEvents-image"}>
 								{this.state.events[this.state.selectedEvent].image
 									? <img
