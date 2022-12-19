@@ -53,12 +53,12 @@ export default class PageHomeServices extends React.Component {
 
 	getGlobalServices() {
 		return this.state.services.items
-			.filter((s) => this.props.facilityServices.indexOf(s.title) < 0);
+			.filter((s) => this.props.facilityServices.indexOf(s.title.toLowerCase()) < 0);
 	}
 
 	getFacilityServices() {
 		return this.state.services.items
-			.filter((s) => this.props.facilityServices.indexOf(s.title) >= 0);
+			.filter((s) => this.props.facilityServices.indexOf(s.title.toLowerCase()) >= 0);
 	}
 
 	render() {

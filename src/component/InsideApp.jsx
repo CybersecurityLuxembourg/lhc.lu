@@ -24,8 +24,8 @@ class InsideApp extends React.Component {
 			lhc: null,
 			analytics: null,
 			facilityServices: [
-				"Meetings, Training & Events",
-				"Startups"
+				"facility rental",
+				"startups hosting"
 			],
 			unlisten: null,
 		};

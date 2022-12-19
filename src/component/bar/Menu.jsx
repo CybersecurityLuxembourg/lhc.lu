@@ -88,7 +88,7 @@ export default class Menu extends React.Component {
 
 						{this.state.services
 							&& this.state.services.items
-								.filter((s) => this.props.facilityServices.indexOf(s.title) < 0)
+								.filter((s) => this.props.facilityServices.indexOf(s.title.toLowerCase()) < 0)
 								.map((s) => (
 								<div>
 									{s.link && s.link.length > 0
@@ -120,7 +120,7 @@ export default class Menu extends React.Component {
 
 						{this.state.services
 							&& this.state.services.items
-								.filter((s) => this.props.facilityServices.indexOf(s.title) >= 0)
+								.filter((s) => this.props.facilityServices.indexOf(s.title.toLowerCase()) >= 0)
 								.map((s) => (
 								<div>
 									{s.link && s.link.length > 0
