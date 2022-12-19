@@ -42,7 +42,7 @@ export default class PageHome extends React.Component {
 		return (
 			<div id={"PageHome"}>
 				<Banner
- 					image={"/img/banner-home.png"}
+ 					image={"/img/banner-home.jpg"}
  				/>
 				<PageHomeCatch/>
 				<PageHomeAboutLHC/>
