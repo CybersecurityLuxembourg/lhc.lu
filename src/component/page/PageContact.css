@@ -2,6 +2,7 @@
 #PageContact .PageContact-content {
     background-color: var(--light-primary-color);
     margin-bottom: 150px;
+    padding: 60px 0px 20px 0px;
 }
 
 #PageContact .PageContact-content .col-md-3:has(img) {
@@ -10,4 +11,5 @@
 
 #PageContact .PageContact-content img {
     width: 100%;
+    vertical-align: middle;
 }
