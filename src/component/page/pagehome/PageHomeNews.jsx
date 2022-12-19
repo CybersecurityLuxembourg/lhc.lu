@@ -137,7 +137,9 @@ export default class PageHomeNews extends React.Component {
 									<Link
 										to={"/news"}
 										className="Article-link">
-										<b>See all</b>
+										<button>
+											See all
+										</button>
 									</Link>
 								</div>
 							</div>

@@ -133,7 +133,9 @@ export default class PageHomeEvents extends React.Component {
 									<Link
 										to={"/events"}
 										className="Article-link">
-										<b>See all</b>
+										<button>
+											See all
+										</button>
 									</Link>
 								</div>
 							</div>
