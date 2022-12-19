@@ -17,30 +17,24 @@ export default class PageHomeAboutLHC extends React.Component {
 
 					<div className="col-md-3">
 						<img
-							src={getApiURL() + "public/get_public_image/logo.png"}
-							alt="Please configure logo"
+							src={"/img/lhc-about-logo.png"}
+							alt="LHC about logo"
 						/>
 					</div>
 
 					<div className="col-md-1"/>
 
 					<div className="col-md-8">
-						<h2>Title text</h2>
+						<h2>Make Luxembourg a pioneer in the open cybersecurity data economy</h2>
 
-						<p>Lorem ipsum dolor sit amet consectetur adipiscing elit morbi augue
-						per ad integer, lobortis lacinia cursus justo fringilla viverra faucibus
-						porttitor dapibus id venenatis. Gravida consequat placerat dictum
-						suspendisse maecenas nascetur ad euismod class, semper condimentum
-						rhoncus varius elementum nisi sapien montes nunc, dui faucibus
-						fringilla vivamus vestibulum lacinia rutrum mattis.</p>
+						<p>Luxembourg House of Cybersecurity is the backbone of leading-edge cyber
+						resilience in Luxembourg and aims at capitalising on and further developing
+						innovation, competencies, collaboration and capacity building.</p>
 
-						<p>Scelerisque commodo proin aliquam dapibus vestibulum ornare
-						himenaeos sem, id natoque taciti primis leo dictumst habitant, porta
-						eget torquent accumsan semper mauris ad. Porttitor fames luctus
-						venenatis primis varius elementum rutrum, auctor sodales nec cursus
-						ornare facilisi consequat, aenean cras risus placerat donec
-						pulvinar. In gravida mollis primis dignissim, cum massa pretium
-						a aliquet, auctor turpis fermentum.</p>
+						<p>LHC is home to all types of cybersecurity-related activities and
+						together with its two hosted centres CIRCL (Computer Incident Response
+						Center Luxembourg) and NC3 (National Cybersecurity Competence Center) as
+						well as its following partners, support, foster and serve:</p>
 					</div>
 				</div>
 			</div>
