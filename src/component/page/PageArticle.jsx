@@ -11,6 +11,7 @@ import Loading from "../box/Loading.jsx";
 import Chip from "../form/Chip.jsx";
 import Message from "../box/Message.jsx";
 import Article from "../item/Article.jsx";
+import SmallArticle from "../item/SmallArticle.jsx";
 import {
 	getContentFromBlock,
 	buildCarousel,
@@ -26,9 +27,7 @@ export default class PageArticle extends React.Component {
 
 		this.state = {
 			article: null,
-			articleEntities: null,
 			relatedArticles: null,
-			relatedArticleEntities: null,
 		};
 	}
 
@@ -39,9 +38,7 @@ export default class PageArticle extends React.Component {
 	getArticleContent() {
 		this.setState({
 			article: null,
-			articleEntities: null,
 			relatedArticles: null,
-			relatedArticleEntities: null,
 		});
 
 		getRequest.call(this, "public/get_public_article_content/" + this.props.match.params.handle, (data) => {
@@ -52,27 +49,6 @@ export default class PageArticle extends React.Component {
 			getRequest.call(this, "public/get_public_related_articles/" + this.props.match.params.handle + "?include_tags=true", (data2) => {
 				this.setState({
 					relatedArticles: data2,
-				}, () => {
-					const params2 = {
-						ids: Array.prototype.concat.apply(
-							[],
-							data2
-								.filter((i) => i.entity_tags)
-								.map((i) => i.entity_tags),
-						),
-					};
-
-					if (params2.ids.length > 0) {
-						getRequest.call(this, "public/get_public_entities?" + dictToURI(params2), (data3) => {
-							this.setState({
-								relatedArticleEntities: data3,
-							});
-						}, (response) => {
-							nm.warning(response.statusText);
-						}, (error) => {
-							nm.error(error.message);
-						});
-					}
 				});
 			}, (response) => {
 				nm.warning(response.statusText);
@@ -189,10 +165,9 @@ export default class PageArticle extends React.Component {
 											<div
 												className="col-md-12"
 												key={a.id}>
-												<Article
+												<SmallArticle
 													key={a.id}
 													info={a}
-													entities={this.state.relatedArticleEntities}
 												/>
 											</div>
 										))
