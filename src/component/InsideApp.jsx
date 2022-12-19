@@ -14,8 +14,6 @@ import PageHelp from "./page/PageHelp.jsx";
 import PageNews from "./page/PageNews.jsx";
 import PageEvents from "./page/PageEvents.jsx";
 import PageArticle from "./page/PageArticle.jsx";
-import PageLTAC from "./page/PageLTAC.jsx";
-import PageBreakfast from "./page/PageBreakfast.jsx";
 import Page404 from "./page/Page404.jsx";
 
 class InsideApp extends React.Component {
