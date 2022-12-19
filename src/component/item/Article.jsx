@@ -38,6 +38,23 @@ export default class Article extends Component {
 		return null;
 	}
 
+	getDate() {
+		if (this.props.info.type === "EVENT") {
+			if (this.props.info.start_date && this.props.info.end_date) {
+				return <div>
+					{dateToString(this.props.info.start_date, "DD MMM YYYY HH:mm")}
+					&nbsp;-&nbsp;
+					{dateToString(this.props.info.end_date, "DD MMM YYYY HH:mm")}
+				</div>;
+			}
+
+			return "No Info"
+			
+		}
+
+		return dateToString(this.props.info.publication_date, "DD MMM YYYY");
+	}
+
 	getBoxContent() {
 		return (
 			<div className="Article card">
@@ -54,7 +71,7 @@ export default class Article extends Component {
 					<div className="card-body">
 						<h5 className="card-title">{this.props.info.title}</h5>
 						<div className="Article-date">
-							{dateToString(this.props.info.publication_date, "DD MMM YYYY")}
+							{this.getDate()}
 						</div>
 						{this.props.info.abstract
 							&& <div
@@ -85,7 +102,7 @@ export default class Article extends Component {
 				{this.getBoxContent()}
 			</a>
 			: <Link
-				to={"/Article/" + this.props.info.handle}
+				to={"/" + this.props.info.type.toLowerCase() + "/" + this.props.info.handle}
 				className="Article-link">
 				{this.getBoxContent()}
 			</Link>;

@@ -9,9 +9,10 @@ import Banner from "../bar/Banner.jsx";
 import SearchField from "../form/SearchField.jsx";
 import CheckBox from "../form/CheckBox.jsx";
 import { getRequest } from "../../utils/request.jsx";
-import News from "../item/News.jsx";
+import Article from "../item/Article.jsx";
 import DynamicTable from "../table/DynamicTable.jsx";
 import { dictToURI, getUrlParameter } from "../../utils/url.jsx";
+import { dateToString } from "../../utils/date.jsx";
 
 export default class PageEvents extends React.Component {
 	constructor(props) {
@@ -20,7 +21,7 @@ export default class PageEvents extends React.Component {
 		this.state = {
 			events: null,
 			eventFilter: getUrlParameter("filter")
-				? getUrlParameter("filter").replace("%20", " ").toUpperCase() : null,
+				? getUrlParameter("filter") : null,
 		};
 	}
 
@@ -36,6 +37,10 @@ export default class PageEvents extends React.Component {
 		if (prevState.eventFilter !== this.state.eventFilter) {
 			this.getEvents();
 		}
+
+		if (this.state.eventFilter !== this.getUrlFilter()) {
+			this.setState({ eventFilter: this.getUrlFilter() });
+		}
 	}
 
 	getEvents(page) {
@@ -44,6 +49,8 @@ export default class PageEvents extends React.Component {
 				type: "EVENT",
 				per_page: 10,
 				page: page || 1,
+				order_by: "start_date",
+				min_end_date: dateToString(new Date()),
 				entities: this.props.lhc.id,
 				taxonomy_values: this.getTaxonomyValues().filter((v) => v.name === this.state.eventFilter).pop()
 						? this.getTaxonomyValues().filter((v) => v.name === this.state.eventFilter).pop().id
@@ -70,6 +77,20 @@ export default class PageEvents extends React.Component {
 		}
 
 		return [];
+	}
+
+	getUrlFilter() {
+		if (getUrlParameter("filter")) {
+			return getUrlParameter("filter").replace("%20", " ").toUpperCase();
+		}
+
+		return null;
+	}
+
+	changeUrl(value) {
+		this.props.history.push({ search: value
+			? "filter=" + value.toLowerCase()
+			: "" });
 	}
 
 	changeState(field, value) {
@@ -104,14 +125,14 @@ export default class PageEvents extends React.Component {
 						<div className="col-md-12 row-spaced">
 							<CheckBox
 								label={"All"}
-								value={this.getTaxonomyValues().map((v) => v.name).indexOf(this.state.eventFilter) < 0}
-								onClick={() => this.changeState("eventFilter", null)}
+								value={!this.state.eventFilter}
+								onClick={() => this.changeUrl(null)}
 							/>
 							{this.getTaxonomyValues().map((v) => (
 								<CheckBox
 									label={v.name}
 									value={this.state.eventFilter === v.name}
-									onClick={() => this.changeState("eventFilter", v.name)}
+									onClick={() => this.changeUrl(v.name)}
 								/>
 							))}
 						</div>
@@ -140,7 +161,7 @@ export default class PageEvents extends React.Component {
 									buildElement={(a) => <div
 										className="col-md-12"
 										key={a.id}>
-										<News
+										<Article
 											info={a}
 											analytics={this.props.analytics}
 										/>
