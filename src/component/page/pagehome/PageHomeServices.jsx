@@ -19,6 +19,38 @@ export default class PageHomeServices extends React.Component {
 			services: null,
 			selectedGlobalService: 0,
 			selectedFacilityService: 0,
+			selectedEntity: 0,
+			entities: [
+				{
+					name: "CIRCL",
+					url: "https://circl.lu",
+					image: "/img/circl-logo.png",
+					description: (() => {
+						return <div>
+							<p>The Computer Incident Response Center Luxembourg (CIRCL) is a government-driven
+							initiative designed to provide a systematic response facility to
+							computer security threats and incidents.</p>
+
+							<p>CIRCL is the CERT for the private sector, communes
+							and non-governmental entities in Luxembourg.</p>
+						</div>
+					})(),
+				},
+				{
+					name: "NC3",
+					url: "https://nc3.lu",
+					image: "/img/nc3-logo.png",
+					description: (() => {
+						return <div>
+							<p>The purpose of the Luxembourg National Cybersecurity Competence
+							Center (NC3) is to strengthen the Country's ecosystem facing cyber
+							threats and risks, by building cybersecurity competence and capacity, in a
+							way that contributes to develop the cybersecurity industrial base in the
+							country, and strengthens the strategic autonomy of the European Union.</p>
+						</div>;
+					})(),
+				},
+			],
 		};
 	}
 
@@ -240,35 +272,44 @@ export default class PageHomeServices extends React.Component {
 					<div className="col-md-4">
 						<h3>Hosted by LHC</h3>
 
-						<a href={"https://www.circl.lu/"} target="_blank">
-							<div className="PageHomeServices-menu">
-								CIRCL
-							</div>
-						</a>
-
-						<a href={"https://www.nc3.lu/"} target="_blank">
-							<div className="PageHomeServices-menu">
-								NC3
-							</div>
-						</a>
+						{this.state.entities.map((s, i) => (
+							<a href="#">
+								<div onClick={() => this.setState({ selectedEntity: i })}>
+									<div className="PageHomeServices-menu">
+										{this.state.selectedEntity === i
+											&& <div className={"arrow right"}/>
+										}
+										{s.name}
+									</div>
+								</div>
+							</a>
+						))}
 					</div>
 
 					<div className="col-md-8">
 						<div className="PageHomeServices-content">
-							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit morbi augue
-							per ad integer, lobortis lacinia cursus justo fringilla viverra faucibus
-							porttitor dapibus id venenatis. Gravida consequat placerat dictum
-							suspendisse maecenas nascetur ad euismod class, semper condimentum
-							rhoncus varius elementum nisi sapien montes nunc, dui faucibus
-							fringilla vivamus vestibulum lacinia rutrum mattis.</p>
-
-							<p>Scelerisque commodo proin aliquam dapibus vestibulum ornare
-							himenaeos sem, id natoque taciti primis leo dictumst habitant, porta
-							eget torquent accumsan semper mauris ad. Porttitor fames luctus
-							venenatis primis varius elementum rutrum, auctor sodales nec cursus
-							ornare facilisi consequat, aenean cras risus placerat donec
-							pulvinar. In gravida mollis primis dignissim, cum massa pretium
-							a aliquet, auctor turpis fermentum.</p>
+							<a
+								href={this.state.entities[this.state.selectedEntity].url}
+								className={"PageHomeServices-service-link"}>
+								<div className="PageHomeServices-service-desc">
+									<div className="PageHomeServices-service-desc-abstract-wrap">
+										<div className="PageHomeServices-service-desc-abstract">
+											{this.state.entities[this.state.selectedEntity].description}
+										</div>
+										<button>
+											More information
+										</button>
+									</div>
+									<div className="PageHomeServices-service-desc-image">
+										{this.state.entities[this.state.selectedEntity].image
+											? <img
+												src={this.state.entities[this.state.selectedEntity].image}
+												alt="Service image"/>
+											: <NoImage/>
+										}
+									</div>
+								</div>
+							</a>
 						</div>
 					</div>
 				</div>
