@@ -80,7 +80,7 @@ export default class Footer extends React.Component {
 									</div>
 									<div className="Footer-link">
 										<Link to="/contact">
-											Contact
+											Contact us
 										</Link>
 									</div>
 									<br/>

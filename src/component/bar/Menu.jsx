@@ -206,7 +206,7 @@ export default class Menu extends React.Component {
 
 			<Nav.Link>
 				<Link to="/contact">
-					<div className="Menu-title">Contact</div>
+					<div className="Menu-title">Contact us</div>
 				</Link>
 			</Nav.Link>
 		</Nav>;
