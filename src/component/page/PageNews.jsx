@@ -19,9 +19,7 @@ export default class PageNews extends React.Component {
 
 		this.state = {
 			news: null,
-			newsFilter: getUrlParameter("filter") && ["ltac"].indexOf(getUrlParameter("filter")) >= 0
-				? getUrlParameter("filter")
-				: null,
+			newsFilter: this.getUrlFilter(),
 		};
 	}
 
@@ -36,6 +34,10 @@ export default class PageNews extends React.Component {
 
 		if (prevState.newsFilter !== this.state.newsFilter) {
 			this.getNews();
+		}
+
+		if (this.state.newsFilter !== this.getUrlFilter()) {
+			this.setState({ newsFilter: this.getUrlFilter() });
 		}
 	}
 
@@ -73,6 +75,18 @@ export default class PageNews extends React.Component {
 		return null;
 	}
 
+	getUrlFilter() {
+		if (getUrlParameter("filter") && ["ltac"].indexOf(getUrlParameter("filter")) >= 0) {
+			return getUrlParameter("filter");
+		}
+
+		return null;
+	}
+
+	changeUrl(value) {
+		this.props.history.push({ search: value ? "filter=" + value : "" });
+	}
+
 	changeState(field, value) {
 		this.setState({ [field]: value });
 	}
@@ -105,13 +119,13 @@ export default class PageNews extends React.Component {
 							<CheckBox
 								label={"All"}
 								value={!this.state.newsFilter}
-								onClick={() => this.changeState("newsFilter", null)}
+								onClick={() => this.changeUrl(null)}
 							/>
 							{this.getLtacTaxonomyValue()
 								&& <CheckBox
 									label={"Lëtz Talk About Cyber - ITV Series"}
 									value={this.state.newsFilter === "ltac"}
-									onClick={() => this.changeState("newsFilter", "ltac")}
+									onClick={() => this.changeUrl("ltac")}
 								/>
 							}
 						</div>
