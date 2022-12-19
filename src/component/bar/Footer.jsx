@@ -35,28 +35,20 @@ export default class Footer extends React.Component {
 							<br/>
 							<div className="Footer-network">
 								<a
-									href="https://twitter.com/cyberluxembourg"
+									href="https://twitter.com/houseofcyber_lu"
 									rel="noreferrer"
 									target="_blank"
-									title="Twitter CYBERLUX"
+									title="Twitter LHC"
 									className="text-capitalize">
 									<i className="fab fa-twitter Footer-network"/>
 								</a>
 								<a
-									href="https://www.linkedin.com/company/cybersecurity-luxembourg/"
+									href="https://www.linkedin.com/company/houseofcybersecurity"
 									rel="noreferrer"
 									target="_blank"
-									title="LinkedIn CYBERLUX"
+									title="LinkedIn LHC"
 									className="text-capitalize">
 									<i className="fab fa-linkedin-in Footer-network"/>
-								</a>
-								<a
-									href="https://github.com/CybersecurityLuxembourg/"
-									rel="noreferrer"
-									target="_blank"
-									title="GitHub CYBERLUX"
-									className="text-capitalize">
-									<i className="fab fa-github-alt Footer-network"/>
 								</a>
 							</div>
 						</div>

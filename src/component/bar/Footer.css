@@ -45,8 +45,10 @@
 }
 
 #Footer .Footer-network {
-  font-size: 20px;
-  padding: 5px 8px;
+  width: 100%;
+  font-size: 25px;
+  margin-left: 15px;
+  margin-top: 5px;
   color: var(--primary-color);
   width: fit-content;
 }
