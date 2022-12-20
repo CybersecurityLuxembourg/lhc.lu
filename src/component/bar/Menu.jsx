@@ -74,7 +74,7 @@ export default class Menu extends React.Component {
 				title={
 					<div onClick={() => this.setHash("PageHomeServices")}>
 						<Link to="/">
-							<div className="Menu-title">Services & Facilities</div>
+							<div className="Menu-title">Services</div>
 							<i className="fas fa-sort-down"/>
 						</Link>
 					</div>
@@ -83,29 +83,24 @@ export default class Menu extends React.Component {
 				renderMenuOnMount={true}
 				className="dropdown-service">
 				<div className="row">
-					<div className="col-sm-4">
-						Services
-
+					<div className="col-sm-12">
 						{this.state.services
-							&& this.state.services.items
-								.filter((s) => this.props.facilityServices.indexOf(s.title.toLowerCase()) < 0)
-								.map((s) => (
-								<div>
-									{s.link && s.link.length > 0
-										? <a
-											className="dropdown-item"
-											href={s.link}
-											target="_blank"
-											rel="noreferrer">
-											<div className="Menu-title">{s.title}</div>
-										</a>
-										: <NavDropdown.Item as={Link} to={"/service/" + s.handle}>
-											<div className="Menu-title">{s.title}</div>
-										</NavDropdown.Item>
-									}
-								</div>
-							))
-						}
+							&& this.state.services.items.map((s) => (
+							<div>
+								{s.link && s.link.length > 0
+									? <a
+										className="dropdown-item"
+										href={s.link}
+										target="_blank"
+										rel="noreferrer">
+										<div className="Menu-title">{s.title}</div>
+									</a>
+									: <NavDropdown.Item as={Link} to={"/service/" + s.handle}>
+										<div className="Menu-title">{s.title}</div>
+									</NavDropdown.Item>
+								}
+							</div>
+						))}
 
 						{!this.state.services
 							&& <Message
@@ -115,33 +110,23 @@ export default class Menu extends React.Component {
 
 						}
 					</div>
-					<div className="col-sm-4">
-						Facilities
+				</div>
+			</NavDropdown>
 
-						{this.state.services
-							&& this.state.services.items
-								.filter((s) => this.props.facilityServices.indexOf(s.title.toLowerCase()) >= 0)
-								.map((s) => (
-								<div>
-									{s.link && s.link.length > 0
-										? <a
-											className="dropdown-item"
-											href={s.link}
-											target="_blank"
-											rel="noreferrer">
-											<div className="Menu-title">{s.title}</div>
-										</a>
-										: <NavDropdown.Item as={Link} to={"/service/" + s.handle}>
-											<div className="Menu-title">{s.title}</div>
-										</NavDropdown.Item>
-									}
-								</div>
-							))
-						}
+			<NavDropdown
+				title={
+					<div>
+						<Link to="/">
+							<div className="Menu-title">Hosted by LHC</div>
+							<i className="fas fa-sort-down"/>
+						</Link>
 					</div>
-					<div className="col-sm-4">
-						Hosted by LHC
-
+				}
+				id="basic-nav-dropdown"
+				renderMenuOnMount={true}
+				className="dropdown-service">
+				<div className="row">
+					<div className="col-sm-12">
 						<a
 							className="dropdown-item"
 							href="https://www.circl.lu/"
@@ -159,14 +144,6 @@ export default class Menu extends React.Component {
 					</div>
 				</div>
 			</NavDropdown>
-
-			<a
-				className="nav-link"
-				href="https://www.cybersecurity.lu/ecosystem"
-				target="_blank"
-				rel="noreferrer">
-				<div className="Menu-title">CYBERSECURITY Luxembourg Ecosystem</div>
-			</a>
 
 			<NavDropdown
 				title={
@@ -244,6 +221,13 @@ export default class Menu extends React.Component {
 								target="_blank"
 								rel="noreferrer">
 								<div className="Menu-title">Search for more</div>
+							</a>
+							<a
+								className="nav-link"
+								href="https://www.cybersecurity.lu/ecosystem"
+								target="_blank"
+								rel="noreferrer">
+								<div className="Menu-title">Discover the ecosystem</div>
 							</a>
 						</Nav>
 					</Navbar.Collapse>
