@@ -19,7 +19,7 @@ export default class Menu extends React.Component {
 			entities: null,
 			relationshipTypes: null,
 			relationships: null,
-			serviceOrder: ["(CIRCL)", "(NC3)"],
+			entityOrder: ["(CIRCL)", "(NC3)"],
 		};
 	}
 
@@ -96,8 +96,8 @@ export default class Menu extends React.Component {
 
 	orderEntities(a, b) {
 		const getPos = (title) => {
-			for (let i = 0; i < this.state.serviceOrder.length; i++) {
-				if (title.includes(this.state.serviceOrder[i])) {
+			for (let i = 0; i < this.state.entityOrder.length; i++) {
+				if (title.includes(this.state.entityOrder[i])) {
 					return i;
 				}
 			}
