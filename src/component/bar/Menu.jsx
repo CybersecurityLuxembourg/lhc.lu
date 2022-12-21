@@ -14,6 +14,8 @@ export default class Menu extends React.Component {
 
 		this.state = {
 			showFlyingMenu: false,
+			services: null,
+			entities: null,
 		};
 	}
 
@@ -56,6 +58,16 @@ export default class Menu extends React.Component {
 				nm.error(error.message);
 			});
 		}
+	}
+
+	getCounterService() {
+		if (this.state.services) {
+			return this.state.services.items
+				.filter((s) => s.title.toLowerCase().includes("counter"))
+				.pop();
+		}
+
+		return null;
 	}
 
 	setHash(hash) {
@@ -215,13 +227,21 @@ export default class Menu extends React.Component {
 								rel="noreferrer">
 								<div className="Menu-title">Report an incident</div>
 							</a>
-							<a
-								className="nav-link"
-								href="https://www.cybersecurity.lu/search"
-								target="_blank"
-								rel="noreferrer">
-								<div className="Menu-title">Search for more</div>
-							</a>
+							{this.getCounterService()
+								&& <a className="nav-link">
+									<Link to={"/service/" + this.getCounterService().handle}>
+										<div className="Menu-title">Need help?</div>
+									</Link>
+								</a>
+							}
+
+						{!this.state.services
+							&& <Message
+								text={"No service found"}
+								height={100}
+							/>
+
+						}
 							<a
 								className="nav-link"
 								href="https://www.cybersecurity.lu/ecosystem"
