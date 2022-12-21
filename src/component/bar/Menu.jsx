@@ -16,6 +16,8 @@ export default class Menu extends React.Component {
 			showFlyingMenu: false,
 			services: null,
 			entities: null,
+			relationshipTypes: null,
+			relationships: null,
 		};
 	}
 
@@ -33,11 +35,13 @@ export default class Menu extends React.Component {
 		});
 
 		this.getServices();
+		this.getEntities();
 	}
 
 	componentDidUpdate(prevProps) {
 		if (!prevProps.lhc && this.props.lhc) {
 			this.getServices();
+			this.getEntities();
 		}
 	}
 
@@ -57,6 +61,56 @@ export default class Menu extends React.Component {
 			}, (error) => {
 				nm.error(error.message);
 			});
+		}
+	}
+
+	getEntities() {
+		if (this.props.lhc) {
+			getRequest.call(this, "public/get_public_entity_relationship_types", (data) => {
+				this.setState({
+					relationshipTypes: data,
+				}, () => {
+					const params = {
+						ids: this.props.lhc.id,
+					};
+
+					getRequest.call(this, "public/get_public_entity_relationships?" + dictToURI(params), (data2) => {
+						this.setState({
+							relationships: data2,
+						}, () => {
+							const params = {
+								ids: this.state.relationships
+									.filter((r) => r.entity_id_2 === this.props.lhc.id)
+									.filter((r) => r.type === this.state.relationshipTypes
+										.filter((t) => t.name = "IS HOSTED BY")
+										.map((t) => t.id)
+										.pop())
+									.map((r) => r.entity_id_1),
+							};
+
+							getRequest.call(this, "public/get_public_entities?" + dictToURI(params), (data3) => {
+								this.setState({
+									entities: data3.sort((a, b) => a.name < b.name ? -1 : 1),
+								});
+							}, (response) => {
+								nm.warning(response.statusText);
+							}, (error) => {
+								nm.error(error.message);
+							});
+						});
+					}, (response) => {
+						nm.warning(response.statusText);
+					}, (error) => {
+						nm.error(error.message);
+					});
+				});
+			}, (response) => {
+				nm.warning(response.statusText);
+			}, (error) => {
+				nm.error(error.message);
+			});
+
+			
 		}
 	}
 
@@ -139,20 +193,26 @@ export default class Menu extends React.Component {
 				className="dropdown-service">
 				<div className="row">
 					<div className="col-sm-12">
-						<a
-							className="dropdown-item"
-							href="https://www.circl.lu/"
-							target="_blank"
-							rel="noreferrer">
-							<div className="Menu-title">CIRCL</div>
-						</a>
-						<a
-							className="dropdown-item"
-							href="https://www.nc3.lu/"
-							target="_blank"
-							rel="noreferrer">
-							<div className="Menu-title">NC3</div>
-						</a>
+						{this.state.entities
+							&& this.state.entities.map((s) => (
+							<div>
+								<a
+									className="dropdown-item"
+									href={s.website}
+									target="_blank"
+									rel="noreferrer">
+									<div className="Menu-title">{s.name}</div>
+								</a>
+							</div>
+						))}
+
+						{!this.state.entities
+							&& <Message
+								text={"No entity found"}
+								height={100}
+							/>
+
+						}
 					</div>
 				</div>
 			</NavDropdown>
