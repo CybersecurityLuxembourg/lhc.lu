@@ -234,14 +234,6 @@ export default class Menu extends React.Component {
 									</Link>
 								</a>
 							}
-
-						{!this.state.services
-							&& <Message
-								text={"No service found"}
-								height={100}
-							/>
-
-						}
 							<a
 								className="nav-link"
 								href="https://www.cybersecurity.lu/ecosystem"
