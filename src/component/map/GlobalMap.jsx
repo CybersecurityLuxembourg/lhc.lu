@@ -11,13 +11,20 @@ export default class GlobalMap extends React.Component {
 		super(props);
 
 		this.state = {
-			lat: 49.8116,
-			lng: 6.1319,
-			zoom: 9,
+			lat: 49.599720,
+			lng: 6.127930,
+			zoom: 13,
 		};
 	}
 
 	render() {
+		const thisIcon = new L.Icon({
+			iconUrl: "/img/logo.png",
+			iconSize: [24, 24],
+			iconAnchor: [12, 36],
+			popupAnchor: [0, -36],
+		});
+
 		return (
 			<div className={"GlobalMap"}>
 				<MapContainer
@@ -26,7 +33,8 @@ export default class GlobalMap extends React.Component {
 					style={{ width: "100%", height: "100%" }}
 				>
 					<Marker
-						position={[this.state.lat, this.state.lng]}>
+						position={[this.state.lat, this.state.lng]}
+						icon={thisIcon}>
 					</Marker>
 
 					<TileLayer
