@@ -2,6 +2,7 @@ import React from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 import { getPrivateAppURL } from "../../utils/env.jsx";
+import { getCounterService } from "../../utils/service.jsx";
 
 export default class Footer extends React.Component {
 	constructor(props) {
@@ -75,7 +76,7 @@ export default class Footer extends React.Component {
 									</div>
 									<div className="Footer-link">
 										<Link to="/#PageHomeServices">
-											Services & Facilities
+											Services
 										</Link>
 									</div>
 									<div className="Footer-link">
@@ -93,12 +94,21 @@ export default class Footer extends React.Component {
 											Report an incident
 										</a>
 									</div>
+									{getCounterService(this.props.services)
+										&& <div className="Footer-link">
+											<a>
+												<Link to={"/service/" + getCounterService(this.props.services).handle}>
+													Need help?
+												</Link>
+											</a>
+										</div>
+									}
 									<div className="Footer-link">
 										<a
-											href="https://www.cybersecurity.lu/search"
+											href="https://www.cybersecurity.lu/ecosystem"
 											target="_blank"
 											rel="noreferrer">
-											Search for more
+											Discover the ecosystem
 										</a>
 									</div>
 								</div>

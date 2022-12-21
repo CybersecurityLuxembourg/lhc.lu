@@ -55,7 +55,7 @@ export default class PageHomeServices extends React.Component {
 			<div className="page max-sized-page">
 				<div className="row">
 					<div className="col-md-12">
-						<h1>Services & Facilites</h1>
+						<h1>Services</h1>
 					</div>
 				</div>
 

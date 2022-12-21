@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Message from "../box/Message.jsx";
 import { getRequest } from "../../utils/request.jsx";
 import { dictToURI } from "../../utils/url.jsx";
+import { getCounterService } from "../../utils/service.jsx";
 
 export default class Menu extends React.Component {
 	constructor(props) {
@@ -14,7 +15,6 @@ export default class Menu extends React.Component {
 
 		this.state = {
 			showFlyingMenu: false,
-			services: null,
 			entities: null,
 			relationshipTypes: null,
 			relationships: null,
@@ -34,33 +34,12 @@ export default class Menu extends React.Component {
 			}
 		});
 
-		this.getServices();
 		this.getEntities();
 	}
 
 	componentDidUpdate(prevProps) {
 		if (!prevProps.lhc && this.props.lhc) {
-			this.getServices();
 			this.getEntities();
-		}
-	}
-
-	getServices() {
-		if (this.props.lhc) {
-			const params = {
-				entities: this.props.lhc.id,
-				type: "SERVICE",
-			};
-
-			getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
-				this.setState({
-					services: data,
-				});
-			}, (response) => {
-				nm.warning(response.statusText);
-			}, (error) => {
-				nm.error(error.message);
-			});
 		}
 	}
 
@@ -114,16 +93,6 @@ export default class Menu extends React.Component {
 		}
 	}
 
-	getCounterService() {
-		if (this.state.services) {
-			return this.state.services.items
-				.filter((s) => s.title.toLowerCase().includes("counter"))
-				.pop();
-		}
-
-		return null;
-	}
-
 	setHash(hash) {
 		window.location.hash = hash;
 	}
@@ -150,8 +119,8 @@ export default class Menu extends React.Component {
 				className="dropdown-service">
 				<div className="row">
 					<div className="col-sm-12">
-						{this.state.services
-							&& this.state.services.items.map((s) => (
+						{this.props.services
+							&& this.props.services.map((s) => (
 							<div>
 								{s.link && s.link.length > 0
 									? <a
@@ -168,7 +137,7 @@ export default class Menu extends React.Component {
 							</div>
 						))}
 
-						{!this.state.services
+						{!this.props.services
 							&& <Message
 								text={"No service found"}
 								height={100}
@@ -285,9 +254,9 @@ export default class Menu extends React.Component {
 								rel="noreferrer">
 								<div className="Menu-title">Report an incident</div>
 							</a>
-							{this.getCounterService()
+							{getCounterService(this.props.services)
 								&& <a className="nav-link">
-									<Link to={"/service/" + this.getCounterService().handle}>
+									<Link to={"/service/" + getCounterService(this.props.services).handle}>
 										<div className="Menu-title">Need help?</div>
 									</Link>
 								</a>

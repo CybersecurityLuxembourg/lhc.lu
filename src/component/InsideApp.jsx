@@ -15,6 +15,7 @@ import PageNews from "./page/PageNews.jsx";
 import PageEvents from "./page/PageEvents.jsx";
 import PageArticle from "./page/PageArticle.jsx";
 import Page404 from "./page/Page404.jsx";
+import { dictToURI } from "../utils/url.jsx";
 
 class InsideApp extends React.Component {
 	constructor(props) {
@@ -23,10 +24,7 @@ class InsideApp extends React.Component {
 		this.state = {
 			lhc: null,
 			analytics: null,
-			facilityServices: [
-				"facility rental",
-				"startups hosting"
-			],
+			services: null,
 			unlisten: null,
 		};
 	}
@@ -56,6 +54,21 @@ class InsideApp extends React.Component {
 			if (data.length === 1) {
 				this.setState({
 					lhc: data[0],
+				}, () => {
+					const params = {
+						entities: this.state.lhc.id,
+						type: "SERVICE",
+					};
+
+					getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data2) => {
+						this.setState({
+							services: data2.items,
+						});
+					}, (response) => {
+						nm.warning(response.statusText);
+					}, (error) => {
+						nm.error(error.message);
+					});
 				});
 			} else if (data.length === 0) {
 				nm.error("LHC data not found. Please contact administrators."); 
@@ -88,8 +101,8 @@ class InsideApp extends React.Component {
 
 				<Route path="/:path?" render={(props) => <Menu
 					lhc={this.state.lhc}
+					services={this.state.services}
 					analytics={this.state.analytics}
-					facilityServices={this.state.facilityServices}
 					{...props}
 				/>}/>
 
@@ -138,7 +151,6 @@ class InsideApp extends React.Component {
 							render={(props) => <PageHome
 								lhc={this.state.lhc}
 								analytics={this.state.analytics}
-								facilityServices={this.state.facilityServices}
 								{...props}
 							/>}
 						/>
@@ -163,7 +175,9 @@ class InsideApp extends React.Component {
 					</Switch>
 				</div>
 
-				<Footer/>
+				<Footer
+					services={this.state.services}
+				/>
 			</div>
 		);
 	}
