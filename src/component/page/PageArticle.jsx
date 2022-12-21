@@ -35,6 +35,13 @@ export default class PageArticle extends React.Component {
 		this.getArticleContent();
 	}
 
+	componentDidUpdate(prevProps) {
+		if (prevProps.match.params.handle !== this.props.match.params.handle) {
+			this.getArticleContent();
+		}
+	}
+
+
 	getArticleContent() {
 		this.setState({
 			article: null,
