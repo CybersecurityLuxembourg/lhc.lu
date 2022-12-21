@@ -1,6 +1,38 @@
 
 #PageHomeCatch {
-    margin: 60px 0px;
+    margin: 80px 0px 60px 0px;
     font-size: 30px;
     text-align: center;
+}
+
+#PageHomeCatch .PageHomeCatch-catch {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    padding: 0px 40px;
+}
+
+#PageHomeCatch .PageHomeCatch-quote:after {
+    top: 0px;
+    width: 100%;
+    color: black;
+    content: "”";
+    font-size: 10rem;
+    line-height: 0;
+    position: absolute;
+    left: -10px;
+    text-align: left;
+}
+
+#PageHomeCatch .PageHomeCatch-mission:after {
+    top: -40px;
+    width: 100%;
+    color: black;
+    content: "Our mission";
+    font-size: 20px;
+    line-height: 0;
+    position: absolute;
+    left: 50px;
+    text-align: left;
+    font-weight: bold;
 }
