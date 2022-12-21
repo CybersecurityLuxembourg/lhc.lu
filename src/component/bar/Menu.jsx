@@ -1,5 +1,6 @@
 import React from "react";
 import "./Menu.css";
+import { NotificationManager as nm } from "react-notifications";
 import Navbar from "react-bootstrap/Navbar";
 import { NavDropdown } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
@@ -18,6 +19,7 @@ export default class Menu extends React.Component {
 			entities: null,
 			relationshipTypes: null,
 			relationships: null,
+			serviceOrder: ["(CIRCL)", "(NC3)"],
 		};
 	}
 
@@ -61,15 +63,16 @@ export default class Menu extends React.Component {
 								ids: this.state.relationships
 									.filter((r) => r.entity_id_2 === this.props.lhc.id)
 									.filter((r) => r.type === this.state.relationshipTypes
-										.filter((t) => t.name = "IS HOSTED BY")
+										.filter((t) => t.name === "IS HOSTED BY")
 										.map((t) => t.id)
 										.pop())
 									.map((r) => r.entity_id_1),
 							};
 
 							getRequest.call(this, "public/get_public_entities?" + dictToURI(params), (data3) => {
+								console.log(data3.sort((a, b) => this.orderEntities(a, b)));
 								this.setState({
-									entities: data3.sort((a, b) => a.name < b.name ? -1 : 1),
+									entities: data3.sort((a, b) => this.orderEntities(a, b)),
 								});
 							}, (response) => {
 								nm.warning(response.statusText);
@@ -88,9 +91,25 @@ export default class Menu extends React.Component {
 			}, (error) => {
 				nm.error(error.message);
 			});
-
-			
 		}
+	}
+
+	orderEntities(a, b) {
+		const getPos = (title) => {
+			for (let i = 0; i < this.state.serviceOrder.length; i++) {
+				if (title.includes(this.state.serviceOrder[i])) {
+					return i;
+				}
+			}
+
+			return Number.MAX_SAFE_INTEGER;
+		};
+
+		if (getPos(a.name) !== getPos(b.name)) {
+			return getPos(a.name) - getPos(b.name);
+		}
+		
+		return a.name < b.name ? -1 : 1;
 	}
 
 	setHash(hash) {
