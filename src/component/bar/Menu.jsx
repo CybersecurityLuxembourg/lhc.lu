@@ -70,7 +70,6 @@ export default class Menu extends React.Component {
 							};
 
 							getRequest.call(this, "public/get_public_entities?" + dictToURI(params), (data3) => {
-								console.log(data3.sort((a, b) => this.orderEntities(a, b)));
 								this.setState({
 									entities: data3.sort((a, b) => this.orderEntities(a, b)),
 								});
