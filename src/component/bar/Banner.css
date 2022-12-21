@@ -2,7 +2,6 @@
 .Banner, .Banner .carousel-root, .Banner .carousel {
     position: relative;
     width: 100%;
-    min-height: 300px;
 }
 
 .Banner > div {
