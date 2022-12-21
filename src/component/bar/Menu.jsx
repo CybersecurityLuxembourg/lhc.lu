@@ -173,7 +173,6 @@ export default class Menu extends React.Component {
 								text={"No service found"}
 								height={100}
 							/>
-
 						}
 					</div>
 				</div>
@@ -211,7 +210,6 @@ export default class Menu extends React.Component {
 								text={"No entity found"}
 								height={100}
 							/>
-
 						}
 					</div>
 				</div>
