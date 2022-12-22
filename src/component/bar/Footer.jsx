@@ -29,7 +29,7 @@ export default class Footer extends React.Component {
 							<div>L-1521 Luxembourg</div>
 							<br/>
 							<div>
-								<a href="mailto:info@cybersecurity-luxembourg.com">info@cybersecurity-luxembourg.com</a>
+								<a href="mailto:info@lhc.lu">info@lhc.lu</a>
 							</div>
 							<br/>
 							<div>(+352) 274 00 98 601</div>
