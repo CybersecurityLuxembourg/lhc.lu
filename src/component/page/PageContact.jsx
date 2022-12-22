@@ -66,7 +66,7 @@ export default class PageContact extends React.Component {
 								<h3>LHC - Luxembourg House of Cybersecurity</h3>
 								<br/>
 								<div>122, Rue Adolphe Fischer, L-1521 Luxembourg</div>
-								<div>info@lhc.lu</div>
+								<div><a href="mailto:info@lhc.lu">info@lhc.lu</a></div>
 								<div>(+352) 274 00 98 601</div>
 							</div>
 						</div>
@@ -88,7 +88,7 @@ export default class PageContact extends React.Component {
 								<h3>CIRCL – Computer Incident Response Center Luxembourg</h3>
 								<br/>
 								<div>122, Rue Adolphe Fischer, L-1521 Luxembourg</div>
-								<div>info@circl.lu</div>
+								<div><a href="mailto:info@circl.lu">info@circl.lu</a></div>
 								<div>GPG fingerprint: CA57 2205 C002 4E06 BA70 BE89 EAAD CFFC 22BD 4CD5</div>
 								<div>(+352) 247 88444</div>
 							</div>
@@ -105,7 +105,7 @@ export default class PageContact extends React.Component {
 								<h3>NC3 – National Cybersecurity Competence Center</h3>
 								<br/>
 								<div>122, Rue Adolphe Fischer, L-1521 Luxembourg</div>
-								<div>info@nc3.lu</div>
+								<div><a href="mailto:info@nc3.lu">info@nc3.lu</a></div>
 								<div>(+352) 274 00 98 667</div>
 							</div>
 						</div>
