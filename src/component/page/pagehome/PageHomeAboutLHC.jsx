@@ -13,8 +13,6 @@ export default class PageHomeAboutLHC extends React.Component {
 					{
 						id: -1,
 						title: "",
-						color: { border: "white", background: "#193c6d" },
-						font: { color: "white", size: 14 },
 						shape: "image",
 						image: "/img/lhc-logo-full.png",
 						chosen: false,
@@ -29,15 +27,15 @@ export default class PageHomeAboutLHC extends React.Component {
 					this.getTextNode(17, "Research"),
 					this.getTextNode(18, "and more..."),
 
-					this.getImageNode(100, "/img/lhc-logo-full.png", "https://www.google.com"),
-					this.getImageNode(101, "/img/lhc-logo-full.png", "https://www.google.com"),
-					this.getImageNode(102, "/img/lhc-logo-full.png", "https://www.google.com"),
-					this.getImageNode(103, "/img/lhc-logo-full.png", "https://www.google.com"),
-					this.getImageNode(104, "/img/lhc-logo-full.png", "https://www.google.com"),
-					this.getImageNode(105, "/img/lhc-logo-full.png", "https://www.google.com"),
-					this.getImageNode(106, "/img/lhc-logo-full.png", "https://www.google.com"),
-					this.getImageNode(107, "/img/lhc-logo-full.png", "https://www.google.com"),
-					this.getImageNode(108, "/img/lhc-logo-full.png", "https://www.google.com"),
+					this.getImageNode(100, "/img/circl.png", "https://www.circl.lu"),
+					this.getImageNode(101, "/img/nc3.png", "https://www.circl.lu"),
+					this.getImageNode(102, "/img/beesecure.png", "https://www.bee-secure.lu"),
+					this.getImageNode(103, "/img/dih.png", "https://www.dih.lu"),
+					this.getImageNode(104, "/img/dlh.png", "https://dlh.lu"),
+					this.getImageNode(105, "/img/sigi.png", "https://www.sigi.lu"),
+					this.getImageNode(106, "/img/esante.png", "https://www.esante.lu"),
+					this.getImageNode(107, "/img/defence.png", "https://defense.gouvernement.lu"),
+					this.getImageNode(108, "/img/snt.jpg", "https://wwwfr.uni.lu"),
 				],
 				edges: [
 					this.getEdge(-1, 10, true),
@@ -69,9 +67,9 @@ export default class PageHomeAboutLHC extends React.Component {
 		return {
 			id,
 			title,
-			label: title,
+			label: "<b>" + title + "</b>",
 			color: { border: "white", background: "#193c6d" },
-			font: { color: "white", size: 14 },
+			font: { color: "white", size: 22 },
 			shape: "box",
 			chosen: false,
 		};
@@ -82,9 +80,17 @@ export default class PageHomeAboutLHC extends React.Component {
 			id,
 			title: "",
 			shape: "image",
-			image: "/img/lhc-logo-full.png",
+			image: img,
 			chosen: false,
 			link,
+			borderWidth: 2,
+			size: 40,
+			shapeProperties: { useBorderWithImage: true },
+			color: {
+				border: "#193c6d",
+				background: "white",
+				radius: 10,
+			},
 		};
 	}
 
@@ -107,7 +113,12 @@ export default class PageHomeAboutLHC extends React.Component {
 
 	render() {
 		const options = {
-			physics: { barnesHut: { springLength: 100, springConstant: .2 } },
+			physics: {
+				barnesHut: {
+					springLength: 120,
+					springConstant: .2,
+				}
+			},
 			layout: {
 			},
 			nodes: {
