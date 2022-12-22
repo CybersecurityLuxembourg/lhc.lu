@@ -116,16 +116,16 @@ export default class PageContact extends React.Component {
 							</div>
 
 							<div className="col-md-6 row-spaced">
-								<div>by Car</div>
+								<div><i className="fas fa-chevron-circle-right"/> by Car</div>
 								<div><b>Closest Parking:</b></div>
 								<div>Bouillon P+R (24h free parking)</div>
 								<div>Parking de la Gare</div>
 								<br/>
-								<div>by Bus</div>
+								<div><i className="fas fa-chevron-circle-right"/> by Bus</div>
 								<div><b>Closest bus stops:</b></div>
 								<div>Hollerich, Fonderie: 4, 10, 14, 20, 27, 94, 603</div>
 								<br/>
-								<div>by Bike</div>
+								<div><i className="fas fa-chevron-circle-right"/> by Bike</div>
 								<div><b>Closest vel'OH station:</b></div>
 								<div>vel'OH station n°3 Stroossbuerger Plaz - Place de Strasbourg</div>
 							</div>

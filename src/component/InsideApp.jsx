@@ -108,10 +108,26 @@ class InsideApp extends React.Component {
 
 				<div id="InsideApp-content">
 					<Switch>
-						<Route path="/news/:handle" render={(props) => <PageArticle {...props} />}/>
-						<Route path="/event/:handle" render={(props) => <PageArticle {...props} />}/>
-						<Route path="/service/:handle" render={(props) => <PageArticle {...props} />}/>
-						<Route path="/tool/:handle" render={(props) => <PageArticle {...props} />}/>
+						<Route path="/news/:handle" render={(props) => <PageArticle 
+							services={this.state.services}
+							{...props}
+							/>
+						}/>
+						<Route path="/event/:handle" render={(props) => <PageArticle 
+							services={this.state.services}
+							{...props}
+							/>
+						}/>
+						<Route path="/service/:handle" render={(props) => <PageArticle 
+							services={this.state.services}
+							{...props}
+							/>
+						}/>
+						<Route path="/tool/:handle" render={(props) => <PageArticle 
+							services={this.state.services}
+							{...props}
+							/>
+						}/>
 
 						<Route
 							path="/news"

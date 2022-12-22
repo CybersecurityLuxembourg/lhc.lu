@@ -36,36 +36,53 @@ export default class PageArticle extends React.Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		if (prevProps.match.params.handle !== this.props.match.params.handle) {
+		if (prevProps.match.params.handle !== this.props.match.params.handle
+			|| prevProps.services !== this.props.services) {
 			this.getArticleContent();
 		}
 	}
 
 
 	getArticleContent() {
-		this.setState({
-			article: null,
-			relatedArticles: null,
-		});
-
-		getRequest.call(this, "public/get_public_article_content/" + this.props.match.params.handle, (data) => {
+		if (this.props.services) {
 			this.setState({
-				article: data,
+				article: null,
+				relatedArticles: null,
 			});
 
-			getRequest.call(this, "public/get_public_related_articles/" + this.props.match.params.handle + "?include_tags=true", (data2) => {
+			getRequest.call(this, "public/get_public_article_content/" + this.props.match.params.handle, (data) => {
 				this.setState({
-					relatedArticles: data2,
+					article: data,
+				}, () => {
+					if (this.state.article.type === "SERVICE") {
+						this.getRelatedServices();
+					} else {
+						this.getRelatedArticles();
+					}
 				});
 			}, (response) => {
 				nm.warning(response.statusText);
 			}, (error) => {
 				nm.error(error.message);
 			});
+		}
+	}
+
+	getRelatedArticles() {
+		getRequest.call(this, "public/get_public_related_articles/" + this.props.match.params.handle + "?include_tags=true", (data2) => {
+			this.setState({
+				relatedArticles: data2,
+			});
 		}, (response) => {
 			nm.warning(response.statusText);
 		}, (error) => {
 			nm.error(error.message);
+		});
+	}
+
+	getRelatedServices() {
+		this.setState({
+			relatedArticles: this.props.services,
 		});
 	}
 
@@ -163,7 +180,12 @@ export default class PageArticle extends React.Component {
 							<div className="container">
 								<div className="row PageArticle-related-article">
 									<div className="col-md-12">
-										<h3>Related articles</h3>
+										<h3>
+											{this.state.article.type === "SERVICE"
+												? "All services"
+												: "Related articles"
+											}
+										</h3>
 									</div>
 
 									{this.state.relatedArticles
