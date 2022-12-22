@@ -15,6 +15,7 @@ export default class PageHomeAboutLHC extends React.Component {
 						title: "",
 						shape: "image",
 						image: "/img/lhc-logo-full.png",
+						size: 40,
 						chosen: false,
 					},
 					this.getTextNode(10, "Economy"),
@@ -27,13 +28,13 @@ export default class PageHomeAboutLHC extends React.Component {
 					this.getTextNode(17, "Research"),
 					this.getTextNode(18, "and more..."),
 
-					this.getImageNode(100, "/img/circl.png", "https://www.circl.lu"),
-					this.getImageNode(101, "/img/nc3.png", "https://www.circl.lu"),
+					this.getImageNode(100, "/img/circl.png", "https://www.circl.lu", 30),
+					this.getImageNode(101, "/img/nc3.png", "https://www.circl.lu", 30),
 					this.getImageNode(102, "/img/beesecure.png", "https://www.bee-secure.lu"),
 					this.getImageNode(103, "/img/dih.png", "https://www.dih.lu"),
 					this.getImageNode(104, "/img/dlh.png", "https://dlh.lu"),
 					this.getImageNode(105, "/img/sigi.png", "https://www.sigi.lu"),
-					this.getImageNode(106, "/img/esante.png", "https://www.esante.lu"),
+					this.getImageNode(106, "/img/esante.png", "https://www.esante.lu", 25),
 					this.getImageNode(107, "/img/defence.png", "https://defense.gouvernement.lu"),
 					this.getImageNode(108, "/img/snt.jpg", "https://wwwfr.uni.lu"),
 				],
@@ -75,7 +76,7 @@ export default class PageHomeAboutLHC extends React.Component {
 		};
 	}
 
-	getImageNode(id, img, link) {
+	getImageNode(id, img, link, size) {
 		return {
 			id,
 			title: "",
@@ -84,7 +85,7 @@ export default class PageHomeAboutLHC extends React.Component {
 			chosen: false,
 			link,
 			borderWidth: 2,
-			size: 40,
+			size: size || 40,
 			shapeProperties: { useBorderWithImage: true },
 			color: {
 				border: "#193c6d",
@@ -135,7 +136,7 @@ export default class PageHomeAboutLHC extends React.Component {
 			edges: {
 				color: "#000000",
 			},
-			height: "500px",
+			height: "600px",
 		};
 
 		const events = {
