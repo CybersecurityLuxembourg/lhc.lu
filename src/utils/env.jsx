@@ -18,6 +18,16 @@ export function getPrivateAppURL() {
 	return "https://community.cybersecurity.lu/";
 }
 
+export function getCyberluxPortalURL() {
+	if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.hostname === "") {
+		return "http://localhost:3002/";
+	}
+	if (window.location.hostname.includes("test.")) {
+		return "https://test.cybersecurity.lu/";
+	}
+	return "https://cybersecurity.lu/";
+}
+
 export function isInternetExplorer() {
 	const ua = window.navigator.userAgent;
 	const msie = ua.indexOf("MSIE ");

@@ -9,30 +9,18 @@
     position: relative;
     width: fit-content;
     margin: auto;
-    padding: 0px 40px;
+    padding: 30px 40px;
+    border: #DDD 5px solid;
 }
 
 #PageHomeCatch .PageHomeCatch-quote:after {
-    top: 0px;
+    top: 30px;
     width: 100%;
-    color: black;
+    color: grey;
     content: "”";
     font-size: 10rem;
     line-height: 0;
     position: absolute;
-    left: -10px;
+    left: 10px;
     text-align: left;
-}
-
-#PageHomeCatch .PageHomeCatch-mission:after {
-    top: -40px;
-    width: 100%;
-    color: black;
-    content: "Our mission";
-    font-size: 20px;
-    line-height: 0;
-    position: absolute;
-    left: 50px;
-    text-align: left;
-    font-weight: bold;
 }

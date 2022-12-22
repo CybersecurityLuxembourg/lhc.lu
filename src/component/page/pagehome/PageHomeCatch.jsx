@@ -13,7 +13,6 @@ export default class PageHomeCatch extends React.Component {
 					<div className="col-md-12">
 						<div className="PageHomeCatch-catch">
 							<div className="PageHomeCatch-quote"/>
-							<div className="PageHomeCatch-mission"/>
 							LHC is the backbone of leading-edge<br/>
 							cyber resilience in Luxembourg.
 						</div>

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import Message from "../box/Message.jsx";
 import { getRequest } from "../../utils/request.jsx";
 import { dictToURI } from "../../utils/url.jsx";
+import { getCyberluxPortalURL } from "../../utils/env.jsx";
 import { getCounterService } from "../../utils/service.jsx";
 
 export default class Menu extends React.Component {
@@ -119,7 +120,7 @@ export default class Menu extends React.Component {
 		return <Nav className="mr-sm-2 ml-auto">
 			<a className="nav-link" onClick={() => this.setHash("PageHomeAboutLHC")}>
 				<Link to="/">
-					<div className="Menu-title">About LHC</div>
+					<div className="Menu-title"><b>About LHC</b></div>
 				</Link>
 			</a>
 
@@ -184,7 +185,7 @@ export default class Menu extends React.Component {
 							<div>
 								<a
 									className="dropdown-item"
-									href={s.website}
+									href={getCyberluxPortalURL() + "entity/" + s.id}
 									target="_blank"
 									rel="noreferrer">
 									<div className="Menu-title">{s.name}</div>
@@ -240,7 +241,7 @@ export default class Menu extends React.Component {
 
 			<Nav.Link>
 				<Link to="/contact">
-					<div className="Menu-title">Contact us</div>
+					<div className="Menu-title"><b>Contact us</b></div>
 				</Link>
 			</Nav.Link>
 		</Nav>;
@@ -270,12 +271,12 @@ export default class Menu extends React.Component {
 								href="https://circl.lu/report/"
 								target="_blank"
 								rel="noreferrer">
-								<div className="Menu-title">Report an incident</div>
+								<div className="Menu-title"><i className="fas fa-exclamation-triangle"/> Report an incident</div>
 							</a>
 							{getCounterService(this.props.services)
 								&& <a className="nav-link">
 									<Link to={"/service/" + getCounterService(this.props.services).handle}>
-										<div className="Menu-title">Need help?</div>
+										<div className="Menu-title"><i className="fas fa-question-circle"/> Need help?</div>
 									</Link>
 								</a>
 							}
@@ -284,7 +285,7 @@ export default class Menu extends React.Component {
 								href="https://www.cybersecurity.lu/ecosystem"
 								target="_blank"
 								rel="noreferrer">
-								<div className="Menu-title">Discover the ecosystem</div>
+								<div className="Menu-title"><i className="fas fa-search"/> Discover the ecosystem</div>
 							</a>
 						</Nav>
 					</Navbar.Collapse>

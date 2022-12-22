@@ -61,8 +61,6 @@ export default class PageHomeServices extends React.Component {
 
 				<div className="row row-spaced">
 					<div className="col-md-4">
-						<h3>Services</h3>
-
 						{!this.state.services
 							&& <Loading
 								height={200}
