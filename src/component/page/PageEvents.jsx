@@ -22,6 +22,7 @@ export default class PageEvents extends React.Component {
 			events: null,
 			eventFilter: getUrlParameter("filter")
 				? getUrlParameter("filter") : null,
+			showPastEvents: false,
 		};
 	}
 
@@ -34,7 +35,8 @@ export default class PageEvents extends React.Component {
 			this.getEvents();
 		}
 
-		if (prevState.eventFilter !== this.state.eventFilter) {
+		if (prevState.eventFilter !== this.state.eventFilter
+			|| prevState.showPastEvents !== this.state.showPastEvents) {
 			this.getEvents();
 		}
 
@@ -50,8 +52,8 @@ export default class PageEvents extends React.Component {
 				per_page: 10,
 				page: page || 1,
 				order_by: "start_date",
-				min_end_date: dateToString(new Date()),
-				order: "asc",
+				min_end_date: this.state.showPastEvents ? undefined : dateToString(new Date()),
+				order: this.state.showPastEvents ? "desc" : "asc",
 				entities: this.props.lhc.id,
 				taxonomy_values: this.getTaxonomyValues().filter((v) => v.name === this.state.eventFilter).pop()
 						? this.getTaxonomyValues().filter((v) => v.name === this.state.eventFilter).pop().id
@@ -123,7 +125,7 @@ export default class PageEvents extends React.Component {
 						</div>
 
 
-						<div className="col-md-12 row-spaced">
+						<div className="col-md-8 row-spaced">
 							<CheckBox
 								label={"All"}
 								value={!this.state.eventFilter}
@@ -136,6 +138,16 @@ export default class PageEvents extends React.Component {
 									onClick={() => this.changeUrl(v.name)}
 								/>
 							))}
+						</div>
+
+						<div className="col-md-4 row-spaced">
+							<div className="PageEvents-right-filter">
+								<CheckBox
+									label={"Show past events"}
+									value={this.state.showPastEvents}
+									onClick={() => this.setState({ showPastEvents: !this.state.showPastEvents })}
+								/>
+							</div>
 						</div>
 
 						<div className="col-md-12">
