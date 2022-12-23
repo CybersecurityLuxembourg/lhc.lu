@@ -8,6 +8,7 @@ export default class PageHomeAboutLHC extends React.Component {
 		super(props);
 
 		this.state = {
+			network: null,
 			data: {
 				nodes: [
 					{
@@ -15,7 +16,7 @@ export default class PageHomeAboutLHC extends React.Component {
 						title: "",
 						shape: "image",
 						image: "/img/lhc-logo-full.png",
-						size: 40,
+						size: 30,
 						chosen: false,
 					},
 					this.getTextNode(10, "Economy"),
@@ -64,6 +65,14 @@ export default class PageHomeAboutLHC extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+		window.addEventListener('resize', () => {
+			if (this.state.network) {
+				this.state.network.redraw();
+			}
+		});
+	}
+
 	getTextNode(id, title) {
 		return {
 			id,
@@ -84,11 +93,11 @@ export default class PageHomeAboutLHC extends React.Component {
 			image: img,
 			chosen: false,
 			link,
-			borderWidth: 2,
+			borderWidth: 10,
 			size: size || 40,
 			shapeProperties: { useBorderWithImage: true },
 			color: {
-				border: "#193c6d",
+				border: "white",
 				background: "white",
 				radius: 10,
 			},
@@ -121,6 +130,11 @@ export default class PageHomeAboutLHC extends React.Component {
 				}
 			},
 			layout: {
+			},
+			interaction: {
+				zoomView: false,
+				dragNodes: false,
+				dragView: false,
 			},
 			nodes: {
 				margin: {
@@ -185,6 +199,9 @@ export default class PageHomeAboutLHC extends React.Component {
 							graph={this.state.data}
 							options={options}
 							events={events}
+							getNetwork={network => {
+								this.setState({ network })
+							}}
 						/>
 					</div>
 				</div>
