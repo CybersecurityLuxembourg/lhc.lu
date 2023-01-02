@@ -93,7 +93,7 @@ export default class PageHomeAboutLHC extends React.Component {
 			image: img,
 			chosen: false,
 			link,
-			borderWidth: 10,
+			borderWidth: 8,
 			size: size || 40,
 			shapeProperties: { useBorderWithImage: true },
 			color: {
@@ -135,6 +135,7 @@ export default class PageHomeAboutLHC extends React.Component {
 				zoomView: false,
 				dragNodes: false,
 				dragView: false,
+				hover: true,
 			},
 			nodes: {
 				margin: {
