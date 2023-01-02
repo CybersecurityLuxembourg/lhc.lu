@@ -128,7 +128,7 @@ export default class Menu extends React.Component {
 				title={
 					<div onClick={() => this.setHash("PageHomeServices")}>
 						<Link to="/">
-							<div className="Menu-title">Services</div>
+							<div className="Menu-title"><b>Services</b></div>
 							<i className="fas fa-sort-down"/>
 						</Link>
 					</div>
@@ -170,7 +170,7 @@ export default class Menu extends React.Component {
 				title={
 					<div>
 						<Link to="/">
-							<div className="Menu-title">Hosted by LHC</div>
+							<div className="Menu-title"><b>Hosted by LHC</b></div>
 							<i className="fas fa-sort-down"/>
 						</Link>
 					</div>
@@ -207,7 +207,7 @@ export default class Menu extends React.Component {
 				title={
 					<div onClick={() => this.setHash("PageHomeNews")}>
 						<Link to="/">
-							<div className="Menu-title">News & events</div>
+							<div className="Menu-title"><b>News & events</b></div>
 							<i className="fas fa-sort-down"/>
 						</Link>
 					</div>
