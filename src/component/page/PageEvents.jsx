@@ -53,6 +53,7 @@ export default class PageEvents extends React.Component {
 				page: page || 1,
 				order_by: "start_date",
 				min_end_date: this.state.showPastEvents ? undefined : dateToString(new Date()),
+				max_end_date: this.state.showPastEvents ? dateToString(new Date()) : undefined,
 				order: this.state.showPastEvents ? "desc" : "asc",
 				entities: this.props.lhc.id,
 				taxonomy_values: this.getTaxonomyValues().filter((v) => v.name === this.state.eventFilter).pop()
