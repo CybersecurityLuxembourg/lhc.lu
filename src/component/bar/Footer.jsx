@@ -61,7 +61,7 @@ export default class Footer extends React.Component {
 								<div className="col-md-12">
 									<div className="Footer-link">
 										<Link to="/#PageHomeAboutLHC">
-											About LHC
+											About us
 										</Link>
 									</div>
 									<div className="Footer-link">

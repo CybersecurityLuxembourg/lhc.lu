@@ -120,7 +120,7 @@ export default class Menu extends React.Component {
 		return <Nav className="mr-sm-2 ml-auto">
 			<a className="nav-link" onClick={() => this.setHash("PageHomeAboutLHC")}>
 				<Link to="/">
-					<div className="Menu-title"><b>About LHC</b></div>
+					<div className="Menu-title"><b>About us</b></div>
 				</Link>
 			</a>
 

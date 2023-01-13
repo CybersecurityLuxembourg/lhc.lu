@@ -170,7 +170,7 @@ export default class PageHomeAboutLHC extends React.Component {
 			<div className="page max-sized-page">
 				<div className="row row-spaced">
 					<div className="col-md-12">
-						<h1>About LHC</h1>
+						<h1>About us</h1>
 					</div>
 
 					<div className="col-md-5 row-spaced">
