@@ -30,7 +30,7 @@ export default class PageHomeAboutLHC extends React.Component {
 					this.getTextNode(18, "and more..."),
 
 					this.getImageNode(100, "/img/circl.png", "https://www.circl.lu", 30),
-					this.getImageNode(101, "/img/nc3.png", "https://www.circl.lu", 30),
+					this.getImageNode(101, "/img/nc3.png", "https://www.nc3.lu", 30),
 					this.getImageNode(102, "/img/beesecure.png", "https://www.bee-secure.lu"),
 					this.getImageNode(103, "/img/dih.png", "https://www.dih.lu"),
 					this.getImageNode(104, "/img/dlh.png", "https://dlh.lu"),
