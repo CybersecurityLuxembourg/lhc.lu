@@ -30,7 +30,7 @@ export default class PageHomeAboutLHC extends React.Component {
 					this.getTextNode(18, "and more..."),
 
 					this.getImageNode(100, "/img/circl.png", "https://www.circl.lu", 30),
-					this.getImageNode(101, "/img/nc3.png", "https://www.circl.lu", 30),
+					this.getImageNode(101, "/img/nc3.png", "https://www.nc3.lu", 30),
 					this.getImageNode(102, "/img/beesecure.png", "https://www.bee-secure.lu"),
 					this.getImageNode(103, "/img/dih.png", "https://www.dih.lu"),
 					this.getImageNode(104, "/img/dlh.png", "https://dlh.lu"),
@@ -38,6 +38,7 @@ export default class PageHomeAboutLHC extends React.Component {
 					this.getImageNode(106, "/img/esante.png", "https://www.esante.lu", 25),
 					this.getImageNode(107, "/img/defence.png", "https://defense.gouvernement.lu"),
 					this.getImageNode(108, "/img/snt.jpg", "https://wwwfr.uni.lu"),
+					this.getImageNode(109, "/img/lgk.png", "https://www.lgk.lu/bts/cyb/", 30),
 				],
 				edges: [
 					this.getEdge(-1, 10, true),
@@ -53,9 +54,9 @@ export default class PageHomeAboutLHC extends React.Component {
 					this.getEdge(10, 100),
 					this.getEdge(10, 101),
 					this.getEdge(11, 102),
-
 					this.getEdge(12, 103),
 					this.getEdge(13, 104),
+					this.getEdge(13, 109),
 					this.getEdge(14, 105),
 					this.getEdge(15, 106),
 					this.getEdge(16, 107),

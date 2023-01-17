@@ -117,7 +117,8 @@ export default class PageContact extends React.Component {
 
 							<div className="col-md-6 row-spaced">
 								<div><i className="fas fa-chevron-circle-right"/> by Car</div>
-								<div><b>Closest Parking:</b></div>
+								<div><b>Closest Parkings:</b></div>
+								<div>Parking Fort Wedell</div>
 								<div>Bouillon P+R (24h free parking)</div>
 								<div>Parking de la Gare</div>
 								<br/>
