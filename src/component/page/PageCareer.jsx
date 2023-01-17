@@ -65,7 +65,7 @@ export default class PageCareer extends React.Component {
 		return (
 			<div id={"PageCareer"}>
 				<Banner
-					image={"/img/banner-news.jpg"}
+					image={"/img/banner-career.png"}
 				/>
 
 				<div className={"page max-sized-page"}>
