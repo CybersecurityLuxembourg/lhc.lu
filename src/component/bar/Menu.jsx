@@ -118,11 +118,30 @@ export default class Menu extends React.Component {
 
 	getNavBar() {
 		return <Nav className="mr-sm-2 ml-auto">
-			<a className="nav-link" onClick={() => this.setHash("PageHomeAboutLHC")}>
-				<Link to="/">
-					<div className="Menu-title"><b>About us</b></div>
-				</Link>
-			</a>
+			<NavDropdown
+				title={
+					<div onClick={() => this.setHash("PageHomeAboutLHC")}>
+						<Link to="/">
+							<div className="Menu-title"><b>The Agency</b></div>
+							<i className="fas fa-sort-down"/>
+						</Link>
+					</div>
+				}
+				id="basic-nav-dropdown"
+				renderMenuOnMount={true}>
+				<div className="row">
+					<div className="col-sm-12">
+						<div onClick={() => this.setHash("PageHomeAboutLHC")}>
+							<NavDropdown.Item as={Link} to="/">
+								<div className="Menu-title">About us</div>
+							</NavDropdown.Item>
+						</div>
+						<NavDropdown.Item as={Link} to="/career">
+							<div className="Menu-title">Career</div>
+						</NavDropdown.Item>
+					</div>
+				</div>
+			</NavDropdown>
 
 			<NavDropdown
 				title={

@@ -10,6 +10,7 @@ import Menu from "./bar/Menu.jsx";
 import Footer from "./bar/Footer.jsx";
 import PageHome from "./page/PageHome.jsx";
 import PageContact from "./page/PageContact.jsx";
+import PageCareer from "./page/PageCareer.jsx";
 import PageHelp from "./page/PageHelp.jsx";
 import PageNews from "./page/PageNews.jsx";
 import PageEvents from "./page/PageEvents.jsx";
@@ -128,6 +129,11 @@ class InsideApp extends React.Component {
 							{...props}
 							/>
 						}/>
+						<Route path="/job/:handle" render={(props) => <PageArticle 
+							services={this.state.services}
+							{...props}
+							/>
+						}/>
 
 						<Route
 							path="/news"
@@ -148,6 +154,14 @@ class InsideApp extends React.Component {
 						<Route
 							path="/contact"
 							render={(props) => <PageContact
+								lhc={this.state.lhc}
+								analytics={this.state.analytics}
+								{...props}
+							/>}
+						/>
+						<Route
+							path="/career"
+							render={(props) => <PageCareer
 								lhc={this.state.lhc}
 								analytics={this.state.analytics}
 								{...props}
