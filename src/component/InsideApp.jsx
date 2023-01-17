@@ -129,7 +129,7 @@ class InsideApp extends React.Component {
 							{...props}
 							/>
 						}/>
-						<Route path="/job/:handle" render={(props) => <PageArticle 
+						<Route path="/job-offer/:handle" render={(props) => <PageArticle 
 							services={this.state.services}
 							{...props}
 							/>

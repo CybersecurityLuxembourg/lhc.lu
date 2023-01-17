@@ -34,7 +34,7 @@ export default class SmallArticle extends Component {
 				{this.getBoxContent()}
 			</a>
 			: <Link
-				to={`/${this.props.info.type.toLowerCase()}/${this.props.info.handle}`}
+				to={`/${this.props.info.type.toLowerCase().replace(" ", "-")}/${this.props.info.handle}`}
 				className="SmallArticle-link">
 				{this.getBoxContent()}
 			</Link>;
