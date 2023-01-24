@@ -92,7 +92,7 @@ export default class PageCareer extends React.Component {
 								&& <div className="row row-spaced">
 									<div className="col-md-12">
 										<Message
-											text={"No job offer found"}
+											text={"We don’t have any job vacancies at this time but we recommend that you regularly check our Career page."}
 											height={200}
 										/>
 									</div>
@@ -129,6 +129,22 @@ export default class PageCareer extends React.Component {
 									</div>
 								</div>
 							}
+						</div>
+					</div>
+
+					<div className="row row-spaced">
+						<div className="col-md-12 row-spaced">
+							<h2>Internship at CIRCL</h2>
+						</div>
+
+						<div className="col-md-12">
+							<Message
+								text={<div>
+									<b><a href="https://circl.lu/projects/internships/" target="_blank">CIRCL</a> offers several regular internship opportunities. Take a look at
+									them <a href="https://circl.lu/projects/internships/" target="_blank">here</a>.</b>
+								</div>}
+								height={150}
+							/>
 						</div>
 					</div>
 				</div>
