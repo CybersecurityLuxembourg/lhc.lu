@@ -1,5 +1,4 @@
-@font-face { font-family: "Acrom"; src: url('./font/Acrom-Regular.ttf'); }
-@font-face { font-family: "Acrom Bold"; src: url('./font/Acrom-ExtraBold.ttf'); }
+@font-face { font-family: "FjallaOne"; src: url('./font/FjallaOne-Regular.ttf'); }
 
 :root {
     --default-color: grey;
@@ -16,8 +15,8 @@
     --default-font-color: #58595b;
     --title-font-color: #010101;
 
-    --default-font: 'Acrom', Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    --title-font: "Acrom Bold", "Helvetica Neue", Heflvetica, Arial, sans-serif;
+    --default-font: 'Roboto', Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    --title-font: "FjallaOne", "Helvetica Neue", Heflvetica, Arial, sans-serif;
 
     --media-transition-width: 768px;
 }
