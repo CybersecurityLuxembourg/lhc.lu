@@ -222,6 +222,12 @@ export default class Menu extends React.Component {
 				</div>
 			</NavDropdown>
 
+			<Nav.Link>
+				<Link to="/publications">
+					<div className="Menu-title"><b>Publications</b></div>
+				</Link>
+			</Nav.Link>
+
 			<NavDropdown
 				title={
 					<div onClick={() => this.setHash("PageHomeNews")}>

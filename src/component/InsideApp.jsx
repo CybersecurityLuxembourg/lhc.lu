@@ -14,6 +14,7 @@ import PageCareer from "./page/PageCareer.jsx";
 import PageHelp from "./page/PageHelp.jsx";
 import PageNews from "./page/PageNews.jsx";
 import PageEvents from "./page/PageEvents.jsx";
+import PagePublications from "./page/PagePublications.jsx";
 import PageArticle from "./page/PageArticle.jsx";
 import Page404 from "./page/Page404.jsx";
 import { dictToURI } from "../utils/url.jsx";
@@ -146,6 +147,14 @@ class InsideApp extends React.Component {
 						<Route
 							path="/events"
 							render={(props) => <PageEvents
+								lhc={this.state.lhc}
+								analytics={this.state.analytics}
+								{...props}
+							/>}
+						/>
+						<Route
+							path="/publications"
+							render={(props) => <PagePublications
 								lhc={this.state.lhc}
 								analytics={this.state.analytics}
 								{...props}
