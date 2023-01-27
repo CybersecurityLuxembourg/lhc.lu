@@ -39,6 +39,10 @@ export default class Article extends Component {
 	}
 
 	getDate() {
+		if (this.props.info.title === "Internship at CIRCL") {
+			return "";
+		}
+
 		if (this.props.info.type === "EVENT") {
 			if (this.props.info.start_date && this.props.info.end_date) {
 				return <div>
@@ -48,8 +52,7 @@ export default class Article extends Component {
 				</div>;
 			}
 
-			return "No Info"
-			
+			return "No Info";
 		}
 
 		return dateToString(this.props.info.publication_date, "DD MMM YYYY");
