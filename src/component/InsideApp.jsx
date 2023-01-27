@@ -205,6 +205,10 @@ class InsideApp extends React.Component {
 							<Redirect to="/events" />
 						</Route>
 
+						<Route exact path="/job-offer">
+							<Redirect to="/career" />
+						</Route>
+
 						<Route exact path="/service">
 							<Redirect to="/#PageHomeServices" />
 						</Route>

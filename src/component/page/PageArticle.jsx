@@ -101,14 +101,14 @@ export default class PageArticle extends React.Component {
 							<Breadcrumb.Item><Link to="/">HOME</Link></Breadcrumb.Item>
 							{this.state.article
 								&& <Breadcrumb.Item>
-									<Link to={"/" + this.state.article.type.toLowerCase()}>
+									<Link to={"/" + this.state.article.type.toLowerCase().replaceAll(" ", "-")}>
 										{this.state.article.type}
 									</Link>
 								</Breadcrumb.Item>
 							}
 							{this.state.article
 								&& <Breadcrumb.Item>
-									<Link to={"/" + this.state.article.type.toLowerCase()
+									<Link to={"/" + this.state.article.type.toLowerCase().replaceAll(" ", "-")
 										+ "/" + this.props.match.params.handle}>
 										{this.state.article.title}
 									</Link>
