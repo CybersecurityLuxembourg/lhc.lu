@@ -125,6 +125,7 @@ export default class PageContact extends React.Component {
 								<div><i className="fas fa-chevron-circle-right"/> by Bus</div>
 								<div><b>Closest bus stops:</b></div>
 								<div>Hollerich, Fonderie: 4, 10, 14, 20, 27, 94, 603</div>
+								<div>Centre, Adolphe Fischer: 19</div>
 								<br/>
 								<div><i className="fas fa-chevron-circle-right"/> by Bike</div>
 								<div><b>Closest vel'OH station:</b></div>
