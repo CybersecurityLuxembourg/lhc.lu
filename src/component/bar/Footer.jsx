@@ -31,8 +31,16 @@ export default class Footer extends React.Component {
 							<div>
 								<a href="mailto:info@lhc.lu">info@lhc.lu</a>
 							</div>
-							<br/>
 							<div>(+352) 274 00 98 601</div>
+							<br/>
+							<a
+								href={"https://api.cybersecurity.lu/public/get_public_document/LHC_Legal_Notice.pdf"}
+								rel="noreferrer"
+								target="_blank"
+								title="Terms of use">
+								<i className="fas fa-gavel"/> Terms of use
+							</a>
+							<br/>
 							<br/>
 							<div className="Footer-network">
 								<a
