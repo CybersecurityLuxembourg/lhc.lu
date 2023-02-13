@@ -19,7 +19,6 @@ export default class PageHomeAboutLHC extends React.Component {
 						size: 30,
 						chosen: false,
 					},
-					this.getTextNode(10, "Economy"),
 					this.getTextNode(11, "Citizens"),
 					this.getTextNode(12, "Industry"),
 					this.getTextNode(13, "Education"),
@@ -29,8 +28,6 @@ export default class PageHomeAboutLHC extends React.Component {
 					this.getTextNode(17, "Research"),
 					this.getTextNode(18, "and more..."),
 
-					this.getImageNode(100, "/img/circl.png", "https://www.circl.lu", 30),
-					this.getImageNode(101, "/img/nc3.png", "https://www.nc3.lu", 30),
 					this.getImageNode(102, "/img/beesecure.png", "https://www.bee-secure.lu"),
 					this.getImageNode(103, "/img/dih.png", "https://www.dih.lu"),
 					this.getImageNode(104, "/img/dlh.png", "https://dlh.lu"),
@@ -41,7 +38,6 @@ export default class PageHomeAboutLHC extends React.Component {
 					this.getImageNode(109, "/img/lgk.png", "https://www.lgk.lu/bts/cyb/", 30),
 				],
 				edges: [
-					this.getEdge(-1, 10, true),
 					this.getEdge(-1, 11, true),
 					this.getEdge(-1, 12, true),
 					this.getEdge(-1, 13, true),
@@ -51,8 +47,6 @@ export default class PageHomeAboutLHC extends React.Component {
 					this.getEdge(-1, 17, true),
 					this.getEdge(-1, 18, true),
 
-					this.getEdge(10, 100),
-					this.getEdge(10, 101),
 					this.getEdge(11, 102),
 					this.getEdge(12, 103),
 					this.getEdge(13, 104),
@@ -190,10 +184,11 @@ export default class PageHomeAboutLHC extends React.Component {
 						resilience in Luxembourg and aims at capitalising on and further developing
 						innovation, competencies, collaboration and capacity building.</p>
 
-						<p>LHC is home to all types of cybersecurity-related activities and
-						together with its two hosted centres CIRCL (Computer Incident Response
-						Center Luxembourg) and NC3 (National Cybersecurity Competence Center) as
-						well as its following partners, support, foster and serve:</p>
+						<p>As a central player, LHC is home to all types of cybersecurity-related
+						activities and together with its two hosted centres CIRCL (Computer
+						Incident Response Center Luxembourg) and NC3 (National Cybersecurity
+						Competence Center) as well as its following partners, supports,
+						fosters and serves:</p>
 					</div>
 
 					<div className="col-md-12">
