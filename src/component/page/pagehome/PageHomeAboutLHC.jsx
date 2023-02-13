@@ -185,9 +185,18 @@ export default class PageHomeAboutLHC extends React.Component {
 						innovation, competencies, collaboration and capacity building.</p>
 
 						<p>As a central player, LHC is home to all types of cybersecurity-related
-						activities and together with its two hosted centres CIRCL (Computer
-						Incident Response Center Luxembourg) and NC3 (National Cybersecurity
-						Competence Center) as well as its following partners, supports,
+						activities and together with its two hosted centres <a
+							href={"https://circl.lu/"}
+							target={"_blank"}
+							rel="noreferrer">
+							CIRCL (Computer Incident Response Center Luxembourg)
+						</a> and <a
+							href={"https://nc3.lu/"}
+							target={"_blank"}
+							rel="noreferrer">
+							NC3 (National Cybersecurity Competence Center)
+						</a>
+						as well as its following partners, supports,
 						fosters and serves:</p>
 					</div>
 
