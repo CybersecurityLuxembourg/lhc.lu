@@ -38,7 +38,7 @@ export default class Footer extends React.Component {
 								rel="noreferrer"
 								target="_blank"
 								title="Terms of use">
-								<i className="fas fa-gavel"/> Terms of use
+								<i className="fas fa-gavel"/> Terms of Service & Privacy Policy
 							</a>
 							<br/>
 							<br/>
