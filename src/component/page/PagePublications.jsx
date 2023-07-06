@@ -24,6 +24,7 @@ export default class PagePublications extends React.Component {
 				? getUrlParameter("filter") : null,
 			resourceCategories: [
 				"CYBER THREAT LANDSCAPE",
+				"LHC FORUM",
 			],
 		};
 	}
