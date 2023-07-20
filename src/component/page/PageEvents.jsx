@@ -78,7 +78,7 @@ export default class PageEvents extends React.Component {
 			return this.props.analytics.taxonomy_values
 				.filter((v) => v.category === "EVENT CATEGORY")
 				.filter((v) => v.name !== "CSWL 2022")
-				.filter((v) => v.name !== "CSWL 2023");
+				.filter((v) => !v.name.startsWith("CSWL 2023"));
 		}
 
 		return [];
