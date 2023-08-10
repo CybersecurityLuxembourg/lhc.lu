@@ -172,7 +172,7 @@ export default class PageEvents extends React.Component {
 								&& <DynamicTable
 									items={this.state.events.items}
 									pagination={this.state.events.pagination}
-									changePage={(page) => this.getArticles(page)}
+									changePage={(page) => this.getEvents(page)}
 									buildElement={(a) => <div
 										className="col-md-12"
 										key={a.id}>

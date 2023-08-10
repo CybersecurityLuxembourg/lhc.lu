@@ -150,7 +150,7 @@ export default class PageNews extends React.Component {
 								&& <DynamicTable
 									items={this.state.news.items}
 									pagination={this.state.news.pagination}
-									changePage={(page) => this.getArticles(page)}
+									changePage={(page) => this.getNews(page)}
 									buildElement={(a) => <div
 										className="col-md-12"
 										key={a.id}>
