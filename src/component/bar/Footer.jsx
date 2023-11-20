@@ -47,9 +47,12 @@ export default class Footer extends React.Component {
 									href="https://twitter.com/houseofcyber_lu"
 									rel="noreferrer"
 									target="_blank"
-									title="Twitter LHC"
+									title="X LHC"
 									className="text-capitalize">
-									<i className="fab fa-twitter Footer-network"/>
+									<img
+										src="/img/logo-x.svg"
+										alt="X Logo"
+									/>
 								</a>
 								<a
 									href="https://www.linkedin.com/company/houseofcybersecurity"

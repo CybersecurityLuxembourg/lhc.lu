@@ -53,8 +53,10 @@
   width: fit-content;
 }
 
-#Footer .Footer-network a i:hover {
-  color: var(--secondary-color) !important;
+#Footer .Footer-network a > img {
+  max-width: 20px !important;
+  vertical-align: text-top;
+  margin-top: 4px;
 }
 
 #Footer .Footer-documentation-and-terms a {
