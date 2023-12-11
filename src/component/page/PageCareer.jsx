@@ -40,13 +40,13 @@ export default class PageCareer extends React.Component {
 		if (this.props.lhc && this.props.analytics) {
 			const tv = this.props.analytics.taxonomy_values
 				.filter((v) => v.category === "JOB OFFER CATEGORY")
-				.filter((v) => v.name === "FIXED-TERM CONTRACT" || v.name === "PERMANENT CONTRACT");
+				.filter((v) => v.name === "INTERNSHIP");
 
 			if (tv.length > 0) {
 				const params = {
 					entities: this.props.lhc.id,
 					type: "JOB OFFER",
-					taxonomy_values: tv.map((t) => t.id),
+					ignored_taxonomy_values: tv.map((t) => t.id),
 					per_page: 10,
 					page: page || 1,
 				};
