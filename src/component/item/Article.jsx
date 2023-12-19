@@ -43,7 +43,7 @@ export default class Article extends Component {
 			return "";
 		}
 
-		if (this.props.info.type === "EVENT") {
+		if (this.props.info.type === "EVENT" || this.props.showStartAndEndDates) {
 			if (this.props.info.start_date && this.props.info.end_date) {
 				return <div>
 					{dateToString(this.props.info.start_date, "DD MMM YYYY HH:mm")}

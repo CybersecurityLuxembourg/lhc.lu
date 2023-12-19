@@ -12,6 +12,7 @@ import { getRequest } from "../../utils/request.jsx";
 import Article from "../item/Article.jsx";
 import DynamicTable from "../table/DynamicTable.jsx";
 import { dictToURI, getUrlParameter } from "../../utils/url.jsx";
+import { dateToString } from "../../utils/date.jsx";
 
 export default class PageNews extends React.Component {
 	constructor(props) {
@@ -38,6 +39,8 @@ export default class PageNews extends React.Component {
 			const params = {
 				entities: this.props.lhc.id,
 				taxonomy_values: this.getCallTaxonomyValue(),
+				max_start_date: dateToString(new Date()),
+				min_end_date: dateToString(new Date()),
 				type: "NEWS",
 				per_page: 10,
 				page: page || 1,
@@ -75,7 +78,7 @@ export default class PageNews extends React.Component {
 		return (
 			<div id={"PageNews"}>
 				<Banner
-					image={"/img/banner-news.jpg"}
+					image={"/img/banner-calls.png"}
 				/>
 
 				<div className={"page max-sized-page"}>
@@ -101,7 +104,7 @@ export default class PageNews extends React.Component {
 								&& <div className="row row-spaced">
 									<div className="col-md-12">
 										<Message
-											text={"No news found"}
+											text={"No call found"}
 											height={200}
 										/>
 									</div>
@@ -121,6 +124,7 @@ export default class PageNews extends React.Component {
 										<Article
 											info={a}
 											analytics={this.props.analytics}
+											showStartAndEndDates={true}
 										/>
 									</div>
 									}
