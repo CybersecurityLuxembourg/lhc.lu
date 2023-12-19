@@ -128,6 +128,7 @@ export default class Menu extends React.Component {
 					</div>
 				}
 				id="basic-nav-dropdown"
+				className="dropdown-agency"
 				renderMenuOnMount={true}>
 				<div className="row">
 					<div className="col-sm-12">
@@ -138,6 +139,9 @@ export default class Menu extends React.Component {
 						</div>
 						<NavDropdown.Item as={Link} to="/career">
 							<div className="Menu-title">Career</div>
+						</NavDropdown.Item>
+						<NavDropdown.Item as={Link} to="/call">
+							<div className="Menu-title">Call for projects/services</div>
 						</NavDropdown.Item>
 					</div>
 				</div>

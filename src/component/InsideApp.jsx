@@ -10,6 +10,7 @@ import Menu from "./bar/Menu.jsx";
 import Footer from "./bar/Footer.jsx";
 import PageHome from "./page/PageHome.jsx";
 import PageContact from "./page/PageContact.jsx";
+import PageCall from "./page/PageCall.jsx";
 import PageCareer from "./page/PageCareer.jsx";
 import PageHelp from "./page/PageHelp.jsx";
 import PageNews from "./page/PageNews.jsx";
@@ -176,6 +177,14 @@ class InsideApp extends React.Component {
 						<Route
 							path="/career"
 							render={(props) => <PageCareer
+								lhc={this.state.lhc}
+								analytics={this.state.analytics}
+								{...props}
+							/>}
+						/>
+						<Route
+							path="/call"
+							render={(props) => <PageCall
 								lhc={this.state.lhc}
 								analytics={this.state.analytics}
 								{...props}

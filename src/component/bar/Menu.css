@@ -269,6 +269,10 @@
         color: var(--secondary-color);
     }
 
+    .Menu .dropdown-agency .dropdown-menu {
+        min-width: 300px;
+    }
+
     .Menu .dropdown-news .dropdown-menu {
         min-width: 440px;
     }
