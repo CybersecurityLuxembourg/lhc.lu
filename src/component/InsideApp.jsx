@@ -222,6 +222,10 @@ class InsideApp extends React.Component {
 							<Redirect to="/#PageHomeServices" />
 						</Route>
 
+						<Route exact path="/lucya">
+							<Redirect to="/service/lucya" />
+						</Route>
+
 						{/* 404 */}
 
 						<Route
