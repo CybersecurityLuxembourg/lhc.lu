@@ -43,4 +43,4 @@ jobs:
       run: ssh -J ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }}:${{ secrets.BASTION_SSH_PORT }} lhcfofront@${{ secrets.PRODUCTION_ENV_HOST }} 'rm -rf /var/www/lhc-fo-front/*'
 
     - name: Deploy in target dir with SCP
-      run: scp -r -J ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }}:${{ secrets.BASTION_SSH_PORT }} ./build/* lhcfofront@${{ secrets.PRODUCTION_ENV_HOST }}:/var/www/lhc-fo-front
+      run: scp -r -J ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }}:${{ secrets.BASTION_SSH_PORT }} ./build/{*,.[!.]*} lhcfofront@${{ secrets.PRODUCTION_ENV_HOST }}:/var/www/lhc-fo-front
