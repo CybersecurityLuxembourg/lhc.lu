@@ -59,16 +59,16 @@ export default class PageNews extends React.Component {
 	}
 
 	getCallTaxonomyValue() {
-		if (this.props.analytics) {
-			return this.props.analytics.taxonomy_values
-				.filter((v) => v.category === "ARTICLE CATEGORY")
-				.filter((v) => v.name === "CALL TO ACTION")
-				.pop()
-				.id;
-		}
+    if (this.props.analytics) {
+        return this.props.analytics.taxonomy_values
+            .filter((v) => v.category === "ARTICLE CATEGORY")
+            .filter((v) => v.name === "CALL TO ACTION")
+            .map((v) => v.id) 
+            .join(",");
+    }
 
-		return null;
-	}
+    return null;
+}
 
 	changeState(field, value) {
 		this.setState({ [field]: value });
