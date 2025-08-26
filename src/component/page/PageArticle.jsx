@@ -24,6 +24,7 @@ export default class PageArticle extends React.Component {
 		super(props);
 
 		this.getArticleContent = this.getArticleContent.bind(this);
+		this.isArticleClosed = this.isArticleClosed.bind(this);
 
 		this.state = {
 			article: null,
@@ -90,6 +91,40 @@ export default class PageArticle extends React.Component {
 		this.setState({ [field]: value });
 	}
 
+	// Determine if the current article is tagged as 'CALL TO ACTION CLOSED'
+	isArticleClosed() {
+		const a = this.state.article;
+		if (!a) return false;
+
+		// Helper: get closed tag IDs from analytics, if available
+		const getClosedTagIds = () => {
+			if (!this.props.analytics || !this.props.analytics.taxonomy_values) return [];
+			return this.props.analytics.taxonomy_values
+				.filter((v) => v.category === "ARTICLE TAG" && v.name === "CALL TO ACTION CLOSED")
+				.map((v) => v.id);
+		};
+
+		// Case 1: article has taxonomy_values as IDs
+		if (Array.isArray(a.taxonomy_values)) {
+			const closedIds = getClosedTagIds();
+			return a.taxonomy_values.some((id) => closedIds.includes(id));
+		}
+
+		// Case 2: article has tags or taxonomy_tags as objects with category/name
+		const possibleTags = Array.isArray(a.tags) ? a.tags
+			: Array.isArray(a.taxonomy_tags) ? a.taxonomy_tags
+			: [];
+
+		if (possibleTags.length > 0) {
+			return possibleTags.some((t) => (
+				(t.category === "ARTICLE TAG" || t.category === "TAG")
+				&& t.name === "CALL TO ACTION CLOSED"
+			));
+		}
+
+		return false;
+	}
+
 	render() {
 		let positionToTreat = 0;
 
@@ -133,8 +168,11 @@ export default class PageArticle extends React.Component {
 									}
 								</div>
 
-								<h1 className="showFulltext">
+								<h1 className="showFulltext" style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
 									{this.state.article.title}
+									{this.isArticleClosed() && (
+										<span className="Article-badge Article-badge-closed" aria-label="This call is closed">Closed</span>
+									)}
 								</h1>
 
 								{this.state.article.abstract !== null

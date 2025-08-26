@@ -35,6 +35,34 @@ export default class PageNews extends React.Component {
 		}
 	}
 
+	getClosedCalls(page) {
+		if (this.props.lhc && this.props.analytics) {
+			const callCategoryId = this.getCallTaxonomyValue();
+			const closedTagIds = this.getClosedCallTagTaxonomyValues();
+			const taxonomyValues = [callCategoryId, ...closedTagIds].filter((v) => v !== null && v !== undefined);
+
+			const params = {
+				entities: this.props.lhc.id,
+				taxonomy_values: taxonomyValues,
+				order_by: "start_date",
+				order: "desc",
+				type: "NEWS",
+				per_page: 10,
+				page: page || 1,
+			};
+
+			getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
+				this.setState({
+					closedNews: data,
+				});
+			}, (response) => {
+				nm.warning(response.statusText);
+			}, (error) => {
+				nm.error(error.message);
+			});
+		}
+	}
+
 	getNews(page) {
 		if (this.props.lhc && this.props.analytics) {
 			const params = {
@@ -185,6 +213,7 @@ export default class PageNews extends React.Component {
 													info={a}
 													analytics={this.props.analytics}
 													showStartAndEndDates={true}
+													closed={true}
 												/>
 											</div>
 											}
