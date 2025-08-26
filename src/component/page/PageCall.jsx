@@ -3,12 +3,11 @@ import "./PageNews.css";
 import { NotificationManager as nm } from "react-notifications";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
-import Loading from "../box/Loading.jsx";
-import Message from "../box/Message.jsx";
 import Banner from "../bar/Banner.jsx";
 import { getRequest } from "../../utils/request.jsx";
-import Article from "../item/Article.jsx";
-import { dictToURI, getUrlParameter } from "../../utils/url.jsx";
+import { dictToURI } from "../../utils/url.jsx";
+import CallList from "../list/CallList.jsx";
+import ClosedCallsAccordion from "../box/ClosedCallsAccordion.jsx";
 
 export default class PageNews extends React.Component {
 	constructor(props) {
@@ -139,92 +138,26 @@ export default class PageNews extends React.Component {
 						</div>
 
 						<div className="col-md-12">
-							{(!this.state.news || !this.state.news.items) && (
-								<div className="row row-spaced">
-									<div className="col-md-12">
-										<Loading height={200} />
-									</div>
-								</div>
-							)}
+							<CallList
+								items={this.state.news && this.state.news.items}
+								analytics={this.props.analytics}
+								loading={!this.state.news || !this.state.news.items}
+								emptyText={"No call found"}
+							/>
 
-							{this.state.news && this.state.news.items && this.state.news.items.length === 0 && (
-								<div className="row row-spaced">
-									<div className="col-md-12">
-										<Message text={"No call found"} height={200} />
-									</div>
-								</div>
-							)}
-
-							{this.state.news && this.state.news.items && this.state.news.items.length > 0 && (
-								<div className="row row-spaced">
-									{this.state.news.items.map((a) => (
-										<div className="col-md-12" key={a.id}>
-											<Article
-												info={a}
-												analytics={this.props.analytics}
-												showStartAndEndDates={true}
-											/>
-										</div>
-									))}
-								</div>
-							)}
-
-							{/* Closed calls collapsible section */}
-							<div className="row row-spaced">
-								<div className="col-md-12">
-									<h3
-										style={{ cursor: "pointer" }}
-										onClick={() => this.setState({ showClosed: !this.state.showClosed })}
-									>
-										{this.state.showClosed ? "▼" : "▶"} Closed calls {this.state.closedNews ? `(${(this.state.closedNews.items && this.state.closedNews.items.length) || 0})` : ""}
-									</h3>
-								</div>
-							</div>
-
-							{this.state.showClosed && (
-								<div className="col-md-12">
-									{this.state.closedNews
-										&& this.state.closedNews.items
-										&& this.state.closedNews.items.length > 0
-										&& <div className="row row-spaced">
-											{this.state.closedNews.items.map((a) => (
-												<div className="col-md-12" key={a.id}>
-													<Article
-														info={a}
-														analytics={this.props.analytics}
-														showStartAndEndDates={true}
-														closed={true}
-													/>
-												</div>
-											))}
-										</div>
-									}
-
-									{this.state.closedNews
-										&& this.state.closedNews.items
-										&& this.state.closedNews.items.length === 0
-										&& <div className="row row-spaced">
-											<div className="col-md-12">
-												<Message
-													text={"No closed call found"}
-													height={200}
-												/>
-											</div>
-										</div>
-									}
-
-									{(!this.state.closedNews
-										|| !this.state.closedNews.items)
-										&& <div className="row row-spaced">
-											<div className="col-md-12">
-												<Loading
-													height={200}
-												/>
-											</div>
-										</div>
-									}
-								</div>
-							)}
+							<ClosedCallsAccordion
+								open={this.state.showClosed}
+								onToggle={() => this.setState({ showClosed: !this.state.showClosed })}
+								count={(this.state.closedNews && this.state.closedNews.items && this.state.closedNews.items.length) || 0}
+							>
+								<CallList
+									items={this.state.closedNews && this.state.closedNews.items}
+									analytics={this.props.analytics}
+									itemProps={{ closed: true }}
+									loading={!this.state.closedNews || !this.state.closedNews.items}
+									emptyText={"No closed call found"}
+								/>
+							</ClosedCallsAccordion>
 						</div>
 					</div>
 				</div>
