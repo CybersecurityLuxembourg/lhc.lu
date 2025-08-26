@@ -42,10 +42,10 @@ export default class PageNews extends React.Component {
 			const params = {
 				entities: this.props.lhc.id,
 				taxonomy_values: taxonomyValues,
-				order_by: "start_date",
+				order_by: "publication_date",
 				order: "desc",
 				type: "NEWS",
-				per_page: 1000,
+				per_page: 50,
 				page: page || 1,
 			};
 
@@ -67,7 +67,7 @@ export default class PageNews extends React.Component {
 				entities: this.props.lhc.id,
 				taxonomy_values: this.getCallTaxonomyValue(),
 				ignored_taxonomy_values: this.getClosedCallTagTaxonomyValues(),
-				order_by: "start_date",
+				order_by: "publication_date",
 				order: "desc",
 				type: "NEWS",
 				per_page: 1000,

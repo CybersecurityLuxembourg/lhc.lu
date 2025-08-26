@@ -27,7 +27,9 @@ export default class PageHome extends React.Component {
 	}
 
 	scrollToElement() {
-		const div = document.getElementById(location.hash && location.hash.replaceAll("#", ""));
+		const hash = (location.hash || "").replaceAll("#", "");
+		if (!hash) return;
+		const div = document.getElementById(hash);
 
 		if (div) {
 			div.scrollIntoView({ behavior: "smooth" });
