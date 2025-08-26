@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 import Loading from "../box/Loading.jsx";
 import Message from "../box/Message.jsx";
 import Banner from "../bar/Banner.jsx";
-import SearchField from "../form/SearchField.jsx";
-import CheckBox from "../form/CheckBox.jsx";
 import { getRequest } from "../../utils/request.jsx";
 import Article from "../item/Article.jsx";
 import DynamicTable from "../table/DynamicTable.jsx";
@@ -19,17 +17,21 @@ export default class PageNews extends React.Component {
 
 		this.state = {
 			news: null,
+			closedNews: null,
+			showClosed: false,
 		};
 	}
 
 	componentDidMount() {
 		this.getNews();
+		this.getClosedCalls();
 	}
 
 	componentDidUpdate(prevProps, prevState) {
 		if ((!prevProps.lhc && this.props.lhc)
 			|| (!prevProps.analytics && this.props.analytics)) {
 			this.getNews();
+			this.getClosedCalls();
 		}
 	}
 
@@ -154,6 +156,67 @@ export default class PageNews extends React.Component {
 									</div>
 								</div>
 							}
+
+							{/* Closed calls collapsible section */}
+							<div className="row row-spaced">
+								<div className="col-md-12">
+									<h3
+										style={{ cursor: "pointer" }}
+										onClick={() => this.setState({ showClosed: !this.state.showClosed })}
+									>
+										{this.state.showClosed ? "▼" : "▶"} Closed calls {this.state.closedNews && this.state.closedNews.pagination ? `(${this.state.closedNews.pagination.total})` : ""}
+									</h3>
+								</div>
+							</div>
+
+							{this.state.showClosed && (
+								<div className="col-md-12">
+									{this.state.closedNews
+										&& this.state.closedNews.pagination
+										&& this.state.closedNews.pagination.total > 0
+										&& <DynamicTable
+											items={this.state.closedNews.items}
+											pagination={this.state.closedNews.pagination}
+											changePage={(page) => this.getClosedCalls(page)}
+											buildElement={(a) => <div
+												className="col-md-12"
+												key={a.id}>
+												<Article
+													info={a}
+													analytics={this.props.analytics}
+													showStartAndEndDates={true}
+												/>
+											</div>
+											}
+										/>
+									}
+
+									{this.state.closedNews
+										&& this.state.closedNews.pagination
+										&& this.state.closedNews.pagination.total === 0
+										&& <div className="row row-spaced">
+											<div className="col-md-12">
+												<Message
+													text={"No closed call found"}
+													height={200}
+												/>
+											</div>
+										</div>
+									}
+
+									{(!this.state.closedNews
+										|| !this.state.closedNews.pagination
+										|| !this.state.closedNews.items)
+										&& <div className="row row-spaced">
+											<div className="col-md-12">
+												<Loading
+													height={200}
+												/>
+											</div>
+										</div>
+									}
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
