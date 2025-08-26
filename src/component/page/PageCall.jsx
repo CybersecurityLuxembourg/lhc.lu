@@ -41,6 +41,7 @@ export default class PageNews extends React.Component {
 			const params = {
 				entities: this.props.lhc.id,
 				taxonomy_values: closedTagIds,
+				include_tags: true,
 				order_by: "publication_date",
 				order: "desc",
 				type: "NEWS",
@@ -49,8 +50,14 @@ export default class PageNews extends React.Component {
 			};
 
 			getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
+				// Ensure items have BOTH the call category and the closed tag
+				const filtered = (data.items || []).filter((it) =>
+					Array.isArray(it.taxonomy_tags)
+					&& it.taxonomy_tags.includes(callCategoryId)
+					&& it.taxonomy_tags.some((id) => closedTagIds.includes(id))
+				);
 				this.setState({
-					closedNews: data,
+					closedNews: { ...data, items: filtered },
 				});
 			}, (response) => {
 				nm.warning(response.statusText);
@@ -65,7 +72,7 @@ export default class PageNews extends React.Component {
 			const params = {
 				entities: this.props.lhc.id,
 				taxonomy_values: this.getCallTaxonomyValue(),
-				ignored_taxonomy_values: this.getClosedCallTagTaxonomyValues(),
+				ignored_taxonomy_values: this.getClosedCallTagTaxonomyValues().map((id) => String(id)),
 				order_by: "publication_date",
 				order: "desc",
 				type: "NEWS",
