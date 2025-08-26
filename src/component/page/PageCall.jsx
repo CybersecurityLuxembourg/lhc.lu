@@ -3,16 +3,11 @@ import "./PageNews.css";
 import { NotificationManager as nm } from "react-notifications";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
-import Loading from "../box/Loading.jsx";
-import Message from "../box/Message.jsx";
 import Banner from "../bar/Banner.jsx";
-import SearchField from "../form/SearchField.jsx";
-import CheckBox from "../form/CheckBox.jsx";
 import { getRequest } from "../../utils/request.jsx";
-import Article from "../item/Article.jsx";
-import DynamicTable from "../table/DynamicTable.jsx";
-import { dictToURI, getUrlParameter } from "../../utils/url.jsx";
-import { dateToString } from "../../utils/date.jsx";
+import { dictToURI } from "../../utils/url.jsx";
+import CallList from "../list/CallList.jsx";
+ 
 
 export default class PageNews extends React.Component {
 	constructor(props) {
@@ -39,10 +34,11 @@ export default class PageNews extends React.Component {
 			const params = {
 				entities: this.props.lhc.id,
 				taxonomy_values: this.getCallTaxonomyValue(),
-				max_start_date: dateToString(new Date()),
-				min_end_date: dateToString(new Date()),
+				ignored_taxonomy_values: this.getClosedCallTagTaxonomyValues().map((id) => String(id)),
+				order_by: "publication_date",
+				order: "desc",
 				type: "NEWS",
-				per_page: 10,
+				per_page: 50,
 				page: page || 1,
 			};
 
@@ -64,10 +60,22 @@ export default class PageNews extends React.Component {
 				.filter((v) => v.category === "ARTICLE CATEGORY")
 				.filter((v) => v.name === "CALL TO ACTION")
 				.pop()
-				.id;
+				?.id;
 		}
 
 		return null;
+	}
+
+	getClosedCallTagTaxonomyValues() {
+		// Return an array of taxonomy value IDs for the tag 'CALL TO ACTION CLOSED'
+		if (this.props.analytics) {
+			return this.props.analytics.taxonomy_values
+				.filter((v) => v.category === "ARTICLE TAG")
+				.filter((v) => v.name === "CALL TO ACTION CLOSED")
+				.map((v) => v.id);
+		}
+
+		return [];
 	}
 
 	changeState(field, value) {
@@ -98,50 +106,12 @@ export default class PageNews extends React.Component {
 						</div>
 
 						<div className="col-md-12">
-							{this.state.news
-								&& this.state.news.pagination
-								&& this.state.news.pagination.total === 0
-								&& <div className="row row-spaced">
-									<div className="col-md-12">
-										<Message
-											text={"No call found"}
-											height={200}
-										/>
-									</div>
-								</div>
-							}
-
-							{this.state.news
-								&& this.state.news.pagination
-								&& this.state.news.pagination.total > 0
-								&& <DynamicTable
-									items={this.state.news.items}
-									pagination={this.state.news.pagination}
-									changePage={(page) => this.getNews(page)}
-									buildElement={(a) => <div
-										className="col-md-12"
-										key={a.id}>
-										<Article
-											info={a}
-											analytics={this.props.analytics}
-											showStartAndEndDates={true}
-										/>
-									</div>
-									}
-								/>
-							}
-
-							{(!this.state.news
-								|| !this.state.news.pagination
-								|| !this.state.news.items)
-								&& <div className="row row-spaced">
-									<div className="col-md-12">
-										<Loading
-											height={200}
-										/>
-									</div>
-								</div>
-							}
+							<CallList
+								items={this.state.news && this.state.news.items}
+								analytics={this.props.analytics}
+								loading={!this.state.news || !this.state.news.items}
+								emptyText={"No call found"}
+							/>
 						</div>
 					</div>
 				</div>

@@ -61,6 +61,7 @@
     margin-bottom: 5px !important;
     max-width: 100%;
     display: -webkit-box;
+    line-clamp: 2;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -74,8 +75,45 @@
 .Article .Article-abstract {
     text-align: justify;
     display: -webkit-box;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* Closed badge and closed state */
+.Article .card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.Article-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+    user-select: none;
+}
+
+.Article-badge-closed {
+    color: #ffffff;
+    background: #d32f2f; /* red 700 */
+    border: 1px solid #b71c1c; /* red 900 */
+}
+
+.Article--closed {
+    opacity: 0.85;
+}
+
+@media (max-width: 500px) {
+    .Article-badge {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
 }

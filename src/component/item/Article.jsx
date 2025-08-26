@@ -60,7 +60,7 @@ export default class Article extends Component {
 
 	getBoxContent() {
 		return (
-			<div className="Article card">
+			<div className={`Article card${this.props.closed ? " Article--closed" : ""}`}>
 				<div className="card-horizontal">
 					<div className="img-square-wrapper">
 						{this.getImage()
@@ -72,7 +72,17 @@ export default class Article extends Component {
 						}
 					</div>
 					<div className="card-body">
-						<h5 className="card-title">{this.props.info.title}</h5>
+						<h5 className="card-title">
+							{this.props.info.title}
+							{this.props.closed && (
+								<span
+									className="Article-badge Article-badge-closed"
+									aria-label="This call is closed"
+								>
+									Closed
+								</span>
+							)}
+						</h5>
 						<div className="Article-date">
 							{this.getDate()}
 						</div>

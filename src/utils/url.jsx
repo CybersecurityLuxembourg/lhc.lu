@@ -14,21 +14,21 @@ export function getUrlParameter(sParam) {
 }
 
 export function dictToURI(dict) {
-	let args = "";
+    if (!dict) return ""
 
-	if (dict !== null) {
-		Object.keys(dict).forEach((key) => {
-			if (typeof dict[key] === "boolean") {
-				args += `${key}=${dict[key]}&`;
-			} else if (typeof dict[key] === "string" && dict[key].length > 0) {
-				args += `${key}=${dict[key]}&`;
-			} else if (Array.isArray(dict[key]) && dict[key].length > 0) {
-				args += `${key}=${dict[key].join(",")}&`;
-			} else if (Number.isInteger(dict[key])) {
-				args += `${key}=${dict[key]}&`;
-			}
-		});
-	}
+    const parts = [];
+    Object.keys(dict).forEach((key) => {
+        const val = dict[key];
+        if (typeof val === "boolean") {
+            parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(String(val))}`);
+        } else if (typeof val === "string" && val.length > 0) {
+            parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(val)}`);
+        } else if (Array.isArray(val) && val.length > 0) {
+            parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(val.join(","))}`);
+        } else if (Number.isInteger(val)) {
+            parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(String(val))}`);
+        }
+    });
 
-	return args;
+    return parts.join("&");
 }
