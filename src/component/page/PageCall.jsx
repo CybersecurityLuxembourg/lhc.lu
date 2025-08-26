@@ -12,7 +12,6 @@ import { getRequest } from "../../utils/request.jsx";
 import Article from "../item/Article.jsx";
 import DynamicTable from "../table/DynamicTable.jsx";
 import { dictToURI, getUrlParameter } from "../../utils/url.jsx";
-import { dateToString } from "../../utils/date.jsx";
 
 export default class PageNews extends React.Component {
 	constructor(props) {
@@ -39,8 +38,9 @@ export default class PageNews extends React.Component {
 			const params = {
 				entities: this.props.lhc.id,
 				taxonomy_values: this.getCallTaxonomyValue(),
-				max_start_date: dateToString(new Date()),
-				min_end_date: dateToString(new Date()),
+				ignored_taxonomy_values: this.getClosedCallTagTaxonomyValues(),
+				order_by: "start_date",
+				order: "desc",
 				type: "NEWS",
 				per_page: 10,
 				page: page || 1,
@@ -59,16 +59,28 @@ export default class PageNews extends React.Component {
 	}
 
 	getCallTaxonomyValue() {
-    if (this.props.analytics) {
-        return this.props.analytics.taxonomy_values
-            .filter((v) => v.category === "ARTICLE CATEGORY")
-            .filter((v) => v.name === "CALL TO ACTION")
-            .map((v) => v.id) 
-            .join(",");
-    }
+		if (this.props.analytics) {
+			return this.props.analytics.taxonomy_values
+				.filter((v) => v.category === "ARTICLE CATEGORY")
+				.filter((v) => v.name === "CALL TO ACTION")
+				.pop()
+				?.id;
+		}
 
-    return null;
-}
+		return null;
+	}
+
+	getClosedCallTagTaxonomyValues() {
+		// Return an array of taxonomy value IDs for the tag 'CALL TO ACTION CLOSED'
+		if (this.props.analytics) {
+			return this.props.analytics.taxonomy_values
+				.filter((v) => v.category === "ARTICLE TAG")
+				.filter((v) => v.name === "CALL TO ACTION CLOSED")
+				.map((v) => v.id);
+		}
+
+		return [];
+	}
 
 	changeState(field, value) {
 		this.setState({ [field]: value });
