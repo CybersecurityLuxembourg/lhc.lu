@@ -7,7 +7,7 @@ import Banner from "../bar/Banner.jsx";
 import { getRequest } from "../../utils/request.jsx";
 import { dictToURI } from "../../utils/url.jsx";
 import CallList from "../list/CallList.jsx";
-import ClosedCallsAccordion from "../box/ClosedCallsAccordion.jsx";
+ 
 
 export default class PageNews extends React.Component {
 	constructor(props) {
@@ -15,55 +15,17 @@ export default class PageNews extends React.Component {
 
 		this.state = {
 			news: null,
-			closedNews: null,
-			showClosed: false,
 		};
 	}
 
 	componentDidMount() {
 		this.getNews();
-		this.getClosedCalls();
 	}
 
 	componentDidUpdate(prevProps, prevState) {
 		if ((!prevProps.lhc && this.props.lhc)
 			|| (!prevProps.analytics && this.props.analytics)) {
 			this.getNews();
-			this.getClosedCalls();
-		}
-	}
-
-	getClosedCalls(page) {
-		if (this.props.lhc && this.props.analytics) {
-			const callCategoryId = this.getCallTaxonomyValue();
-			const closedTagIds = this.getClosedCallTagTaxonomyValues();
-
-			const params = {
-				entities: this.props.lhc.id,
-				taxonomy_values: closedTagIds,
-				include_tags: true,
-				order_by: "publication_date",
-				order: "desc",
-				type: "NEWS",
-				per_page: 50,
-				page: page || 1,
-			};
-
-			getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
-				// Ensure items have BOTH the call category and the closed tag
-				const filtered = (data.items || []).filter((it) =>
-					Array.isArray(it.taxonomy_tags)
-					&& it.taxonomy_tags.includes(callCategoryId)
-					&& it.taxonomy_tags.some((id) => closedTagIds.includes(id))
-				);
-				this.setState({
-					closedNews: { ...data, items: filtered },
-				});
-			}, (response) => {
-				nm.warning(response.statusText);
-			}, (error) => {
-				nm.error(error.message);
-			});
 		}
 	}
 
@@ -150,20 +112,6 @@ export default class PageNews extends React.Component {
 								loading={!this.state.news || !this.state.news.items}
 								emptyText={"No call found"}
 							/>
-
-							<ClosedCallsAccordion
-								open={this.state.showClosed}
-								onToggle={() => this.setState({ showClosed: !this.state.showClosed })}
-								count={(this.state.closedNews && this.state.closedNews.items && this.state.closedNews.items.length) || 0}
-							>
-								<CallList
-									items={this.state.closedNews && this.state.closedNews.items}
-									analytics={this.props.analytics}
-									itemProps={{ closed: true }}
-									loading={!this.state.closedNews || !this.state.closedNews.items}
-									emptyText={"No closed call found"}
-								/>
-							</ClosedCallsAccordion>
 						</div>
 					</div>
 				</div>
