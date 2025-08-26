@@ -8,7 +8,6 @@ import Message from "../box/Message.jsx";
 import Banner from "../bar/Banner.jsx";
 import { getRequest } from "../../utils/request.jsx";
 import Article from "../item/Article.jsx";
-import DynamicTable from "../table/DynamicTable.jsx";
 import { dictToURI, getUrlParameter } from "../../utils/url.jsx";
 
 export default class PageNews extends React.Component {
@@ -47,7 +46,7 @@ export default class PageNews extends React.Component {
 				order_by: "start_date",
 				order: "desc",
 				type: "NEWS",
-				per_page: 10,
+				per_page: 1000,
 				page: page || 1,
 			};
 
@@ -72,7 +71,7 @@ export default class PageNews extends React.Component {
 				order_by: "start_date",
 				order: "desc",
 				type: "NEWS",
-				per_page: 10,
+				per_page: 1000,
 				page: page || 1,
 			};
 
@@ -140,50 +139,35 @@ export default class PageNews extends React.Component {
 						</div>
 
 						<div className="col-md-12">
-							{this.state.news
-								&& this.state.news.pagination
-								&& this.state.news.pagination.total === 0
-								&& <div className="row row-spaced">
+							{(!this.state.news || !this.state.news.items) && (
+								<div className="row row-spaced">
 									<div className="col-md-12">
-										<Message
-											text={"No call found"}
-											height={200}
-										/>
+										<Loading height={200} />
 									</div>
 								</div>
-							}
+							)}
 
-							{this.state.news
-								&& this.state.news.pagination
-								&& this.state.news.pagination.total > 0
-								&& <DynamicTable
-									items={this.state.news.items}
-									pagination={this.state.news.pagination}
-									changePage={(page) => this.getNews(page)}
-									buildElement={(a) => <div
-										className="col-md-12"
-										key={a.id}>
-										<Article
-											info={a}
-											analytics={this.props.analytics}
-											showStartAndEndDates={true}
-										/>
-									</div>
-									}
-								/>
-							}
-
-							{(!this.state.news
-								|| !this.state.news.pagination
-								|| !this.state.news.items)
-								&& <div className="row row-spaced">
+							{this.state.news && this.state.news.items && this.state.news.items.length === 0 && (
+								<div className="row row-spaced">
 									<div className="col-md-12">
-										<Loading
-											height={200}
-										/>
+										<Message text={"No call found"} height={200} />
 									</div>
 								</div>
-							}
+							)}
+
+							{this.state.news && this.state.news.items && this.state.news.items.length > 0 && (
+								<div className="row row-spaced">
+									{this.state.news.items.map((a) => (
+										<div className="col-md-12" key={a.id}>
+											<Article
+												info={a}
+												analytics={this.props.analytics}
+												showStartAndEndDates={true}
+											/>
+										</div>
+									))}
+								</div>
+							)}
 
 							{/* Closed calls collapsible section */}
 							<div className="row row-spaced">
@@ -192,7 +176,7 @@ export default class PageNews extends React.Component {
 										style={{ cursor: "pointer" }}
 										onClick={() => this.setState({ showClosed: !this.state.showClosed })}
 									>
-										{this.state.showClosed ? "▼" : "▶"} Closed calls {this.state.closedNews && this.state.closedNews.pagination ? `(${this.state.closedNews.pagination.total})` : ""}
+										{this.state.showClosed ? "▼" : "▶"} Closed calls {this.state.closedNews ? `(${(this.state.closedNews.items && this.state.closedNews.items.length) || 0})` : ""}
 									</h3>
 								</div>
 							</div>
@@ -200,29 +184,25 @@ export default class PageNews extends React.Component {
 							{this.state.showClosed && (
 								<div className="col-md-12">
 									{this.state.closedNews
-										&& this.state.closedNews.pagination
-										&& this.state.closedNews.pagination.total > 0
-										&& <DynamicTable
-											items={this.state.closedNews.items}
-											pagination={this.state.closedNews.pagination}
-											changePage={(page) => this.getClosedCalls(page)}
-											buildElement={(a) => <div
-												className="col-md-12"
-												key={a.id}>
-												<Article
-													info={a}
-													analytics={this.props.analytics}
-													showStartAndEndDates={true}
-													closed={true}
-												/>
-											</div>
-											}
-										/>
+										&& this.state.closedNews.items
+										&& this.state.closedNews.items.length > 0
+										&& <div className="row row-spaced">
+											{this.state.closedNews.items.map((a) => (
+												<div className="col-md-12" key={a.id}>
+													<Article
+														info={a}
+														analytics={this.props.analytics}
+														showStartAndEndDates={true}
+														closed={true}
+													/>
+												</div>
+											))}
+										</div>
 									}
 
 									{this.state.closedNews
-										&& this.state.closedNews.pagination
-										&& this.state.closedNews.pagination.total === 0
+										&& this.state.closedNews.items
+										&& this.state.closedNews.items.length === 0
 										&& <div className="row row-spaced">
 											<div className="col-md-12">
 												<Message
@@ -234,7 +214,6 @@ export default class PageNews extends React.Component {
 									}
 
 									{(!this.state.closedNews
-										|| !this.state.closedNews.pagination
 										|| !this.state.closedNews.items)
 										&& <div className="row row-spaced">
 											<div className="col-md-12">
