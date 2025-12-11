@@ -1,9 +1,5 @@
 import React from "react";
 import "./Banner.css";
-import { Carousel } from "react-responsive-carousel";
-import { Link } from "react-router-dom";
-import { getPrivateAppURL } from "../../utils/env.jsx";
-import ShadowBox from "../box/ShadowBox.jsx";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default class Banner extends React.Component {
@@ -16,7 +12,7 @@ export default class Banner extends React.Component {
 
 	render() {
 		return <div className="Banner">
-			<img src={this.props.image}/>
+			<img src={this.props.image} alt={this.props.alt || "Banner image"}/>
 		</div>;
 	}
 }

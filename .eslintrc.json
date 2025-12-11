@@ -19,5 +19,13 @@
             ]
         }
     },
-    "rules": {}
+    "rules": {},
+    "overrides": [
+        {
+            "files": ["**/*.jsx", "**/*.tsx"],
+            "rules": {
+                "class-methods-use-this": "off"
+            }
+        }
+    ]
 }
