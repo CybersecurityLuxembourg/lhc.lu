@@ -2,11 +2,14 @@
 
 :root {
     --default-color: grey;
+    --default-color-accessible: #5c5f5f;
     --default-light-color: lightgrey;
 
     --primary-color: #009fe3;
+    --primary-color-accessible: #004b6f;
     --light-primary-color: #bcebff;
     --hovered-primary-color: #8fddff;
+    --hovered-primary-color-accessible: #0081a4;
 
     --secondary-color: #e40613;
     --light-secondary-color: #fed7da;
