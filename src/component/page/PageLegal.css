@@ -1,0 +1,82 @@
+#PageLegal .top-separator {
+    height: 5px;
+    background-color: oklch(0.848 0.011 243.678);
+    width: 100%;
+}
+
+#PageLegal .item-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+
+    .item-link {
+        text-decoration: none;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        width: 36rem;
+        border: 2px solid #ccc;
+        padding: 20px;
+        border-radius: 2px;
+
+        color: var(--primary-color-accessible);
+
+        &:hover {
+            border-color: var(--hovered-primary-color-accessible);
+
+            .item-title {
+                color: var(--hovered-primary-color-accessible);
+            }
+
+            .item-icon {
+                background-color: var(--hovered-primary-color-accessible)
+            }
+
+            .item-badge {
+                background-color: var(--hovered-primary-color-accessible)
+            }
+        }
+
+        .item-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            font-size: 1.250rem;
+            border-radius: 50%;
+            margin-right: 1.5rem;
+
+            background-color: var(--primary-color-accessible);
+
+            & > i {
+                color: white;
+            }
+        }
+
+        .item-title {
+            flex-grow: 1;
+            font-size: 1.25rem;
+        }
+
+        .item-content {
+            font-size: 16px;
+        }
+
+        .item-badge {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2px 6px;
+            border-radius: 16px;
+            background-color: var(--primary-color-accessible);
+            color: #fff;
+            font-size: 0.75rem;
+        }
+    }
+}
