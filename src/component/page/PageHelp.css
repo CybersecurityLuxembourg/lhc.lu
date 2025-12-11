@@ -1,0 +1,5 @@
+#PageHelp .top-separator {
+    height: 5px;
+    background-color: oklch(0.848 0.011 243.678);
+    width: 100%;
+}
