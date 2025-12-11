@@ -154,7 +154,9 @@ export default class PageArticle extends React.Component {
 								<div className="PageArticle-content-cover">
 									{this.state.article.image
 										&& <img
-											src={getApiURL() + "public/get_public_image/" + this.state.article.image}/>}
+											src={getApiURL() + "public/get_public_image/" + this.state.article.image}
+											alt={`${this.state.article.title} cover image"}`}
+										/>}
 
 									{this.state.article.type === "NEWS"
 										&& <div className='PageArticle-publication-date'>

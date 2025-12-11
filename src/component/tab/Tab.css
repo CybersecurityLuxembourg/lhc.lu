@@ -1,7 +1,7 @@
 
 @media (min-width: 0px) {
     .Tab-menu, .Tab-menu-fw {
-    	padding: 20px 0px;
+    	padding: 20px 0;
     }
 
     .Tab-menu-el-selected-fw {
@@ -15,8 +15,8 @@
     }
 
     .Tab-menu, .Tab-menu-fw {
-        padding: 20px 0px;
-        margin-left: 0px;
+        padding: 20px 0;
+        margin-left: 0;
     }
 
     .Tab-menu-el-fw {
@@ -33,7 +33,7 @@
 	cursor: pointer;
 	color: var(--title-font-color);
     text-transform: uppercase;
-    font-family: var(--title-font);
+    font-family: var(--title-font), sans-serif;
     font-weight: normal;
     padding: 10px 10px;
     white-space: nowrap;
