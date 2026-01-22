@@ -95,7 +95,7 @@ export default class PageNews extends React.Component {
 						<div className="col-md-12">
 							<Breadcrumb>
 								<Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
-								<Breadcrumb.Item><Link to="/call">Call for projects/services</Link></Breadcrumb.Item>
+								<Breadcrumb.Item active>Call for projects/services</Breadcrumb.Item>
 							</Breadcrumb>
 						</div>
 					</div>

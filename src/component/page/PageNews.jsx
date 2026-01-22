@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import Loading from "../box/Loading.jsx";
 import Message from "../box/Message.jsx";
 import Banner from "../bar/Banner.jsx";
-import SearchField from "../form/SearchField.jsx";
 import CheckBox from "../form/CheckBox.jsx";
 import { getRequest } from "../../utils/request.jsx";
 import Article from "../item/Article.jsx";
@@ -105,7 +104,7 @@ export default class PageNews extends React.Component {
 							<Breadcrumb>
 								<Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
 								<Breadcrumb.Item><Link to="/">News & Events</Link></Breadcrumb.Item>
-								<Breadcrumb.Item><Link to="/news">News</Link></Breadcrumb.Item>
+								<Breadcrumb.Item active>News</Breadcrumb.Item>
 							</Breadcrumb>
 						</div>
 					</div>
@@ -164,8 +163,8 @@ export default class PageNews extends React.Component {
 							}
 
 							{(!this.state.news
-								|| !this.state.news.pagination
-								|| !this.state.news.items)
+									|| !this.state.news.pagination
+									|| !this.state.news.items)
 								&& <div className="row row-spaced">
 									<div className="col-md-12">
 										<Loading

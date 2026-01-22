@@ -4,5 +4,11 @@
 }
 
 .breadcrumb a {
-	color: var(--default-color);
+	color: var(--default-color-accessible);
+}
+
+.breadcrumb .breadcrumb-item.active {
+	cursor: default;
+	text-decoration: none;
+	color: var(--primary-color-accessible);
 }

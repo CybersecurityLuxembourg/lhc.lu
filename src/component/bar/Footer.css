@@ -1,69 +1,94 @@
 
 #Footer {
-  width: 100%;
-  background-color: black;
-  color: white;
-  font-size: 12px;
-  line-height: 1.2;
-  z-index: 150;
-  padding: 10px 0px 0px 0px;
+    width: 100%;
+    background-color: black;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    z-index: 150;
+    padding: 0.625rem 0 0 0;
+    margin-top: auto;
+}
+
+#Footer .Footer-contact {
+    color: white;
+}
+
+#Footer .flex-links {
+    display: flex;
+    justify-content: space-between;
 }
 
 #Footer .Footer-logo {
-  width: 100%;
+    width: 100%;
 }
 
 #Footer .Footer-logo-cyberlux {
-  width: 100%;
-  position: absolute;
-  right: 0;
-  bottom: 0;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
-#Footer .Footer-content .row > div {
-  margin-bottom: 25px;
-}
-
-#Footer a {
-  color: white;
-}
-
-#Footer a:hover {
-  color: var(--secondary-color);
+#Footer .Footer-content .row:last-of-type > div {
+    margin-bottom: 1rem;
 }
 
 #Footer .Footer-title {
     color: white;
-    font-size: 18px;
-    font-family: var(--title-font);
+    font-size: 1.125rem;
+    font-family: var(--title-font), sans-serif;
 }
 
 #Footer .Footer-content {
-  margin: 0px auto 0px auto;
-  padding: 25px 40px 15px 40px;
-  max-width: 1240px;
+    margin: 0 auto;
+    padding: 2rem 2rem 1rem 2rem;
+    max-width: 1240px;
 }
 
 #Footer .Footer-network {
-  width: 100%;
-  font-size: 25px;
-  margin-left: 15px;
-  margin-top: 5px;
-  color: var(--primary-color);
-  width: fit-content;
+    width: fit-content;
+    font-size: 1.6rem;
+    margin-left: 1rem;
+    margin-top: 0.3125rem;
+    color: var(--primary-color);
 }
 
 #Footer .Footer-network a > img {
-  max-width: 20px !important;
-  vertical-align: text-top;
-  margin-top: 4px;
+    max-width: 20px;
+    vertical-align: text-top;
+    margin-top: 4px;
 }
 
 #Footer .Footer-documentation-and-terms a {
-  margin: 5px 8px;
-  display: block;
+    margin: 0.3125rem 0.5rem;
+    display: block;
 }
 
 #Footer .Footer-link {
-  padding: 5px 0px;
+    display: flex;
+    align-items: center;
+    padding: 0.3125rem 0;
+
+    & > a {
+        color: var(--default-light-color);
+
+        & > i {
+            margin-left: 0.4rem;
+            color: var(--default-light-color);
+            font-size: 0.7rem;
+        }
+
+        &:hover {
+            color: white;
+        }
+    }
+}
+
+#Footer .Footer-center-logos {
+    &, .Footer-center-logos {
+        & > div:last-child {
+            display: flex;
+
+        }
+    }
 }

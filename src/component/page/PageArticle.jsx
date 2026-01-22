@@ -6,11 +6,8 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Link } from "react-router-dom";
 import { getRequest } from "../../utils/request.jsx";
 import { getApiURL } from "../../utils/env.jsx";
-import { dictToURI } from "../../utils/url.jsx";
 import Loading from "../box/Loading.jsx";
-import Chip from "../form/Chip.jsx";
 import Message from "../box/Message.jsx";
-import Article from "../item/Article.jsx";
 import SmallArticle from "../item/SmallArticle.jsx";
 import {
 	getContentFromBlock,
@@ -113,7 +110,7 @@ export default class PageArticle extends React.Component {
 		// Case 2: article has tags or taxonomy_tags as objects with category/name
 		const possibleTags = Array.isArray(a.tags) ? a.tags
 			: Array.isArray(a.taxonomy_tags) ? a.taxonomy_tags
-			: [];
+				: [];
 
 		if (possibleTags.length > 0) {
 			return possibleTags.some((t) => (
@@ -142,11 +139,8 @@ export default class PageArticle extends React.Component {
 								</Breadcrumb.Item>
 							}
 							{this.state.article
-								&& <Breadcrumb.Item>
-									<Link to={"/" + this.state.article.type.toLowerCase().replaceAll(" ", "-")
-										+ "/" + this.props.match.params.handle}>
-										{this.state.article.title}
-									</Link>
+								&& <Breadcrumb.Item active>
+									{this.state.article.title}
 								</Breadcrumb.Item>
 							}
 						</Breadcrumb>
@@ -159,7 +153,10 @@ export default class PageArticle extends React.Component {
 							<article>
 								<div className="PageArticle-content-cover">
 									{this.state.article.image
-										&& <img src={getApiURL() + "public/get_public_image/" + this.state.article.image}/>}
+										&& <img
+											src={getApiURL() + "public/get_public_image/" + this.state.article.image}
+											alt={`${this.state.article.title} cover image"}`}
+										/>}
 
 									{this.state.article.type === "NEWS"
 										&& <div className='PageArticle-publication-date'>
@@ -168,10 +165,12 @@ export default class PageArticle extends React.Component {
 									}
 								</div>
 
-								<h1 className="showFulltext" style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+								<h1 className="showFulltext"
+									style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
 									{this.state.article.title}
 									{this.isArticleClosed() && (
-										<span className="Article-badge Article-badge-closed" aria-label="This call is closed">Closed</span>
+										<span className="Article-badge Article-badge-closed"
+											  aria-label="This call is closed">Closed</span>
 									)}
 								</h1>
 
@@ -180,7 +179,7 @@ export default class PageArticle extends React.Component {
 										className="PageArticle-abstract"
 										dangerouslySetInnerHTML={{
 											__html:
-											dompurify.sanitize(this.state.article.abstract),
+												dompurify.sanitize(this.state.article.abstract),
 										}}>
 									</div>
 								}

@@ -9,15 +9,13 @@ export default class PageContact extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-		};
+		this.state = {};
 	}
 
 	changeState(field, value) {
 		this.setState({ [field]: value });
 	}
 
-	// eslint-disable-next-line class-methods-use-this
 	render() {
 		return (
 			<div id={"PageContact"}>
@@ -30,7 +28,7 @@ export default class PageContact extends React.Component {
 						<div className="col-md-12">
 							<Breadcrumb>
 								<Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
-								<Breadcrumb.Item><Link to="/contact">Contact us</Link></Breadcrumb.Item>
+								<Breadcrumb.Item active>Contact us</Breadcrumb.Item>
 							</Breadcrumb>
 						</div>
 					</div>
@@ -97,9 +95,9 @@ export default class PageContact extends React.Component {
 								<div className="row">
 									<div className="col-md-6 offset-md-3">
 										<img
-										src={"/img/nc3-logo.png"}
-										alt="NC3 logo"
-									/>
+											src={"/img/nc3-logo.png"}
+											alt="NC3 logo"
+										/>
 									</div>
 								</div>
 								<h3>NC3 – National Cybersecurity Competence Center</h3>

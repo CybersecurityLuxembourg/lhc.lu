@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import Loading from "../box/Loading.jsx";
 import Message from "../box/Message.jsx";
 import Banner from "../bar/Banner.jsx";
-import SearchField from "../form/SearchField.jsx";
 import CheckBox from "../form/CheckBox.jsx";
 import { getRequest } from "../../utils/request.jsx";
 import Article from "../item/Article.jsx";
@@ -57,8 +56,8 @@ export default class PageEvents extends React.Component {
 				order: this.state.showPastEvents ? "desc" : "asc",
 				entities: this.props.lhc.id,
 				taxonomy_values: this.getTaxonomyValues().filter((v) => v.name === this.state.eventFilter).pop()
-						? this.getTaxonomyValues().filter((v) => v.name === this.state.eventFilter).pop().id
-						: undefined,
+					? this.getTaxonomyValues().filter((v) => v.name === this.state.eventFilter).pop().id
+					: undefined,
 			};
 
 			getRequest.call(this, "public/get_public_articles?" + dictToURI(params), (data) => {
@@ -93,9 +92,11 @@ export default class PageEvents extends React.Component {
 	}
 
 	changeUrl(value) {
-		this.props.history.push({ search: value
-			? "filter=" + value.toLowerCase()
-			: "" });
+		this.props.history.push({
+			search: value
+				? "filter=" + value.toLowerCase()
+				: ""
+		});
 	}
 
 	changeState(field, value) {
@@ -116,7 +117,7 @@ export default class PageEvents extends React.Component {
 							<Breadcrumb>
 								<Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
 								<Breadcrumb.Item><Link to="/">News & Events</Link></Breadcrumb.Item>
-								<Breadcrumb.Item><Link to="/events">Events</Link></Breadcrumb.Item>
+								<Breadcrumb.Item active>Events</Breadcrumb.Item>
 							</Breadcrumb>
 						</div>
 					</div>
@@ -186,8 +187,8 @@ export default class PageEvents extends React.Component {
 							}
 
 							{(!this.state.events
-								|| !this.state.events.pagination
-								|| !this.state.events.items)
+									|| !this.state.events.pagination
+									|| !this.state.events.items)
 								&& <div className="row row-spaced">
 									<div className="col-md-12">
 										<Loading
