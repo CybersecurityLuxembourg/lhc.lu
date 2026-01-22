@@ -166,7 +166,15 @@ export default class Footer extends React.Component {
 									rel="noreferrer noopener"
 									target="_blank"
 									title="Terms of use">
-									Terms of Service & Privacy Policy
+									Terms of Service
+								</a>
+								<span className={'mx-2 text-dark'}>|</span>
+								<a
+									href={"https://api.cybersecurity.lu/public/get_public_document/LHC_Legal_Notice.pdf"}
+									rel="noreferrer noopener"
+									target="_blank"
+									title="Terms of use">
+									Privacy Policy
 								</a>
 							</div>
 
