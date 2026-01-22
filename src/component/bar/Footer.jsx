@@ -27,8 +27,9 @@ export default class Footer extends React.Component {
 								<br/>
 								<br/>
 								<div>(+352) 274 00 98 601</div>
-								<br/>
-								<br/>
+							</div>
+
+							<div className="row">
 								<div className="Footer-link">
 									<a href="mailto:info@lhc.lu">info@lhc.lu</a>
 								</div>
