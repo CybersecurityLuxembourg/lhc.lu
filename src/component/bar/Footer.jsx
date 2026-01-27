@@ -145,7 +145,9 @@ export default class Footer extends React.Component {
 										</div>
 										<div className="col-md-3">
 											<div className="Footer-link">
-												<img src="/img/lucya-logo-white.svg" alt="LUCYA logo" height="64"/>
+												<Link to="/lucya">
+													<img src="/img/lucya-logo-white.svg" alt="LUCYA logo" height="64"/>
+												</Link>
 											</div>
 										</div>
 									</div>
