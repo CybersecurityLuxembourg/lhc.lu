@@ -220,6 +220,10 @@ class InsideApp extends React.Component {
 
                             {/* REDIRECTIONS */}
 
+                            <Route exact path="/about">
+                                <Redirect to="#PageHomeAboutLHC"/>
+                            </Route>
+
                             <Route exact path="/event">
                                 <Redirect to="/events"/>
                             </Route>
@@ -229,6 +233,10 @@ class InsideApp extends React.Component {
                             </Route>
 
                             <Route exact path="/service">
+                                <Redirect to="/#PageHomeServices"/>
+                            </Route>
+
+                            <Route exact path="/services">
                                 <Redirect to="/#PageHomeServices"/>
                             </Route>
 

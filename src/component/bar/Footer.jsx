@@ -71,7 +71,7 @@ export default class Footer extends React.Component {
 							<div className="col-md-11">
 								<div className="row flex-links">
 									<div className="Footer-link">
-										<Link to="/#PageHomeAboutLHC">
+										<Link to="/about">
 											About us
 										</Link>
 									</div>
@@ -86,7 +86,7 @@ export default class Footer extends React.Component {
 										</Link>
 									</div>
 									<div className="Footer-link">
-										<Link to="/#PageHomeServices">
+										<Link to="/services">
 											Services
 										</Link>
 									</div>
