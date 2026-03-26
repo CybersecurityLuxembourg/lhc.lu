@@ -2,11 +2,14 @@
 
 :root {
     --default-color: grey;
+    --default-color-accessible: #5c5f5f;
     --default-light-color: lightgrey;
 
     --primary-color: #009fe3;
+    --primary-color-accessible: #004b6f;
     --light-primary-color: #bcebff;
     --hovered-primary-color: #8fddff;
+    --hovered-primary-color-accessible: #0081a4;
 
     --secondary-color: #e40613;
     --light-secondary-color: #fed7da;
@@ -33,7 +36,7 @@ html, body, #root {
     height: 100%;
     overflow-x: hidden;
     color: var(--default-font-color);
-    font-family: var(--default-font);
+    font-family: var(--default-font), sans-serif;
 }
 
 #App {
@@ -44,30 +47,30 @@ html, body, #root {
 h1 {
 	color: var(--title-font-color);
     text-transform: uppercase;
-    font-family: var(--title-font);
+    font-family: var(--title-font), sans-serif;
     font-weight: normal;
 }
 
 h2 {
 	color: var(--title-font-color);
-    font-family: var(--title-font);
+    font-family: var(--title-font), sans-serif;
     font-weight: normal;
 }
 
 h3 {
 	color: var(--title-font-color);
-    font-family: var(--title-font);
+    font-family: var(--title-font), sans-serif;
     font-weight: normal;
-    margin: 15px 0px;
+    margin: 15px 0;
     font-size: 22px;
 }
 
 h4 {
 	color: var(--title-font-color);
-    font-family: var(--title-font);
+    font-family: var(--title-font), sans-serif;
     font-weight: normal;
-    padding: 0px 10px;
-    margin: 15px 0px;
+    padding: 0 10px;
+    margin: 15px 0;
     font-size: 16px;
 }
 
@@ -137,7 +140,7 @@ blockquote:after {
 }
 
 .row {
-	padding: 10px 0px;
+	padding: 10px 0;
 }
 
 .row-spaced {
