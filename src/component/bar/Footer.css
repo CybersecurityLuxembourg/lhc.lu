@@ -19,14 +19,11 @@
 }
 
 #Footer .Footer-logo {
-    width: 100%;
+    max-width: 180px;
 }
 
 #Footer .Footer-logo-cyberlux {
-    width: 100%;
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    max-width: 250px;
 }
 
 #Footer .Footer-content .row:last-of-type > div {
@@ -85,10 +82,18 @@
 }
 
 #Footer .Footer-center-logos {
-    &, .Footer-center-logos {
-        & > div:last-child {
-            display: flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
 
-        }
-    }
+#Footer .Footer-center-logos img {
+    max-height: 64px;
+    width: auto;
+}
+
+#Footer .Footer-legal-links {
+    white-space: nowrap;
 }
