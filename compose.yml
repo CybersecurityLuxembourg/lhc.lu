@@ -1,0 +1,27 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        HTTP_PROXY: ${LHC_BUILD_HTTP_PROXY:-}
+        HTTPS_PROXY: ${LHC_BUILD_HTTPS_PROXY:-}
+        NO_PROXY: ${LHC_BUILD_NO_PROXY:-localhost,127.0.0.1,::1}
+    restart: unless-stopped
+    ports:
+      # Apache retains public HTTP/TLS during the gradual host migration.
+      - "127.0.0.1:${LHC_HTTP_PORT:-18087}:8080"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=32m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 128m
+    cpus: 0.5
+    pids_limit: 64
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
