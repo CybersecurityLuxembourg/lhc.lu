@@ -8,7 +8,7 @@ services:
         NO_PROXY: ${LHC_BUILD_NO_PROXY:-localhost,127.0.0.1,::1}
     restart: unless-stopped
     ports:
-      # Apache retains public HTTP/TLS during the gradual host migration.
+      # Local development and health checks.
       - "127.0.0.1:${LHC_HTTP_PORT:-18087}:8080"
     read_only: true
     tmpfs:
