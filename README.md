@@ -36,6 +36,14 @@ Git push webhook. Do not enable isolated deployments: Apache uses the stable
 loopback port. `LHC_HTTP_PORT` defaults to `18087` and can be set in Dokploy if
 that port must change; update the Apache upstream at the same time.
 
+For a host that requires an outbound proxy, enable Dokploy's environment file
+and set `LHC_BUILD_HTTP_PROXY`, `LHC_BUILD_HTTPS_PROXY` and
+`LHC_BUILD_NO_PROXY` there. Compose passes these only as build arguments; the
+nginx runtime does not receive them. Keep root's global Docker client proxy
+defaults unchanged. Pre-pull each pinned Dockerfile base image through the
+host's Docker daemon before deploying a new digest; Dokploy clears the Compose
+client's shell environment, including its registry-authentication proxy.
+
 During the host's gradual migration, Apache owns public ports 80/443 and TLS for
 `lhc.lu` and `www.lhc.lu`, proxying HTTPS requests to `127.0.0.1:18087`. Do not add
 Dokploy-managed domains or start Traefik on those public ports until the other

@@ -2,6 +2,10 @@ services:
   web:
     build:
       context: .
+      args:
+        HTTP_PROXY: ${LHC_BUILD_HTTP_PROXY:-}
+        HTTPS_PROXY: ${LHC_BUILD_HTTPS_PROXY:-}
+        NO_PROXY: ${LHC_BUILD_NO_PROXY:-localhost,127.0.0.1,::1}
     restart: unless-stopped
     ports:
       # Apache retains public HTTP/TLS during the gradual host migration.

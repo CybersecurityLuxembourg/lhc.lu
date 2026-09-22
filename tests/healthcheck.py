@@ -9,6 +9,9 @@ container = subprocess.check_output(
 ).strip()
 assert container, 'web container is not running'
 config = json.loads(subprocess.check_output(['docker', 'inspect', container]))[0]
+proxy_keys = {'http_proxy', 'https_proxy', 'HTTP_PROXY', 'HTTPS_PROXY'}
+runtime_keys = {entry.partition('=')[0] for entry in config['Config']['Env']}
+assert not proxy_keys.intersection(runtime_keys), 'Build proxies leaked into runtime'
 healthcheck = config['Config']['Healthcheck']['Test']
 assert healthcheck[0] == 'CMD-SHELL', healthcheck
 result = subprocess.run([
