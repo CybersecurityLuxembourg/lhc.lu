@@ -1,0 +1,26 @@
+name: Container build and HTTP checks
+
+on:
+  push:
+    branches: [main, deploy/dokploy]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and start the production container
+        run: docker compose -p lhc-ci up --build -d --wait --wait-timeout 60
+      - name: Check routes, assets and security headers
+        run: python3 tests/smoke.py http://127.0.0.1:18087
+      - name: Show container logs
+        if: failure()
+        run: docker compose -p lhc-ci logs
+      - name: Stop test container
+        if: always()
+        run: docker compose -p lhc-ci down
