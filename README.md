@@ -24,9 +24,10 @@ return 404.
 For a local production check:
 
 ```sh
-docker compose up --build -d --wait
+docker compose -p lhc-local up --build -d --wait
 python3 tests/smoke.py http://127.0.0.1:18087
-docker compose down
+python3 tests/healthcheck.py lhc-local
+docker compose -p lhc-local down
 ```
 
 In Dokploy, create a **Docker Compose** service using this repository, branch
