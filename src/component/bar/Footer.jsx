@@ -168,8 +168,16 @@ export default class Footer extends React.Component {
 									href={"https://api.cybersecurity.lu/public/get_public_document/LHC_Legal_Notice.pdf"}
 									rel="noreferrer noopener"
 									target="_blank"
-									title="Terms of use">
+									title="Privacy policy">
 									Privacy Policy
+								</a>
+								<span className={'mx-2 text-dark'}>|</span>
+								<a
+									href={"https://transparency.lhc.lu/lhc-gep/gender-equality-plan.pdf"}
+									rel="noreferrer noopener"
+									target="_blank"
+									title="Gender equality plan (GEP)">
+									Gender Equality Plan (GEP)
 								</a>
 							</div>
 
