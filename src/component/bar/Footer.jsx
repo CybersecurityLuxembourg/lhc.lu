@@ -15,7 +15,7 @@ export default class Footer extends React.Component {
 			<div id="Footer" aria-label="Footer">
 				<div className="Footer-content">
 					<div className="row">
-						<div className="col-md-2 Footer-contact">
+						<div className="col-lg-3 Footer-contact">
 							<div>
 								<img
 									className={"Footer-logo"}
@@ -66,9 +66,8 @@ export default class Footer extends React.Component {
 							</div>
 						</div>
 
-						<div className="col-md-1"/>
-						<div className="col-md-9">
-							<div className="col-md-11">
+						<div className="col-lg-9">
+							<div className="col-md-12">
 								<div className="row flex-links">
 									<div className="Footer-link">
 										<Link to="/about">
@@ -151,9 +150,8 @@ export default class Footer extends React.Component {
 						</div>
 					</div>
 
-					<div className="row">
-						<div className="col-md-4"/>
-						<div className="col-md-3">
+					<div className="row align-items-center">
+						<div className="col-lg-8">
 
 							<div className="Footer-link Footer-legal-links">
 								<a
@@ -163,21 +161,25 @@ export default class Footer extends React.Component {
 									title="Terms of use">
 									Terms of Service
 								</a>
-								<span className={'mx-2 text-dark'}>|</span>
 								<a
 									href={"https://api.cybersecurity.lu/public/get_public_document/LHC_Legal_Notice.pdf"}
 									rel="noreferrer noopener"
 									target="_blank"
-									title="Terms of use">
+									title="Privacy policy">
 									Privacy Policy
+								</a>
+								<a
+									href={"https://transparency.lhc.lu/lhc-gep/gender-equality-plan.pdf"}
+									rel="noreferrer noopener"
+									target="_blank"
+									title="Gender equality plan (GEP)">
+									Gender Equality Plan (GEP)
 								</a>
 							</div>
 
 						</div>
 
-						<div className="col-md-3"/>
-
-						<div className="col-md-2">
+						<div className="col-lg-4 text-lg-right">
 							<img
 								className={"Footer-logo-cyberlux"}
 								src="/img/cyberlux-logo-white.png"
