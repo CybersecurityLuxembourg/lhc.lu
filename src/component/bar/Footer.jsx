@@ -169,11 +169,11 @@ export default class Footer extends React.Component {
 									Privacy Policy
 								</a>
 								<a
-									href={"https://transparency.lhc.lu/lhc-gep/gender-equality-plan.pdf"}
+									href={"https://transparency.lhc.lu"}
 									rel="noreferrer noopener"
 									target="_blank"
 									title="Gender equality plan (GEP)">
-									Gender Equality Plan (GEP)
+									Transparency
 								</a>
 							</div>
 
