@@ -6,7 +6,7 @@ COPY . .
 ENV NODE_OPTIONS=--max-old-space-size=2048
 RUN npm run build
 
-FROM nginx:stable-alpine@sha256:ef8676b33d681f272ba429b27658bdd7e640963279714c96bddf1dc76307f7b6
+FROM nginx:stable-alpine@sha256:caf4e1e032a20f9c3c5e28fc7f25ffd768ad8677b4975c54193075997b3a97e3
 COPY deploy/nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /app/build /usr/share/nginx/html
 USER nginx
