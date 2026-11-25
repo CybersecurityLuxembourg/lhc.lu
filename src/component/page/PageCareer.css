@@ -1,0 +1,9 @@
+
+/* Split the standard 60px .row-spaced gap evenly around the application note */
+#PageCareer .PageCareer-half-spaced {
+	padding-bottom: 30px;
+}
+
+#PageCareer .PageCareer-apply {
+	margin-bottom: 0;
+}

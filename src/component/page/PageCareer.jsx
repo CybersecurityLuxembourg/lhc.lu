@@ -119,8 +119,16 @@ export default class PageCareer extends React.Component {
 					</div>
 
 					<div className="row">
-						<div className="col-md-12 row-spaced">
+						<div className="col-md-12 PageCareer-half-spaced">
 							<h2>Career</h2>
+						</div>
+
+						<div className="col-md-12 PageCareer-half-spaced">
+							<p className="PageCareer-apply">
+								Please send all applications (including applications for open positions,
+								spontaneous applications and internships) directly
+								to <a href="mailto:hr@lhc.lu">hr@lhc.lu</a>.
+							</p>
 						</div>
 
 						<div className="col-md-12">
